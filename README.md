@@ -15,7 +15,7 @@ use as follows:
   * `src/` -- Here are the C++ source files. You can have subfolders as needed.
 
   * `README.md` -- This file. You should modify it to represent
-    your project.
+    your project. **in progress -Juho**
 
 You may also add other new directories as needed, for example
 for testing tools.
