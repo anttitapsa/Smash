@@ -1,0 +1,7 @@
+Super Smash- like
+
+All in all a very convincing plan. All the required information is present, ingame features, technical execution and plan are all described well.
+There could be a slightly more detailed description of how the program works outside the game space, or if there is anything. (How the program work requirement on the project plan)
+The schedule, division of labour and techical structure are laid out just with enough precision to account for changes in knowledge and other obstacles.
+
+Pretty decent, a soft 5/5
