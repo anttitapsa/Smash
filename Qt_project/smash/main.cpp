@@ -11,20 +11,23 @@ int main(int argc, char *argv[])
     QGraphicsScene* scene = new QGraphicsScene();
 
     // create an item to put into the scene
-    Player *el =  new Player(600, 350, 100, 100);
+    Player *player =  new Player();
 
     //el->setSpanAngle(5120);
     //el->setStartAngle(320);
 
     // add the item to the scene
-    scene->addItem(el);
+    scene->addItem(player);
 
     // make el focusable
-    el->setFlag(QGraphicsItem::ItemIsFocusable);
-    el->setFocus();
+    player->setFlag(QGraphicsItem::ItemIsFocusable);
+    player->setFocus();
 
     // add a view
     QGraphicsView * view = new QGraphicsView(scene);
+
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     view->setFixedSize(1280, 720);
     view->show();
