@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QKeyEvent>
 #include <bitset>
+#include <vector>
 
 class Player: public QObject, public QGraphicsEllipseItem { // public QObject,
     Q_OBJECT
@@ -13,6 +14,8 @@ public:
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     void jump();
+    // only for now
+    std::vector<int> keybinds;
 public slots:
     void gravity();
     void move();
@@ -24,6 +27,7 @@ private:
     bool hasJumped = false;
     int fallSpeed = 0;
     int groundpos = 620;
+
 
     std::bitset<4> key;
 

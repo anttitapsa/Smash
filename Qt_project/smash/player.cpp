@@ -1,11 +1,14 @@
 #include "player.h"
 #include <QDebug>
 #include <QTimer>
+#include <QColor>
+#include <QBrush>
 
 Player::Player() {
 
     // Draw the player as an ellipse
     setRect(0, 0, 100, 100);
+    setBrush(QColor("#000000"));
     setSpanAngle(5120);
     setStartAngle(320);
 
@@ -35,9 +38,9 @@ void Player::gravity() {
 
 void Player::move() {
     // scheme: key[0-3] = W,A,S,D
-    if (key[0]) {
-        jump();
-    }
+    //if (key[0]) {
+    //    jump();
+    //}
     if (key[1]) {
         setPos(x()-speed, y());
         setStartAngle(3200);
@@ -54,29 +57,58 @@ void Player::jump() {
 }
 
 void Player::keyPressEvent(QKeyEvent *event) {
+
+    int k = event->key();
+
+    if (k == keybinds[0]) {
+        jump();
+    } else if (k == keybinds[1]){
+        key[1] = 1;
+    } else if (k == keybinds[2]) {
+        key[2] = 1;
+    } else if (k == keybinds[3]) {
+        key[3] = 1;
+    }
+        /*
     switch ( event->key() )
         {
-        case Qt::Key_W:
-            key[0] = 1;
+        case keybinds.at(0):
+            jump();
+            //key[0] = 1;
             break;
-        case Qt::Key_A:
+        case keybinds[0]:
             key[1] = 1;
             break;
-        case Qt::Key_S:
+        case keybinds[0]:
             key[2] = 1;
             break;
-        case Qt::Key_D:
+        case keybinds[0]:
             key[3] = 1;
             break;
         }
+        */
 
 }
 
 void Player::keyReleaseEvent(QKeyEvent *event) {
+
+    int k = event->key();
+
+    if (k == keybinds[0]) {
+        //jump();
+    } else if (k == keybinds[1]){
+        key[1] = 0;
+    } else if (k == keybinds[2]) {
+        key[2] = 0;
+    } else if (k == keybinds[3]) {
+        key[3] = 0;
+    }
+
+    /*
     switch ( event->key() )
     {
     case Qt::Key_W:
-        key[0] = 0;
+        //key[0] = 0;
         //qDebug() << "released W";
         break;
     case Qt::Key_A:
@@ -92,6 +124,7 @@ void Player::keyReleaseEvent(QKeyEvent *event) {
         //qDebug() << "released D";
         break;
     }
+    */
 }
 
     /*  OLD MOVEMENT SCHEME

@@ -13,6 +13,7 @@ SOURCES += \
     player.cpp
 
 HEADERS += \
+    game.h \
     player.h
 
 FORMS +=
