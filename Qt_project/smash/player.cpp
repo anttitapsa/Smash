@@ -56,12 +56,16 @@ void Player::jump() {
     hasJumped = true;
 }
 
+/*
 void Player::keyPressEvent(QKeyEvent *event) {
 
     int k = event->key();
 
     if (k == keybinds[0]) {
-        jump();
+        if (!event->isAutoRepeat()) {
+            jump();
+        }
+        key[0] = 1;
     } else if (k == keybinds[1]){
         key[1] = 1;
     } else if (k == keybinds[2]) {
@@ -69,7 +73,7 @@ void Player::keyPressEvent(QKeyEvent *event) {
     } else if (k == keybinds[3]) {
         key[3] = 1;
     }
-        /*
+
     switch ( event->key() )
         {
         case keybinds.at(0):
@@ -86,7 +90,7 @@ void Player::keyPressEvent(QKeyEvent *event) {
             key[3] = 1;
             break;
         }
-        */
+
 
 }
 
@@ -95,7 +99,7 @@ void Player::keyReleaseEvent(QKeyEvent *event) {
     int k = event->key();
 
     if (k == keybinds[0]) {
-        //jump();
+        key[0] = 0;
     } else if (k == keybinds[1]){
         key[1] = 0;
     } else if (k == keybinds[2]) {
@@ -104,7 +108,7 @@ void Player::keyReleaseEvent(QKeyEvent *event) {
         key[3] = 0;
     }
 
-    /*
+
     switch ( event->key() )
     {
     case Qt::Key_W:
@@ -124,8 +128,8 @@ void Player::keyReleaseEvent(QKeyEvent *event) {
         //qDebug() << "released D";
         break;
     }
-    */
-}
+
+}*/
 
     /*  OLD MOVEMENT SCHEME
     if (event->key() == Qt::Key_A) {
