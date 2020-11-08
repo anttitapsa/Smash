@@ -3,6 +3,7 @@
 #include "player.h"
 #include "game.h"
 #include <QGraphicsView>
+#include "background.h"
 
 int main(int argc, char *argv[])
 {
@@ -23,9 +24,10 @@ int main(int argc, char *argv[])
 
     // add a view
     Game * game = new Game(scene, player1, player2);
-    game->show();
-
     scene->setSceneRect(0, 0, 1280, 720);
+    Background * bg = new Background(scene);
+
+    game->show();
 
     return a.exec();
 }
