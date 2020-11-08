@@ -11,10 +11,12 @@ CONFIG += c++11
 SOURCES += \
     game.cpp \
     main.cpp \
+    mainmenu.cpp \
     player.cpp
 
 HEADERS += \
     game.h \
+    mainmenu.h \
     player.h
 
 FORMS +=
