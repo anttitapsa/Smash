@@ -1,5 +1,0 @@
-C:/Users/Juho/Documents/C_ohjelmat/cpp_project/src/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/CMakeFiles/smash.dir
-C:/Users/Juho/Documents/C_ohjelmat/cpp_project/src/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-C:/Users/Juho/Documents/C_ohjelmat/cpp_project/src/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Juho/Documents/C_ohjelmat/cpp_project/src/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/CMakeFiles/smash_autogen_timestamp_deps.dir
-C:/Users/Juho/Documents/C_ohjelmat/cpp_project/src/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/CMakeFiles/smash_autogen.dir
