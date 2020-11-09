@@ -31,7 +31,10 @@ void MainMenu::StartGame(){
     scene->addItem(player1);
     scene->addItem(player2);
 
-
+    Platform *platform = new Platform(50,500,200);
+    scene->addItem(platform);
+    Platform *platform1 = new Platform(500,300,250);
+    scene->addItem(platform1);
     // add a view
     Game * game = new Game(scene, player1, player2);
     game->show();

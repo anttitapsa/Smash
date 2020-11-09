@@ -7,6 +7,7 @@
 #include <QGraphicsProxyWidget>
 #include "player.h"
 #include "game.h"
+#include "platform.h"
 class MainMenu: public QObject
 {
      Q_OBJECT
