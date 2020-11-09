@@ -1,4 +1,5 @@
 #include "mainmenu.h"
+#include "background.h"
 
 MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     : stack_(stack)
@@ -35,7 +36,7 @@ void MainMenu::StartGame(){
     Game * game = new Game(scene, player1, player2);
     game->show();
     scene->setSceneRect(0, 0, 1280, 720);
-
+    Background * bg = new Background(scene);
     stack_->addWidget(game);
     stack_->setCurrentIndex(1);
 

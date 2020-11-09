@@ -3,11 +3,7 @@
 #include "player.h"
 #include "game.h"
 #include <QGraphicsView>
-<<<<<<< HEAD:src/Qt_project/smash/main.cpp
-#include "background.h"
-=======
 #include "mainmenu.h"
->>>>>>> Juho:Qt_project/smash/main.cpp
 
 int main(int argc, char *argv[])
 {
