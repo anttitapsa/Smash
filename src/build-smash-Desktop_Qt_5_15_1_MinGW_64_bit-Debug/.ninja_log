@@ -1,0 +1,6 @@
+# ninja log v5
+1	397	6256803444594778	smash_autogen/timestamp	ed0b93b6f88d8fcf
+398	1338	6256803453954768	CMakeFiles/smash.dir/smash_autogen/mocs_compilation.cpp.obj	1c8afba1f7bd89c3
+400	1450	6256803455084953	CMakeFiles/smash.dir/main.cpp.obj	1738bfdba96b61c1
+403	1468	6256803455114955	CMakeFiles/smash.dir/mainwindow.cpp.obj	4a3527cd9ade7d77
+1469	1604	6256803456525046	smash.exe	82c4cfe083f2f5f6

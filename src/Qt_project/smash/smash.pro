@@ -12,11 +12,13 @@ SOURCES += \
     background.cpp \
     game.cpp \
     main.cpp \
+    mainmenu.cpp \
     player.cpp
 
 HEADERS += \
     background.h \
     game.h \
+    mainmenu.h \
     player.h
 
 FORMS +=

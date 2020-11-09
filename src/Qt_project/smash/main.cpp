@@ -3,11 +3,30 @@
 #include "player.h"
 #include "game.h"
 #include <QGraphicsView>
+<<<<<<< HEAD:src/Qt_project/smash/main.cpp
 #include "background.h"
+=======
+#include "mainmenu.h"
+>>>>>>> Juho:Qt_project/smash/main.cpp
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    //scene for Main menu:
+    QGraphicsScene* scene = new QGraphicsScene();
+
+    //stack to contain different views:
+    QStackedWidget* stack = new QStackedWidget();
+
+    MainMenu* menu = new MainMenu(scene, stack);
+    menu->GetView()->show();
+    scene->setSceneRect(0,0,1280,720);
+    stack->addWidget(menu->GetView());
+    stack->setCurrentIndex(0);
+    stack->show();
+    /*
+     ***former version***
 
     // create a scene
     QGraphicsScene* scene = new QGraphicsScene();
@@ -28,6 +47,8 @@ int main(int argc, char *argv[])
     Background * bg = new Background(scene);
 
     game->show();
+
+    */
 
     return a.exec();
 }
