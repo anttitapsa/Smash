@@ -3,8 +3,9 @@
 #include <QTimer>
 #include <QColor>
 #include <QBrush>
-
-Player::Player() {
+#include <iostream>
+Player::Player(std::vector<Platform*> platforms)
+    : platforms_(platforms){
 
     // Draw the player as an ellipse
     setRect(0, 0, 100, 100);
@@ -21,19 +22,29 @@ Player::Player() {
 }
 
 void Player::gravity() {
-    if (isfalling) {
-        int drop;
-        if (hasJumped) { drop = -jumpSpeed + falltime * falltime; } else { drop = falltime * falltime; }
-        if (y() + drop > groundpos) {
-            setPos(x(), groundpos);
-            isfalling = false;
-            hasJumped = false;
-            falltime = 0;
-        } else {
-            setPos(x(), y() + drop);
-            falltime++;
-        }
+    isfalling = true;
+
+    int drop;
+    if (hasJumped) {
+        drop = -jumpSpeed + falltime * falltime; }
+    else { drop = falltime * falltime; }
+
+    if (drop > 0){
+        for (Platform* p : platforms_){
+            if (p->Get_start_x() <= x()+ player_widght_ && x()+ player_widght_ <= p->Get_end_x()){
+                if(y()+drop >= p->Get_y()-player_hight_ && p->Get_y()-player_hight_ >= y()){
+                    setPos(x(),p->Get_y()-player_hight_);
+                    isfalling = false;
+                    hasJumped = false;
+                    falltime = 0;
+                    break;
+                }}
+    }}
+    if (isfalling){
+        setPos(x(),y()+drop);
+        falltime ++;
     }
+
 }
 
 void Player::move() {
@@ -43,10 +54,12 @@ void Player::move() {
     //}
     if (key[1]) {
         setPos(x()-speed, y());
+        gravity();
         setStartAngle(3200);
     }
     if (key[3]) {
         setPos(x()+speed, y());
+        gravity();
         setStartAngle(320);
     }
 }
