@@ -6,11 +6,12 @@
 #include <QKeyEvent>
 #include <bitset>
 #include <vector>
+#include <QTimer>
 
 class Player: public QObject, public QGraphicsEllipseItem { // public QObject,
     Q_OBJECT
 public:
-    Player();
+    Player(QTimer* timer);
     void jump();
     std::bitset<4> key;
 public slots:
@@ -24,8 +25,7 @@ private:
     bool hasJumped = false;
     int fallSpeed = 0;
     int groundpos = 620;
-
-
+    QTimer* timer_;
     //
 
 };

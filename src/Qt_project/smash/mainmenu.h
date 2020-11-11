@@ -8,6 +8,8 @@
 #include "player.h"
 #include "game.h"
 #include "platform.h"
+#include <QTimer>
+
 class MainMenu: public QObject
 {
      Q_OBJECT
@@ -22,6 +24,7 @@ public slots:
 private:
     QStackedWidget* stack_;
     QGraphicsView* view_ ;
+    QTimer* timer_;
 };
 
 #endif // MAINMENU_H

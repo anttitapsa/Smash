@@ -4,7 +4,7 @@
 #include <QColor>
 #include <QBrush>
 
-Player::Player() {
+Player::Player(QTimer* timer) : timer_(timer) {
 
     // Draw the player as an ellipse
     setRect(0, 0, 100, 100);
@@ -13,11 +13,9 @@ Player::Player() {
     setStartAngle(320);
 
     // connect the player to a timer
-    QTimer *timer = new QTimer();
-    connect(timer, SIGNAL(timeout()), this, SLOT(gravity()));
-    connect(timer, SIGNAL(timeout()), this, SLOT(move()));
 
-    timer->start(20);
+    connect(timer_, SIGNAL(timeout()), this, SLOT(gravity()));
+    connect(timer_, SIGNAL(timeout()), this, SLOT(move()));
 }
 
 void Player::gravity() {

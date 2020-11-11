@@ -9,6 +9,7 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     view_->setFixedSize(1280, 720);
     view_->setFocus();
 
+
     // add items into the scene
     QPushButton* start_btn = new QPushButton();
     start_btn->setGeometry(QRect(300,400,480,100));
@@ -22,9 +23,13 @@ void MainMenu::StartGame(){
     // create a scene
     QGraphicsScene* scene = new QGraphicsScene();
 
+    // create a global timer
+    timer_ = new QTimer();
+    timer_->start(20);
+
     // create an item to put into the scene
-    Player *player1 =  new Player();
-    Player *player2 =  new Player();
+    Player *player1 =  new Player(timer_);
+    Player *player2 =  new Player(timer_);
     player2->setBrush(QColor("#ffc0cb"));
 
     // add the item to the scene
