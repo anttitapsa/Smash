@@ -15,7 +15,6 @@ class MainMenu: public QObject
      Q_OBJECT
 public:
     MainMenu(QGraphicsScene* scene, QStackedWidget *stack );
-
     QGraphicsView* GetView();
 
 public slots:

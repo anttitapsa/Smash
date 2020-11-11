@@ -41,9 +41,13 @@ void MainMenu::StartGame(){
     Platform *platform1 = new Platform(500,300,250);
     scene->addItem(platform1);
     // add a view
-    Game * game = new Game(scene, player1, player2);
+    Game * game = new Game(scene, timer_, player1, player2);
+    game->setTransformationAnchor(QGraphicsView::NoAnchor);
+    game->setAlignment(Qt::AlignRight);
+    game->setDragMode(QGraphicsView::ScrollHandDrag);
     game->show();
-    scene->setSceneRect(0, 0, 1280, 720);
+
+    scene->setSceneRect(0, 0, 2560, 720);
     Background * bg = new Background(scene);
     stack_->addWidget(game);
     stack_->setCurrentIndex(1);
