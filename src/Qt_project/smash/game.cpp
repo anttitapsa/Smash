@@ -17,8 +17,6 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2)
     keybinds.push_back(Qt::Key_Down);
     keybinds.push_back(Qt::Key_Right);
 
-    transform_ = QTransform(1,0,0,1,100,0);
-
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(1280, 720);
@@ -79,6 +77,6 @@ void Game::keyReleaseEvent(QKeyEvent *event)
 }
 
 void Game::moveView() {
-    std::cout << "moveView attempt: " << viewportTransform().dx() <<std::endl;
-    translate(-1,0);
+    //std::cout << "moveView attempt: " << viewportTransform().dx() <<std::endl;
+    translate(-rollspeed,0);
 }

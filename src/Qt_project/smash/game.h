@@ -22,7 +22,7 @@ public slots:
 private:
     Player *p1_;
     Player *p2_;
-    QTransform transform_;
+    qreal rollspeed = 2;
 };
 
 #endif // GAME_H
