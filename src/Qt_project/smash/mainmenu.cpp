@@ -39,8 +39,8 @@ void MainMenu::StartGame(){
     platforms.push_back(platform2);
 
     // create an item to put into the scene
-    Player *player1 =  new Player(timer_, platforms);
-    Player *player2 =  new Player(timer_, platforms);
+    Player *player1 =  new Player();
+    Player *player2 =  new Player();
     player2->setBrush(QColor("#ffc0cb"));
 
     // add the item to the scene
@@ -48,7 +48,7 @@ void MainMenu::StartGame(){
     scene->addItem(player2);
 
     // add a view
-    Game * game = new Game(scene, timer_, player1, player2);
+    Game * game = new Game(scene, timer_, player1, player2, platforms);
     game->setTransformationAnchor(QGraphicsView::NoAnchor);
     game->setAlignment(Qt::AlignRight);
     game->setDragMode(QGraphicsView::ScrollHandDrag);

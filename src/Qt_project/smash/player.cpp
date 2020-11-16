@@ -4,8 +4,7 @@
 #include <QColor>
 #include <QBrush>
 #include <iostream>
-Player::Player(QTimer* timer, std::vector<Platform*> platforms)
-    : timer_(timer), platforms_(platforms){
+Player::Player() {
 
     // Draw the player as an ellipse
     setRect(0, 0, 100, 100);
@@ -14,13 +13,13 @@ Player::Player(QTimer* timer, std::vector<Platform*> platforms)
     setStartAngle(320);
 
     // connect the player to a timer
-    connect(timer, SIGNAL(timeout()), this, SLOT(gravity()));
-    connect(timer, SIGNAL(timeout()), this, SLOT(move()));
+    //connect(timer, SIGNAL(timeout()), this, SLOT(gravity()));
+    //connect(timer, SIGNAL(timeout()), this, SLOT(move()));
 
-    timer->start(20);
+    //timer->start(20);
 }
 
-void Player::gravity() {
+void Player::gravity(const std::vector<Platform*> &platforms) {
     isfalling = true;
 
     int drop;
@@ -29,7 +28,7 @@ void Player::gravity() {
     else { drop = falltime * falltime; }
 
     if (drop > 0){
-        for (Platform* p : platforms_){
+        for (Platform* p : platforms){
             if (p->Get_start_x() <= x()+ player_widght_ && x()+ player_widght_ <= p->Get_end_x()){
                 if(y()+drop >= p->Get_y()-player_hight_ && p->Get_y()-player_hight_ >= y()){
                     setPos(x(),p->Get_y()-player_hight_);
@@ -53,12 +52,10 @@ void Player::move() {
     //}
     if (key[1]) {
         setPos(x()-speed, y());
-        gravity();
         setStartAngle(3200);
     }
     if (key[3]) {
         setPos(x()+speed, y());
-        gravity();
         setStartAngle(320);
     }
 }
