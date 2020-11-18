@@ -11,12 +11,14 @@
 class Player: public QObject, public QGraphicsEllipseItem { // public QObject,
     Q_OBJECT
 public:
-    Player(QTimer* timer,std::vector<Platform*> platforms);
+    Player();
     void jump();
     std::bitset<4> key;
+    int lives_ = 3;
 public slots:
-    void gravity();
+    void gravity(const std::vector<Platform*> &platforms);
     void move();
+    void SetPosition(int x, int y);
 private:
     int speed = 20;
     int jumpSpeed = 50;
@@ -24,11 +26,8 @@ private:
     bool isfalling = true;
     bool hasJumped = false;
     int fallSpeed = 0;
-    int groundpos = 620;
-    QTimer* timer_;
     int player_hight_ = 100;
     int player_widght_ = 50; // currently player is circle and r= 50
-    std::vector<Platform*> platforms_;
 
     //
 

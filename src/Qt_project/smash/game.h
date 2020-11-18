@@ -11,18 +11,22 @@ class Game: public QGraphicsView {
     Q_OBJECT
 
 public:
-    Game(QGraphicsScene* scene, QTimer *timer, Player *p1, Player *p2);
+    Game(QGraphicsScene* scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
-    //std::bitset<8> key;
     std::vector<int> keybinds;
     QTimer *timer_;
-public slots:
     void moveView();
+    void check_dead();
+public slots:
+    void gameTick();
 private:
     Player *p1_;
     Player *p2_;
     qreal rollspeed = 2;
+    int dead_wall = -300;
+    int dead_ground = 620;
+    std::vector<Platform*> platforms_; // Maybe update this into struct mapinfo, if more than platforms are needed
 };
 
 #endif // GAME_H

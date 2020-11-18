@@ -4,8 +4,8 @@
 #include <QPoint>
 #include <iostream>
 
-Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2) {
+Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms)
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -21,7 +21,7 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(1280, 720);
     setFocus();
-    connect(timer_, SIGNAL(timeout()), this, SLOT(moveView()));
+    connect(timer_, SIGNAL(timeout()), this, SLOT(gameTick()));
 };
 
 void Game::keyPressEvent(QKeyEvent *event)
@@ -79,4 +79,32 @@ void Game::keyReleaseEvent(QKeyEvent *event)
 void Game::moveView() {
     //std::cout << "moveView attempt: " << viewportTransform().dx() <<std::endl;
     translate(-rollspeed,0);
+    dead_wall +=2;
+}
+
+void Game::check_dead(){
+    if(p1_->x() < dead_wall || p1_->y() > dead_ground){
+        p1_->lives_ -= 1;
+        if(p1_->lives_ != 0){
+            p1_->SetPosition(dead_wall + 1000, 0);}
+        std::cout << "Player 1 lives <3: " << p1_->lives_ << std::endl;
+    }
+    if(p2_->x() < dead_wall || p2_->y() > dead_ground){
+        p2_->lives_ -= 1;
+        if(p2_->lives_ != 0){
+        p2_->SetPosition(dead_wall +1000, 0);}
+        std::cout << "Player 2 lives <3: " << p2_->lives_ << std::endl;
+    }
+    if(p1_->lives_ == 0 || p2_->lives_ == 0){
+        timer_->stop();
+    }
+}
+
+void Game::gameTick() {
+    moveView();
+    p1_->gravity(platforms_);
+    p2_->gravity(platforms_);
+    p1_->move();
+    p2_->move();
+    check_dead();
 }
