@@ -5,7 +5,7 @@
 #include <iostream>
 
 Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms) {
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), scene_(scene), platforms_(platforms) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -36,7 +36,10 @@ void Game::keyPressEvent(QKeyEvent *event)
     } else if (k == keybinds[1]){
         p1_->key[1] = 1;
     } else if (k == keybinds[2]) {
-        p1_->key[2] = 1;
+        if (!event->isAutoRepeat()) {
+            QGraphicsLineItem* line = p1_->shove(p2_);
+            scene_->addItem(line);
+        }
     } else if (k == keybinds[3]) {
         p1_->key[3] = 1;
     } else if (k == keybinds[4]) {
@@ -47,7 +50,10 @@ void Game::keyPressEvent(QKeyEvent *event)
     } else if (k == keybinds[5]){
         p2_->key[1] = 1;
     } else if (k == keybinds[6]) {
-        p2_->key[2] = 1;
+        if (!event->isAutoRepeat()) {
+            QGraphicsLineItem* line = p2_->shove(p1_);
+            scene_->addItem(line);
+        }
     } else if (k == keybinds[7]) {
         p2_->key[3] = 1;
     }
@@ -79,7 +85,7 @@ void Game::keyReleaseEvent(QKeyEvent *event)
 void Game::moveView() {
     //std::cout << "moveView attempt: " << viewportTransform().dx() <<std::endl;
     translate(-rollspeed,0);
-    dead_wall +=2;
+    dead_wall += rollspeed;
 }
 
 void Game::check_dead(){

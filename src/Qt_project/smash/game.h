@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <vector>
 #include <QTransform>
+#include <QGraphicsItem>
 #include "player.h"
 
 class Game: public QGraphicsView {
@@ -23,9 +24,10 @@ public slots:
 private:
     Player *p1_;
     Player *p2_;
-    qreal rollspeed = 2;
+    qreal rollspeed = 0;
     int dead_wall = -300;
     int dead_ground = 620;
+    QGraphicsScene *scene_;
     std::vector<Platform*> platforms_; // Maybe update this into struct mapinfo, if more than platforms are needed
 };
 
