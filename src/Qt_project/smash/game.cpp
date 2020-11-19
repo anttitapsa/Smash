@@ -4,8 +4,8 @@
 #include <QPoint>
 #include <iostream>
 
-Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms) {
+Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack)
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -97,8 +97,29 @@ void Game::check_dead(){
     }
     if(p1_->lives_ == 0 || p2_->lives_ == 0){
         timer_->stop();
+
+        // add buttons to post-game screen
+        QPushButton* exit_btn = new QPushButton();
+        exit_btn->setGeometry(QRect(400,400,300,70));
+        exit_btn->setText("Exit to main menu");
+        QObject::connect(exit_btn, SIGNAL(clicked()),this, SLOT(ExitToMenu()));
+        QGraphicsProxyWidget* proxy = scene()->addWidget(exit_btn);
+        proxy->setPos(dead_wall+700,400);
     }
 }
+
+void Game::ExitToMenu(){
+    // clear & delete the Game and return to menu
+    scene()->clear();
+    stack_->setCurrentIndex(0);
+    stack_->removeWidget(this);
+
+
+
+
+}
+
+
 
 void Game::gameTick() {
     moveView();

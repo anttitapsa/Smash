@@ -20,6 +20,7 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
 }
 
 void MainMenu::StartGame(){
+
     // create a scene
     QGraphicsScene* scene = new QGraphicsScene();
     // create a global timer
@@ -51,7 +52,7 @@ void MainMenu::StartGame(){
     scene->addItem(player2);
 
     // add a view
-    Game * game = new Game(scene, timer_, player1, player2, platforms);
+    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_);
     game->setTransformationAnchor(QGraphicsView::NoAnchor);
     game->setAlignment(Qt::AlignRight);
     game->setDragMode(QGraphicsView::ScrollHandDrag);
