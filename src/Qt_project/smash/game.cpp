@@ -37,8 +37,8 @@ void Game::keyPressEvent(QKeyEvent *event)
         p1_->key[1] = 1;
     } else if (k == keybinds[2]) {
         if (!event->isAutoRepeat()) {
-            QGraphicsLineItem* line = p1_->shove(p2_);
-            scene_->addItem(line);
+            QGraphicsRectItem* hitbox = p1_->shove(p2_);
+            scene_->addItem(hitbox);
         }
     } else if (k == keybinds[3]) {
         p1_->key[3] = 1;
@@ -51,8 +51,9 @@ void Game::keyPressEvent(QKeyEvent *event)
         p2_->key[1] = 1;
     } else if (k == keybinds[6]) {
         if (!event->isAutoRepeat()) {
-            QGraphicsLineItem* line = p2_->shove(p1_);
-            scene_->addItem(line);
+            // Add a hitbox for tweaking purposes
+            QGraphicsRectItem* hitbox = p2_->shove(p1_);
+            scene_->addItem(hitbox);
         }
     } else if (k == keybinds[7]) {
         p2_->key[3] = 1;
@@ -93,12 +94,14 @@ void Game::check_dead(){
         p1_->lives_ -= 1;
         if(p1_->lives_ != 0){
             p1_->SetPosition(dead_wall + 1000, 0);}
+            p1_->initialize();
         std::cout << "Player 1 lives <3: " << p1_->lives_ << std::endl;
     }
     if(p2_->x() < dead_wall || p2_->y() > dead_ground){
         p2_->lives_ -= 1;
         if(p2_->lives_ != 0){
         p2_->SetPosition(dead_wall +1000, 0);}
+        p2_->initialize();
         std::cout << "Player 2 lives <3: " << p2_->lives_ << std::endl;
     }
     if(p1_->lives_ == 0 || p2_->lives_ == 0){

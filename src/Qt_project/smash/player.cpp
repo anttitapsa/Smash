@@ -84,26 +84,32 @@ void Player::SetPosition(int x, int y){
     setPos(x,y);
 }
 
-QGraphicsLineItem* Player::shove(Player *rival){
-    std::cout << "shove button works" << std::endl;
+QGraphicsRectItem* Player::shove(Player *rival){
     if(facing_right_){
-        if (rival->contains(rival->mapFromScene(QPointF(x()+1.5*player_widght_, y()+0.4*player_hight_)))) {
-            std::cout << "was hit toward right" << std::endl;
+        if (rival->contains(rival->mapFromScene(QPointF(x()+1.2*player_widght_, y()+0.8*player_hight_))) ||
+            rival->contains(rival->mapFromScene(QPointF(x()+1.2*player_widght_, y()+0.2*player_hight_))) ||
+            rival->contains(rival->mapFromScene(QPointF(x()+1.8*player_widght_, y()+0.8*player_hight_))) ||
+            rival->contains(rival->mapFromScene(QPointF(x()+1.8*player_widght_, y()+0.2*player_hight_)))) {
             rival->isShoved(true);
         }
-        return new QGraphicsLineItem(x()+1.45*player_widght_, y()+0.4*player_hight_,x()+1.55*player_widght_,y()+0.4*player_hight_);
+        return new QGraphicsRectItem(x()+1.2*player_widght_, y()+0.2*player_hight_,0.6*player_widght_,0.6*player_hight_);
     } else {
-        if (rival->contains(rival->mapFromScene(QPointF(x()-0.5*player_widght_, y()+0.4*player_hight_)))) {
-            std::cout << "was hit toward left" << std::endl;
+        if (rival->contains(rival->mapFromScene(QPointF(x()-0.2*player_widght_, y()+0.8*player_hight_))) ||
+            rival->contains(rival->mapFromScene(QPointF(x()-0.2*player_widght_, y()+0.2*player_hight_))) ||
+            rival->contains(rival->mapFromScene(QPointF(x()-0.8*player_widght_, y()+0.8*player_hight_))) ||
+            rival->contains(rival->mapFromScene(QPointF(x()-0.8*player_widght_, y()+0.2*player_hight_)))) {
             rival->isShoved(false);
         }
-        return new QGraphicsLineItem(x()-0.55*player_widght_, y()+0.4*player_hight_,x()-0.45*player_widght_,y()+0.4*player_hight_);
+        return new QGraphicsRectItem(x()-0.8*player_widght_, y()+0.2*player_hight_,0.6*player_widght_,0.6*player_hight_);
     }
-
 }
 
 void Player::isShoved(bool toward_right) {
     was_shoved_ = true;
     shovetime = 0;
     shove_dir_ = toward_right;
+}
+
+void Player::initialize(){
+    falltime = 0;
 }

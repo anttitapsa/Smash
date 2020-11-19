@@ -24,7 +24,7 @@ public slots:
 private:
     Player *p1_;
     Player *p2_;
-    qreal rollspeed = 0;
+    qreal rollspeed = 1;
     int dead_wall = -300;
     int dead_ground = 620;
     QGraphicsScene *scene_;

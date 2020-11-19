@@ -17,8 +17,9 @@ public:
     void gravity(const std::vector<Platform*> &platforms);
     void move();
     void SetPosition(int x, int y);
-    QGraphicsLineItem* shove(Player* rival);
+    QGraphicsRectItem* shove(Player* rival);
     void isShoved(bool toward_right);
+    void initialize();
 private:
     int speed = 20;
     int jumpSpeed = 50;
