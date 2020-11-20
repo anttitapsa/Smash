@@ -4,6 +4,7 @@
 #include <QPoint>
 #include <iostream>
 
+
 Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack)
     : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack) {
 

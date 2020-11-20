@@ -1,7 +1,9 @@
 #include "mainmenu.h"
 #include "background.h"
 #include <vector>
-
+#include <list>
+#include <QPixmap>
+#include <QGraphicsPixmapItem>
 MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     : stack_(stack)
 {   view_ = new QGraphicsView(scene);
@@ -28,19 +30,12 @@ void MainMenu::StartGame(){
     timer_->start(20);
 
     //add platforms
+    std::vector<std::vector<int>> coords = {{50,500,300},{400,500,250},{500,650,350},{1000,550,1300}};
     std::vector<Platform*> platforms;
-    Platform *platform = new Platform(50,500,300);
-    scene->addItem(platform);
-    platforms.push_back(platform);
-    Platform *platform1 = new Platform(400,500,250);
-    scene->addItem(platform1);
-    platforms.push_back(platform1);
-    Platform *platform2 = new Platform(500,650,350);
-    scene->addItem(platform2);
-    platforms.push_back(platform2);
-    Platform *platform3 = new Platform(1000,550,1300);
-    scene->addItem(platform3);
-    platforms.push_back(platform3);
+    for(double i = 0; i < coords.size(); i++){
+        platforms.push_back(new Platform(coords[i][0],coords[i][1],coords[i][2]));
+        scene->addItem(platforms[i]);
+    }
 
     // create an item to put into the scene
     Player *player1 =  new Player();
@@ -51,6 +46,10 @@ void MainMenu::StartGame(){
     scene->addItem(player1);
     scene->addItem(player2);
 
+    QGraphicsPixmapItem *heart = scene->addPixmap(QPixmap(":/images/bitheart1.PNG"));
+    heart->setPos(300,400);
+
+
     // add a view
     Game * game = new Game(scene, timer_, player1, player2, platforms, stack_);
     game->setTransformationAnchor(QGraphicsView::NoAnchor);
@@ -60,6 +59,7 @@ void MainMenu::StartGame(){
 
     scene->setSceneRect(0, 0, 2560, 720);
     Background * bg = new Background(scene);
+
     stack_->addWidget(game);
     stack_->setCurrentIndex(1);
 

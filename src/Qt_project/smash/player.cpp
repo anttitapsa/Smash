@@ -4,6 +4,7 @@
 #include <QColor>
 #include <QBrush>
 #include <iostream>
+
 Player::Player() {
 
     // Draw the player as an ellipse
@@ -58,6 +59,7 @@ void Player::move() {
         setPos(x()+speed, y());
         setStartAngle(320);
     }
+
 }
 
 void Player::jump() {
