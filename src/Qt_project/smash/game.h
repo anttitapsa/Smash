@@ -22,6 +22,7 @@ public:
     QTimer *timer_;
     void moveView();
     void check_dead();
+    void player_to_above_platform(Player* p);
 public slots:
     void gameTick();
     void ExitToMenu();

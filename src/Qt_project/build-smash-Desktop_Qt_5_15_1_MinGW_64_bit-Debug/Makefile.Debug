@@ -266,6 +266,7 @@ debug/moc_game.cpp: ../smash/game.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qgraphicslayoutitem.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qgraphicsitem.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpainterpath.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		../smash/player.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsEllipseItem \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QKeyEvent \
@@ -414,6 +415,7 @@ debug/moc_mainmenu.cpp: ../smash/mainmenu.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
 		../smash/game.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTransform \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/eevir/c++/other-2020-1/src/Qt_project/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/eevir/c++/other-2020-1/src/Qt_project/smash -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\smash\mainmenu.h -o debug\moc_mainmenu.cpp
@@ -792,6 +794,7 @@ debug/game.o: ../smash/game.cpp ../smash/game.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qgraphicslayoutitem.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qgraphicsitem.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpainterpath.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		../smash/player.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsEllipseItem \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QKeyEvent \
@@ -946,6 +949,7 @@ debug/main.o: ../smash/main.cpp C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QAppli
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qgraphicsproxywidget.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qgraphicswidget.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qgraphicslayoutitem.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		../smash/mainmenu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\smash\main.cpp
 
@@ -1086,11 +1090,11 @@ debug/mainmenu.o: ../smash/mainmenu.cpp ../smash/mainmenu.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
 		../smash/game.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTransform \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		../smash/background.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsScene \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QImage \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPixmap \
-		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPixmapItem
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPixmap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainmenu.o ..\smash\mainmenu.cpp
 
 debug/platform.o: ../smash/platform.cpp ../smash/platform.h \

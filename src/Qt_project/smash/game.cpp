@@ -2,7 +2,8 @@
 #include <QTimer>
 #include <QTransform>
 #include <QPoint>
-
+#include <cmath>
+#include <iostream>
 
 Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts)
     : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts) {
@@ -86,12 +87,12 @@ void Game::check_dead(){
     if(p1_->x() < dead_wall || p1_->y() > dead_ground){
         p1_->lives_ -= 1;
         if(p1_->lives_ != 0){
-            p1_->SetPosition(dead_wall + 1000, 0);}
+            player_to_above_platform(p1_);}
     }
     if(p2_->x() < dead_wall || p2_->y() > dead_ground){
         p2_->lives_ -= 1;
         if(p2_->lives_ != 0){
-            p2_->SetPosition(dead_wall +1000, 0);}
+            player_to_above_platform(p2_);}
     }
 
     //updating player hearts position
@@ -112,16 +113,42 @@ void Game::check_dead(){
         proxy->setPos(dead_wall+700,400);
     }
 }
+void Game::player_to_above_platform(Player* p){
+    int x = dead_wall + 1000+p->player_widght_;
+    bool above_platform = false;
+    int distance = 1000; //1000, because big number needed
+    int dis;
+    for(auto plat : platforms_){
+        //if x already on platform
+        if(plat->Get_start_x() < x && x < plat->Get_end_x()){
+            p->SetPosition(x,0);
+            above_platform = true;
+            break;}
+        // distance between x and platform
+        else{
+            if(x < plat->Get_start_x()){
+                //platform after x
+                dis = plat->Get_start_x() - x + 2*p->player_widght_; //2*p->player_widght_ so not at the edge
+            }
+            else{
+                //platform before x
+                dis = plat->Get_end_x() - x - 2*p->player_widght_;
+            }
+            //is smallest distance
+            if(abs(distance) > abs(dis)){
+                distance = dis;}
+        }
+    }
+    if (!above_platform){
+        p->SetPosition(x+distance,0);}
+}
 
 void Game::ExitToMenu(){
     // clear & delete the Game and return to menu
     scene()->clear();
     stack_->setCurrentIndex(0);
     stack_->removeWidget(this);
-
 }
-
-
 
 void Game::gameTick() {
     moveView();
