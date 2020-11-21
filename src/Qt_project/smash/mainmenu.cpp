@@ -46,12 +46,19 @@ void MainMenu::StartGame(){
     scene->addItem(player1);
     scene->addItem(player2);
 
-    QGraphicsPixmapItem *heart = scene->addPixmap(QPixmap(":/images/bitheart1.PNG"));
-    heart->setPos(300,400);
+    //players hearts to the scene
+    std::vector<QGraphicsPixmapItem*> hearts;
+    for (int i = 0; i < 6; i++){
+        hearts.push_back(scene->addPixmap(QPixmap(":/images/bitheart.PNG")));
+        if(i < 3){
+           hearts[i]->setPos(30+i*40,30);
+        }
+        else{hearts[i]->setPos(1330-i*40,30);}
+    }
 
 
     // add a view
-    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_);
+    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts);
     game->setTransformationAnchor(QGraphicsView::NoAnchor);
     game->setAlignment(Qt::AlignRight);
     game->setDragMode(QGraphicsView::ScrollHandDrag);

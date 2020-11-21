@@ -2,11 +2,10 @@
 #include <QTimer>
 #include <QTransform>
 #include <QPoint>
-#include <iostream>
 
 
-Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack) {
+Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts)
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -88,14 +87,19 @@ void Game::check_dead(){
         p1_->lives_ -= 1;
         if(p1_->lives_ != 0){
             p1_->SetPosition(dead_wall + 1000, 0);}
-        std::cout << "Player 1 lives <3: " << p1_->lives_ << std::endl;
     }
     if(p2_->x() < dead_wall || p2_->y() > dead_ground){
         p2_->lives_ -= 1;
         if(p2_->lives_ != 0){
-        p2_->SetPosition(dead_wall +1000, 0);}
-        std::cout << "Player 2 lives <3: " << p2_->lives_ << std::endl;
+            p2_->SetPosition(dead_wall +1000, 0);}
     }
+
+    //updating player hearts position
+    for(auto i : hearts_){i->setPos(0,dead_ground+50);}
+    for(int l = 0; l < p1_->lives_; l++){hearts_[l]->setPos(dead_wall+330+l*40,30);}
+    for(int j = 0; j < p2_->lives_; j++){hearts_[j+3]->setPos(dead_wall+1510-j*40,30);}
+
+    //if game ends
     if(p1_->lives_ == 0 || p2_->lives_ == 0){
         timer_->stop();
 
@@ -114,9 +118,6 @@ void Game::ExitToMenu(){
     scene()->clear();
     stack_->setCurrentIndex(0);
     stack_->removeWidget(this);
-
-
-
 
 }
 

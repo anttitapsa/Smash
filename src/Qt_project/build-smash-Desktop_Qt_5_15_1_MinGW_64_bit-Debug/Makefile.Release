@@ -124,10 +124,8 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_Resourses.cpp
 release/qrc_Resourses.cpp: ../smash/Resourses.qrc \
 		C:/Qt/5.15.1/mingw81_64/bin/rcc.exe \
-		../smash/bitheart1.PNG \
 		../smash/test_landscape.png \
-		../smash/bitheart.PNG \
-		../smash/bittisydan.PNG
+		../smash/bitheart.PNG
 	C:\Qt\5.15.1\mingw81_64\bin\rcc.exe -name Resourses ..\smash\Resourses.qrc -o release\qrc_Resourses.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -1092,9 +1090,7 @@ release/mainmenu.o: ../smash/mainmenu.cpp ../smash/mainmenu.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsScene \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QImage \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPixmap \
-		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QBitmap \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/qbitmap.h
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPixmapItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainmenu.o ..\smash\mainmenu.cpp
 
 release/platform.o: ../smash/platform.cpp ../smash/platform.h \
