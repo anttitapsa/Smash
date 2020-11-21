@@ -2,10 +2,11 @@
 #include <QTimer>
 #include <QTransform>
 #include <QPoint>
-#include <iostream>
 
-Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), scene_(scene), platforms_(platforms) {
+
+
+Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts)
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -95,19 +96,42 @@ void Game::check_dead(){
         if(p1_->lives_ != 0){
             p1_->SetPosition(dead_wall + 1000, 0);}
             p1_->initialize();
-        std::cout << "Player 1 lives <3: " << p1_->lives_ << std::endl;
     }
     if(p2_->x() < dead_wall || p2_->y() > dead_ground){
         p2_->lives_ -= 1;
         if(p2_->lives_ != 0){
         p2_->SetPosition(dead_wall +1000, 0);}
         p2_->initialize();
-        std::cout << "Player 2 lives <3: " << p2_->lives_ << std::endl;
     }
+
+    //updating player hearts position
+    for(auto i : hearts_){i->setPos(0,dead_ground+50);}
+    for(int l = 0; l < p1_->lives_; l++){hearts_[l]->setPos(dead_wall+330+l*40,30);}
+    for(int j = 0; j < p2_->lives_; j++){hearts_[j+3]->setPos(dead_wall+1510-j*40,30);}
+
+    //if game ends
     if(p1_->lives_ == 0 || p2_->lives_ == 0){
         timer_->stop();
+
+        // add buttons to post-game screen
+        QPushButton* exit_btn = new QPushButton();
+        exit_btn->setGeometry(QRect(400,400,300,70));
+        exit_btn->setText("Exit to main menu");
+        QObject::connect(exit_btn, SIGNAL(clicked()),this, SLOT(ExitToMenu()));
+        QGraphicsProxyWidget* proxy = scene()->addWidget(exit_btn);
+        proxy->setPos(dead_wall+700,400);
     }
 }
+
+void Game::ExitToMenu(){
+    // clear & delete the Game and return to menu
+    scene()->clear();
+    stack_->setCurrentIndex(0);
+    stack_->removeWidget(this);
+
+}
+
+
 
 void Game::gameTick() {
     moveView();

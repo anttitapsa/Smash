@@ -74,6 +74,7 @@ void Player::move() {
             ++shovetime;
         }
     }
+
 }
 
 void Player::jump() {
