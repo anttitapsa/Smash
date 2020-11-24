@@ -126,12 +126,12 @@ void Game::player_to_above_platform(Player* p){
             break;}
         // distance between x and platform
         else{
-            if(x < plat->Get_start_x()){
-                //platform after x
+            //platform after x
+            if(x < plat->Get_start_x()){ 
                 dis = plat->Get_start_x() - x + 2*p->player_widght_; //2*p->player_widght_ so not at the edge
             }
+            //platform before x
             else{
-                //platform before x
                 dis = plat->Get_end_x() - x - 2*p->player_widght_;
             }
             //is smallest distance
