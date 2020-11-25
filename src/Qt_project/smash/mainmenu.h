@@ -9,6 +9,7 @@
 #include "game.h"
 #include "platform.h"
 #include <QTimer>
+#include <fstream>
 
 class MainMenu: public QObject
 {
@@ -18,12 +19,15 @@ public:
     QGraphicsView* GetView();
 
 public slots:
-    void StartGame();
+    void StartGame(int game_nbr);
+    void Option1();
+    void Option2();
 
 private:
     QStackedWidget* stack_;
     QGraphicsView* view_ ;
     QTimer* timer_;
+    std::map<int,QString> files_ = { {1, ":/textfiles/game_1"}, {2,":/textfiles/game_1"} };
 };
 
 #endif // MAINMENU_H

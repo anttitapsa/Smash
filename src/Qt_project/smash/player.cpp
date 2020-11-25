@@ -4,7 +4,7 @@
 #include <QColor>
 #include <QBrush>
 #include <iostream>
-#include <QPointF>
+
 Player::Player() {
 
     // Draw the player as an ellipse
@@ -54,25 +54,10 @@ void Player::move() {
     if (key[1]) {
         setPos(x()-speed, y());
         setStartAngle(3200);
-        facing_right_ = false;
     }
     if (key[3]) {
         setPos(x()+speed, y());
         setStartAngle(320);
-        facing_right_ = true;
-    }
-    if (was_shoved_) {
-        if(shovetime == shove_dispositions_.size()) {
-            was_shoved_ = false;
-        } else {
-            if(shove_dir_) {
-                setPos(x()+shove_dispositions_[shovetime], y());
-            } else {
-                setPos(x()-shove_dispositions_[shovetime], y());
-            }
-
-            ++shovetime;
-        }
     }
 
 }
@@ -83,34 +68,4 @@ void Player::jump() {
 }
 void Player::SetPosition(int x, int y){
     setPos(x,y);
-}
-
-QGraphicsRectItem* Player::shove(Player *rival){
-    if(facing_right_){
-        if (rival->contains(rival->mapFromScene(QPointF(x()+1.2*player_widght_, y()+0.8*player_hight_))) ||
-            rival->contains(rival->mapFromScene(QPointF(x()+1.2*player_widght_, y()+0.2*player_hight_))) ||
-            rival->contains(rival->mapFromScene(QPointF(x()+1.8*player_widght_, y()+0.8*player_hight_))) ||
-            rival->contains(rival->mapFromScene(QPointF(x()+1.8*player_widght_, y()+0.2*player_hight_)))) {
-            rival->isShoved(true);
-        }
-        return new QGraphicsRectItem(x()+1.2*player_widght_, y()+0.2*player_hight_,0.6*player_widght_,0.6*player_hight_);
-    } else {
-        if (rival->contains(rival->mapFromScene(QPointF(x()-0.2*player_widght_, y()+0.8*player_hight_))) ||
-            rival->contains(rival->mapFromScene(QPointF(x()-0.2*player_widght_, y()+0.2*player_hight_))) ||
-            rival->contains(rival->mapFromScene(QPointF(x()-0.8*player_widght_, y()+0.8*player_hight_))) ||
-            rival->contains(rival->mapFromScene(QPointF(x()-0.8*player_widght_, y()+0.2*player_hight_)))) {
-            rival->isShoved(false);
-        }
-        return new QGraphicsRectItem(x()-0.8*player_widght_, y()+0.2*player_hight_,0.6*player_widght_,0.6*player_hight_);
-    }
-}
-
-void Player::isShoved(bool toward_right) {
-    was_shoved_ = true;
-    shovetime = 0;
-    shove_dir_ = toward_right;
-}
-
-void Player::initialize(){
-    falltime = 0;
 }
