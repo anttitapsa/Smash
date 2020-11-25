@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QStackedWidget>
 #include <QPushButton>
+#include <QLineEdit>
+#include <QLabel>
 #include <QGraphicsProxyWidget>
 #include "player.h"
 #include "game.h"
@@ -28,6 +30,7 @@ private:
     QGraphicsView* view_ ;
     QTimer* timer_;
     std::map<int,QString> files_ = { {1, ":/textfiles/game_1"}, {2,":/textfiles/game_1"} };
+    QLineEdit* line_;
 };
 
 #endif // MAINMENU_H

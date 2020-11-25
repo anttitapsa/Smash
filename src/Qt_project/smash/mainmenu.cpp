@@ -6,6 +6,7 @@
 #include <QGraphicsPixmapItem>
 #include <iostream>
 #include <QFile>
+#include <QFont>
 
 MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     : stack_(stack)
@@ -20,13 +21,25 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     start_btn->setGeometry(QRect(300,300,480,100));
     start_btn->setText("Start Game");
     QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(Option1()));
-    QGraphicsProxyWidget* proxy = scene->addWidget(start_btn);
+    scene->addWidget(start_btn);
 
     QPushButton* amfi_btn = new QPushButton();
     amfi_btn->setGeometry(QRect(300,500,480,100));
     amfi_btn->setText("Start Amfi");
     QObject::connect(amfi_btn, SIGNAL(clicked()),this, SLOT(Option2()));
-    QGraphicsProxyWidget* prox = scene->addWidget(amfi_btn);
+    scene->addWidget(amfi_btn);
+
+    QLabel* label = new QLabel();
+    label->setText("Lives (1-10):");
+    label->setFont(QFont("Calibry Light",12));
+    label->setGeometry(QRect(20,50,150,20));
+    scene->addWidget(label);
+
+    line_ = new QLineEdit();
+    line_->setGeometry(155,50,45,25);
+    line_->setText("3");
+    line_->setFont(QFont("Calibry Light",14));
+    scene->addWidget(line_);
 
 }
 
@@ -37,7 +50,6 @@ void MainMenu::Option2(){
     StartGame(2);
 }
 void MainMenu::StartGame(int game_nbr){
-
     // create a scene
     QGraphicsScene* scene = new QGraphicsScene();
     // create a global timer
@@ -71,11 +83,17 @@ void MainMenu::StartGame(int game_nbr){
     scene->addItem(player1);
     scene->addItem(player2);
 
+    //read number of lives
+    QString text = line_->text();
+    int lives = text.toInt();
+    player1->lives_ = lives;
+    player2->lives_ = lives;
+
     //players hearts to the scene
     std::vector<QGraphicsPixmapItem*> hearts;
-    for (int i = 0; i < 6; i++){
+    for (int i = 0; i < lives*2; i++){
         hearts.push_back(scene->addPixmap(QPixmap(":/images/bitheart.PNG")));
-        if(i < 3){
+        if(i < lives){
            hearts[i]->setPos(30+i*40,30);
         }
         else{hearts[i]->setPos(1330-i*40,30);}

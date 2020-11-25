@@ -97,7 +97,7 @@ void Game::check_dead(){
     //updating player hearts position
     for(auto i : hearts_){i->setPos(0,dead_ground+50);}
     for(int l = 0; l < p1_->lives_; l++){hearts_[l]->setPos(dead_wall+330+l*40,30);}
-    for(int j = 0; j < p2_->lives_; j++){hearts_[j+3]->setPos(dead_wall+1510-j*40,30);}
+    for(int j = 0; j < p2_->lives_; j++){hearts_[j+p1_->lives_]->setPos(dead_wall+1510-j*40,30);}
 
     //if game ends
     if(p1_->lives_ == 0 || p2_->lives_ == 0){
