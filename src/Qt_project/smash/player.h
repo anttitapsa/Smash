@@ -1,14 +1,14 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <QGraphicsEllipseItem>
+#include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QKeyEvent>
 #include <bitset>
 #include <vector>
 #include <QTimer>
 #include "platform.h"
-class Player: public QObject, public QGraphicsEllipseItem { // public QObject,
+class Player: public QObject, public QGraphicsPixmapItem { // public QObject,
     Q_OBJECT
 public:
     Player();

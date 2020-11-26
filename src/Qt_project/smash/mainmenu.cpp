@@ -77,7 +77,6 @@ void MainMenu::StartGame(int game_nbr){
     // create an item to put into the scene
     Player *player1 =  new Player();
     Player *player2 =  new Player();
-    player2->setBrush(QColor("#ffc0cb"));
 
     // add the item to the scene
     scene->addItem(player1);

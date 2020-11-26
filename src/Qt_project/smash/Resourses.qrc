@@ -3,6 +3,8 @@
         <file>test_landscape.png</file>
         <file>bitheart.PNG</file>
         <file>amfi.PNG</file>
+        <file>tupsu.png</file>
+        <file>tupsuleft.png</file>
     </qresource>
     <qresource prefix="/textfiles">
         <file>game_1</file>

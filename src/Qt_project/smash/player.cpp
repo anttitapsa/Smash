@@ -7,17 +7,9 @@
 
 Player::Player() {
 
-    // Draw the player as an ellipse
-    setRect(0, 0, 100, 100);
-    setBrush(QColor("#000000"));
-    setSpanAngle(5120);
-    setStartAngle(320);
+    // Set player to be a pixitem
+    setPixmap(QPixmap(":/images/tupsu.png").scaledToHeight(player_hight_));
 
-    // connect the player to a timer
-    //connect(timer, SIGNAL(timeout()), this, SLOT(gravity()));
-    //connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-
-    //timer->start(20);
 }
 
 void Player::gravity(const std::vector<Platform*> &platforms) {
@@ -53,11 +45,11 @@ void Player::move() {
     //}
     if (key[1]) {
         setPos(x()-speed, y());
-        setStartAngle(3200);
+        setPixmap(QPixmap(":/images/tupsuleft.png").scaledToHeight(player_hight_));
     }
     if (key[3]) {
         setPos(x()+speed, y());
-        setStartAngle(320);
+        setPixmap(QPixmap(":/images/tupsu.png").scaledToHeight(player_hight_));
     }
 
 }
