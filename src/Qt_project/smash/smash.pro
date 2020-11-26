@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     background.cpp \
+    box.cpp \
     game.cpp \
     main.cpp \
     mainmenu.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
 
 HEADERS += \
     background.h \
+    box.h \
     game.h \
     mainmenu.h \
     platform.h \
