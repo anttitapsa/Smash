@@ -38,8 +38,9 @@ void Game::keyPressEvent(QKeyEvent *event)
         p1_->key[1] = 1;
     } else if (k == keybinds[2]) {
         if (!event->isAutoRepeat()) {
-            QGraphicsRectItem* hitbox = p1_->shove(p2_);
-            scene_->addItem(hitbox);
+            //QGraphicsRectItem* hitbox
+            p1_->shove(p2_);
+            //scene_->addItem(hitbox);
         }
     } else if (k == keybinds[3]) {
         p1_->key[3] = 1;
@@ -53,8 +54,9 @@ void Game::keyPressEvent(QKeyEvent *event)
     } else if (k == keybinds[6]) {
         if (!event->isAutoRepeat()) {
             // Add a hitbox for tweaking purposes
-            QGraphicsRectItem* hitbox = p2_->shove(p1_);
-            scene_->addItem(hitbox);
+            //QGraphicsRectItem* hitbox =
+            p2_->shove(p1_);
+            //scene_->addItem(hitbox);
         }
     } else if (k == keybinds[7]) {
         p2_->key[3] = 1;
@@ -125,10 +127,9 @@ void Game::check_dead(){
 
 void Game::ExitToMenu(){
     // clear & delete the Game and return to menu
-    scene()->clear();
+    //scene()->clear();
     stack_->setCurrentIndex(0);
     stack_->removeWidget(this);
-
 }
 
 

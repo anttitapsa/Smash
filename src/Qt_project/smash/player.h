@@ -13,7 +13,7 @@ public:
     Player();
     void jump();
     std::bitset<4> key;
-    int lives_ = 10;
+    int lives_ = 3;
     void gravity(const std::vector<Platform*> &platforms);
     void move();
     void SetPosition(int x, int y);
