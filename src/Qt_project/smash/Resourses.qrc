@@ -5,6 +5,9 @@
         <file>amfi.PNG</file>
         <file>tupsu.png</file>
         <file>tupsuleft.png</file>
+        <file>tupsu_shove1.png</file>
+        <file>tupsu_shove2.png</file>
+        <file>tupsu_shove3.png</file>
     </qresource>
     <qresource prefix="/textfiles">
         <file>game_1</file>

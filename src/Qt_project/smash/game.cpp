@@ -6,7 +6,7 @@
 #include <iostream>
 
 Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, qreal rollspeed_)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), rollspeed(rollspeed_) {
+    : QGraphicsView(scene),scene_(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), rollspeed(rollspeed_) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -36,10 +36,17 @@ void Game::keyPressEvent(QKeyEvent *event)
         p1_->key[0] = 1;
     } else if (k == keybinds[1]){
         p1_->key[1] = 1;
+        p1_->reset_speed();
     } else if (k == keybinds[2]) {
-        p1_->key[2] = 1;
+        if (!event->isAutoRepeat()) {
+
+            //QGraphicsRectItem* hitbox =
+            p1_->shove(p2_);
+            //scene_->addItem(hitbox);
+        }
     } else if (k == keybinds[3]) {
         p1_->key[3] = 1;
+        p1_->reset_speed();
     } else if (k == keybinds[4]) {
         if (!event->isAutoRepeat()) {
             p2_->jump();
@@ -47,10 +54,17 @@ void Game::keyPressEvent(QKeyEvent *event)
         p2_->key[0] = 1;
     } else if (k == keybinds[5]){
         p2_->key[1] = 1;
+        p2_->reset_speed();
     } else if (k == keybinds[6]) {
-        p2_->key[2] = 1;
+        if (!event->isAutoRepeat()) {
+            //Add a hitbox for tweaking purposes
+            //QGraphicsRectItem* hitbox =
+            p2_->shove(p1_);
+            //scene_->addItem(hitbox);
+        }
     } else if (k == keybinds[7]) {
         p2_->key[3] = 1;
+        p2_->reset_speed();
     }
 }
 
@@ -62,18 +76,22 @@ void Game::keyReleaseEvent(QKeyEvent *event)
         p1_->key[0] = 0;
     } else if (k == keybinds[1]){
         p1_->key[1] = 0;
+        p1_->reset_speed();
     } else if (k == keybinds[2]) {
         p1_->key[2] = 0;
     } else if (k == keybinds[3]) {
         p1_->key[3] = 0;
+        p1_->reset_speed();
     } else if (k == keybinds[4]) {
         p2_->key[0] = 0;
     } else if (k == keybinds[5]){
         p2_->key[1] = 0;
+        p2_->reset_speed();
     } else if (k == keybinds[6]) {
         p2_->key[2] = 0;
     } else if (k == keybinds[7]) {
         p2_->key[3] = 0;
+        p2_->reset_speed();
     }
 }
 
@@ -142,7 +160,7 @@ void Game::player_to_above_platform(Player* p){
 
 void Game::ExitToMenu(){
     // clear & delete the Game and return to menu
-    scene()->clear();
+    //scene()->clear();
     stack_->setCurrentIndex(0);
     stack_->removeWidget(this);
 }
@@ -153,5 +171,7 @@ void Game::gameTick() {
     p2_->gravity(platforms_);
     p1_->move();
     p2_->move();
+    p1_->animate();
+    p2_->animate();
     check_dead();
 }
