@@ -4,7 +4,7 @@
 #include <QColor>
 #include <QBrush>
 #include <iostream>
-#include <QPointF>
+
 Player::Player() {
 
     // Draw the player as an ellipse
@@ -43,7 +43,6 @@ void Player::gravity(const std::vector<Platform*> &platforms) {
         setPos(x(),y()+drop);
         falltime = falltime + 0.75;
     }
-
 }
 
 void Player::move() {
@@ -74,7 +73,6 @@ void Player::move() {
             ++shovetime;
         }
     }
-
 }
 
 void Player::jump() {
