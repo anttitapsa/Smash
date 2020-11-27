@@ -102,30 +102,34 @@ bool Player::shove(Player *rival){
         is_animated = true;
         animationtime = 0;
         current_animation_ = &shove_animation_;
-        if(facing_right){
-            if (rival->contains(rival->mapFromScene(QPointF(x()+1.1*player_width, y()+0.8*player_height))) ||
-                rival->contains(rival->mapFromScene(QPointF(x()+1.1*player_width, y()+0.2*player_height))) ||
-                rival->contains(rival->mapFromScene(QPointF(x()+2.0*player_width, y()+0.8*player_height))) ||
-                rival->contains(rival->mapFromScene(QPointF(x()+2.0*player_width, y()+0.2*player_height))) ||
-                rival->contains(rival->mapFromScene(QPointF(x()+2.9*player_width, y()+0.8*player_height))) ||
-                rival->contains(rival->mapFromScene(QPointF(x()+2.9*player_width, y()+0.2*player_height)))) {
-                rival->isShoved(true);
-            }
-            //return new QGraphicsRectItem(x()+1.1*player_width, y()+0.2*player_height,1.8*player_width,0.6*player_height);
-        } else {
-            if (rival->contains(rival->mapFromScene(QPointF(x()-0.1*player_width, y()+0.8*player_height))) ||
-                rival->contains(rival->mapFromScene(QPointF(x()-0.1*player_width, y()+0.2*player_height))) ||
-                rival->contains(rival->mapFromScene(QPointF(x()-1.0*player_width, y()+0.8*player_height))) ||
-                rival->contains(rival->mapFromScene(QPointF(x()-1.0*player_width, y()+0.2*player_height))) ||
-                rival->contains(rival->mapFromScene(QPointF(x()-1.9*player_width, y()+0.8*player_height))) ||
-                rival->contains(rival->mapFromScene(QPointF(x()-1.9*player_width, y()+0.2*player_height)))) {
-                rival->isShoved(false);
-            }
-            //return new QGraphicsRectItem(x()-1.9*player_width, y()+0.2*player_height,1.8*player_width,0.6*player_height);
-        }
+        rival_ = rival;
         return true;
     }
     return false;
+}
+
+void Player::shove_hit() {
+    if(facing_right){
+        if (rival_->contains(rival_->mapFromScene(QPointF(x()+1.1*player_width, y()+0.8*player_height))) ||
+            rival_->contains(rival_->mapFromScene(QPointF(x()+1.1*player_width, y()+0.2*player_height))) ||
+            rival_->contains(rival_->mapFromScene(QPointF(x()+2.0*player_width, y()+0.8*player_height))) ||
+            rival_->contains(rival_->mapFromScene(QPointF(x()+2.0*player_width, y()+0.2*player_height))) ||
+            rival_->contains(rival_->mapFromScene(QPointF(x()+2.9*player_width, y()+0.8*player_height))) ||
+            rival_->contains(rival_->mapFromScene(QPointF(x()+2.9*player_width, y()+0.2*player_height)))) {
+            rival_->isShoved(true);
+        }
+        //return new QGraphicsRectItem(x()+1.1*player_width, y()+0.2*player_height,1.8*player_width,0.6*player_height);
+    } else {
+        if (rival_->contains(rival_->mapFromScene(QPointF(x()-0.1*player_width, y()+0.8*player_height))) ||
+            rival_->contains(rival_->mapFromScene(QPointF(x()-0.1*player_width, y()+0.2*player_height))) ||
+            rival_->contains(rival_->mapFromScene(QPointF(x()-1.0*player_width, y()+0.8*player_height))) ||
+            rival_->contains(rival_->mapFromScene(QPointF(x()-1.0*player_width, y()+0.2*player_height))) ||
+            rival_->contains(rival_->mapFromScene(QPointF(x()-1.9*player_width, y()+0.8*player_height))) ||
+            rival_->contains(rival_->mapFromScene(QPointF(x()-1.9*player_width, y()+0.2*player_height)))) {
+            rival_->isShoved(false);
+        }
+        //return new QGraphicsRectItem(x()-1.9*player_width, y()+0.2*player_height,1.8*player_width,0.6*player_height);
+    }
 }
 
 void Player::isShoved(bool toward_right) {
@@ -157,6 +161,9 @@ void Player::animate()
             can_shove = true;  // for now this is ok, since there are no other animations
             is_animated = false;
         } else {
+            if (animationtime == 2) {
+                shove_hit();
+            }
             const char *newpiclocation = std::get<0>((*current_animation_)[animationtime]).c_str();
             if (facing_right) {
                 setPixmap(QPixmap(newpiclocation).scaledToHeight(player_height));
