@@ -40,6 +40,7 @@ private:
     bool was_shoved_ = false;
     unsigned int shovetime = 0;
     bool shove_dir_ = true;
+
     bool is_animated = false;
     unsigned int animationtime = 0;
     std::vector<std::tuple<std::string, int>> *current_animation_;
