@@ -30,7 +30,7 @@ private:
     Player *p1_;
     Player *p2_;
     int dead_wall = -300;
-    int dead_ground = 620;
+    int dead_ground = 720;
     //QGraphicsScene* scene_;
     std::vector<Platform*> platforms_; // Maybe update this into struct mapinfo, if more than platforms are needed
     QStackedWidget* stack_ ; // Juho 19/11 : access to stack created in main()

@@ -1,0 +1,10 @@
+debug/background.o
+debug/box.o
+debug/game.o
+debug/main.o
+debug/mainmenu.o
+debug/platform.o
+debug/player.o
+debug/qrc_Resourses.o
+debug/moc_game.o
+debug/moc_mainmenu.o

@@ -1,0 +1,10 @@
+release/background.o
+release/box.o
+release/game.o
+release/main.o
+release/mainmenu.o
+release/platform.o
+release/player.o
+release/qrc_Resourses.o
+release/moc_game.o
+release/moc_mainmenu.o

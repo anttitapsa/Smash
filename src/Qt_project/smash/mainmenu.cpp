@@ -85,6 +85,9 @@ void MainMenu::StartGame(int game_nbr){
     //read number of lives
     QString text = line_->text();
     int lives = text.toInt();
+    if (lives <= 0 || lives > 10){
+        lives = 3;
+    }
     player1->lives_ = lives;
     player2->lives_ = lives;
 
