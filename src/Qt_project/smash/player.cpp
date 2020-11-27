@@ -8,7 +8,7 @@
 Player::Player() {
 
     // Set player to be a pixitem
-    setPixmap(QPixmap(":/images/tupsu.png").scaledToHeight(player_height));
+    setPixmap(QPixmap(":/images/totoro.png").scaledToHeight(player_height));
 
 }
 
@@ -53,7 +53,7 @@ void Player::move() {
         if (is_on_platform) {
             fallingcheck();
         }
-        setPixmap(QPixmap(":/images/tupsuleft.png").scaledToHeight(player_height));
+        setPixmap(QPixmap(":/images/totoro_left.png").scaledToHeight(player_height));
         facing_right = false;
 
     }
@@ -65,7 +65,7 @@ void Player::move() {
         if (is_on_platform) {
             fallingcheck();
         }
-        setPixmap(QPixmap(":/images/tupsu.png").scaledToHeight(player_height));
+        setPixmap(QPixmap(":/images/totoro.png").scaledToHeight(player_height));
         facing_right = true;
     }
     if (was_shoved) {

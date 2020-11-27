@@ -8,9 +8,15 @@
         <file>tupsu_shove1.png</file>
         <file>tupsu_shove2.png</file>
         <file>tupsu_shove3.png</file>
+        <file>totoro3.png</file>
+        <file>totoro4.png</file>
+        <file>totoro.png</file>
+        <file>totoro_left.png</file>
+        <file>totoro2.png</file>
     </qresource>
     <qresource prefix="/textfiles">
         <file>game_1</file>
         <file>game_2</file>
     </qresource>
+    <qresource prefix="/new/prefix1"/>
 </RCC>

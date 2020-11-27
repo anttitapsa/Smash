@@ -127,13 +127,18 @@ compiler_rcc_clean:
 debug/qrc_Resourses.cpp: ../smash/Resourses.qrc \
 		C:/Qt/5.15.1/mingw81_64/bin/rcc.exe \
 		../smash/tupsu_shove3.png \
+		../smash/totoro3.png \
+		../smash/totoro.png \
 		../smash/tupsuleft.png \
 		../smash/tupsu_shove2.png \
+		../smash/totoro2.png \
 		../smash/tupsu.png \
+		../smash/totoro_left.png \
 		../smash/tupsu_shove1.png \
 		../smash/amfi.PNG \
 		../smash/test_landscape.png \
 		../smash/bitheart.PNG \
+		../smash/totoro4.png \
 		../smash/game_1 \
 		../smash/game_2
 	C:\Qt\5.15.1\mingw81_64\bin\rcc.exe -name Resourses ..\smash\Resourses.qrc -o debug\qrc_Resourses.cpp
@@ -285,7 +290,7 @@ debug/moc_game.cpp: ../smash/game.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/eevir/c++/other-2020-1/src/Qt_project/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/eevir/c++/other-2020-1/src/Qt_project/smash -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\smash\game.h -o debug\moc_game.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\smash\game.h -o debug\moc_game.cpp
 
 debug/moc_mainmenu.cpp: ../smash/mainmenu.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsView \
@@ -432,7 +437,7 @@ debug/moc_mainmenu.cpp: ../smash/mainmenu.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QTransform \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/eevir/c++/other-2020-1/src/Qt_project/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/eevir/c++/other-2020-1/src/Qt_project/smash -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\smash\mainmenu.h -o debug\moc_mainmenu.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\smash\mainmenu.h -o debug\moc_mainmenu.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:

@@ -58,13 +58,13 @@ private:
     bool is_animated = false;
     unsigned int animationtime = 0;
     std::vector<std::tuple<std::string, int>> *current_animation_;
-    std::vector<std::tuple<std::string, int>> shove_animation_{{":/images/tupsu_shove1.png", 0},
-                                                              {":/images/tupsu_shove2.png",20},
-                                                              {":/images/tupsu_shove3.png",120},
-                                                              {":/images/tupsu_shove3.png",120},
-                                                              {":/images/tupsu_shove2.png",20},
-                                                              {":/images/tupsu_shove1.png",0},
-                                                              {":/images/tupsu",0}};
+    std::vector<std::tuple<std::string, int>> shove_animation_{{":/images/totoro2.png", 0},
+                                                              {":/images/totoro3.png",20},
+                                                              {":/images/totoro4.png",120},
+                                                              {":/images/totoro4.png",120},
+                                                              {":/images/totoro3.png",20},
+                                                              {":/images/totoro2.png",0},
+                                                              {":/images/totoro.png",0}};
 
 };
 
