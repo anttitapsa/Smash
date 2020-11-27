@@ -130,7 +130,7 @@ void Game::check_dead(){
     }
 }
 void Game::player_to_above_platform(Player* p){
-    int x = dead_wall + 1000+p->player_widght_;
+    int x = dead_wall + 1000+p->player_width;
     bool above_platform = false;
     int distance = 1000; //1000, because big number needed
     int dis;
@@ -145,10 +145,10 @@ void Game::player_to_above_platform(Player* p){
         else{
             //platform after x
             if(x < plat->Get_start_x()){
-                dis = plat->Get_start_x() - x + 2*p->player_widght_;} //2*p->player_widght_ so not at the edge
+                dis = plat->Get_start_x() - x + 2*p->player_width;} //2*p->player_widght_ so not at the edge
             //platform before x
             else{
-                dis = plat->Get_end_x() - x - 2*p->player_widght_;}
+                dis = plat->Get_end_x() - x - 2*p->player_width;}
             //is smallest distance
             if(abs(distance) > abs(dis)){
                 distance = dis;}

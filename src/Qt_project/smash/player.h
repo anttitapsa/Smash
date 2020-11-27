@@ -18,41 +18,53 @@ public:
     void gravity(const std::vector<Platform*> &platforms);
     void move();
     void SetPosition(int x, int y);
-    QGraphicsRectItem* shove(Player* rival);
+    void shove(Player* rival);
     void isShoved(bool toward_right);
     void initialize();
-    int player_widght_ = 60;
     QPainterPath shape() const;
     void reset_speed();
     void animate();
+    void fallingcheck();
+
+    const int player_width = 60;
+    const int player_height = 100;
 
 private:
+    // related to moving
     int speed = 5;
-    int maxspeed = 20;
-    int acceleration = 5;
-    int jumpSpeed = 50;
-    float falltime = 0;
-    bool isfalling = true;
-    bool facing_right_ = true;
-    bool hasJumped = false;
-    int fallSpeed = 0;
-    int player_hight_ = 100;
-    std::vector<int> shove_dispositions_{100,80,60,40,20};
-    bool was_shoved_ = false;
-    unsigned int shovetime = 0;
-    bool shove_dir_ = true;
+    const int maxspeed = 20;
+    const int acceleration = 5;
+    bool facing_right = true;
 
+    // related to jumping...
+    const int jumpSpeed = 50;
+    bool hasJumped = false;
+    // ...and falling
+    int falltime = 0;
+    const float gravity_strength = 0.7;
+    bool is_falling = true;
+    int fallSpeed = 0;
+    bool is_on_platform = false;
+    Platform* standing_on;
+
+    // related to shoving
+    std::vector<int> shove_dispositions_{100,80,60,40,20};
+    bool was_shoved = false;
+    unsigned int shovetime = 0;
+    bool shove_dir;
+    bool can_shove = true;
+
+    // related to animation implementation
     bool is_animated = false;
     unsigned int animationtime = 0;
     std::vector<std::tuple<std::string, int>> *current_animation_;
     std::vector<std::tuple<std::string, int>> shove_animation_{{":/images/tupsu_shove1.png", 0},
-                                              {":/images/tupsu_shove2.png",20},
-                                              {":/images/tupsu_shove3.png",120},
-                                              {":/images/tupsu_shove3.png",120},
-                                              {":/images/tupsu_shove2.png",20},
-                                              {":/images/tupsu_shove1.png",0},
-                                              {":/images/tupsu",0}};
-    //
+                                                              {":/images/tupsu_shove2.png",20},
+                                                              {":/images/tupsu_shove3.png",120},
+                                                              {":/images/tupsu_shove3.png",120},
+                                                              {":/images/tupsu_shove2.png",20},
+                                                              {":/images/tupsu_shove1.png",0},
+                                                              {":/images/tupsu",0}};
 
 };
 
