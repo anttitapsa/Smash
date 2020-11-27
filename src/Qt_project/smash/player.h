@@ -21,10 +21,11 @@ public:
     QGraphicsRectItem* shove(Player* rival);
     void isShoved(bool toward_right);
     void initialize();
-    int player_widght_ = 60; // currently player is circle and r= 50
+    int player_widght_ = 60;
     QPainterPath shape() const;
     void reset_speed();
     void animate();
+
 private:
     int speed = 5;
     int maxspeed = 20;

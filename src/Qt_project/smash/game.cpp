@@ -27,7 +27,7 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
 
 void Game::keyPressEvent(QKeyEvent *event)
 {
-    int k = event->key();
+int k = event->key();
 
     if (k == keybinds[0]) {
         if (!event->isAutoRepeat()) {
@@ -65,6 +65,7 @@ void Game::keyPressEvent(QKeyEvent *event)
         p2_->reset_speed();
     }
 }
+
 
 void Game::keyReleaseEvent(QKeyEvent *event)
 {
@@ -137,6 +138,7 @@ void Game::player_to_above_platform(Player* p){
         //if x already on platform
         if(plat->Get_start_x() < x && x < plat->Get_end_x()){
             p->SetPosition(x,0);
+            p->initialize();
             above_platform = true;
             break;}
         // distance between x and platform
