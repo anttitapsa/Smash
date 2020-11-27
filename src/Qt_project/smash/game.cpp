@@ -5,8 +5,9 @@
 #include <cmath>
 #include <iostream>
 
-Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, qreal rollspeed_)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), rollspeed(rollspeed_) {
+Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms,
+           QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, qreal rollspeed_, QString music_source)
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), rollspeed(rollspeed_), msource(music_source) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -23,6 +24,20 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
     setFixedSize(1280, 720);
     setFocus();
     connect(timer_, SIGNAL(timeout()), this, SLOT(gameTick()));
+
+    // Mediaplayers
+    sound_effects = new QMediaPlayer();
+    sound_effects->setVolume(sfx_volume);
+
+    bg_music = new QMediaPlayer();
+    bg_music->setVolume(music_volume);
+    //bg_music->setMedia(QUrl(music_source));  <- For some reason this is not working
+
+    //std::cout << music_source.toStdString().c_str() << std::endl;
+
+    bg_music->setMedia(QUrl("qrc:/sounds/After_Math.mp3")); // for now, we can only play this track
+    bg_music->play();
+
 };
 
 void Game::keyPressEvent(QKeyEvent *event)
@@ -40,7 +55,10 @@ int k = event->key();
     } else if (k == keybinds[2]) {
         if (!event->isAutoRepeat()) {
             //QGraphicsRectItem* hitbox =
-            p1_->shove(p2_);
+            if (p1_->shove(p2_)) {
+                sound_effects->setMedia(QUrl("qrc:/sounds/woosh1.wav"));
+                sound_effects->play();
+            }
             //scene_->addItem(hitbox);
         }
     } else if (k == keybinds[3]) {
@@ -57,7 +75,10 @@ int k = event->key();
     } else if (k == keybinds[6]) {
         if (!event->isAutoRepeat()) {
             //QGraphicsRectItem* hitbox =
-            p2_->shove(p1_);
+            if (p2_->shove(p1_)) {
+                sound_effects->setMedia(QUrl("qrc:/sounds/woosh2.wav"));
+                sound_effects->play();
+            }
             //scene_->addItem(hitbox);
         }
     } else if (k == keybinds[7]) {
@@ -161,6 +182,7 @@ void Game::player_to_above_platform(Player* p){
 void Game::ExitToMenu(){
     // clear & delete the Game and return to menu
     //scene()->clear();
+    bg_music->stop();
     stack_->setCurrentIndex(0);
     stack_->removeWidget(this);
 }

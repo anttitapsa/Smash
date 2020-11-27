@@ -18,7 +18,7 @@ public:
     void gravity(const std::vector<Platform*> &platforms);
     void move();
     void SetPosition(int x, int y);
-    void shove(Player* rival);
+    bool shove(Player* rival); // bool determines if a sound is made
     void isShoved(bool toward_right);
     void initialize();
     QPainterPath shape() const;

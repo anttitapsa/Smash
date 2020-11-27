@@ -96,7 +96,7 @@ void Player::SetPosition(int x, int y){
     setPos(x,y);
 }
 
-void Player::shove(Player *rival){
+bool Player::shove(Player *rival){
     if (can_shove) {
         can_shove = false; // can shove again after shove animation has ended
         is_animated = true;
@@ -123,7 +123,9 @@ void Player::shove(Player *rival){
             }
             //return new QGraphicsRectItem(x()-1.9*player_width, y()+0.2*player_height,1.8*player_width,0.6*player_height);
         }
+        return true;
     }
+    return false;
 }
 
 void Player::isShoved(bool toward_right) {

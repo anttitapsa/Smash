@@ -9,13 +9,15 @@
 #include <QPushButton>
 #include <QGraphicsProxyWidget>
 #include <QGraphicsPixmapItem>
+#include <QMediaPlayer>
 #include "player.h"
 
 class Game: public QGraphicsView {
     Q_OBJECT
 
 public:
-    Game(QGraphicsScene* scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack, std::vector<QGraphicsPixmapItem*>hearts, qreal rollspeed_);
+    Game(QGraphicsScene* scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms,
+         QStackedWidget* stack, std::vector<QGraphicsPixmapItem*>hearts, qreal rollspeed_, QString music_source);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     std::vector<int> keybinds;
@@ -31,11 +33,16 @@ private:
     Player *p2_;
     int dead_wall = -300;
     int dead_ground = 620;
+    int sfx_volume = 50; //  0 is silence, 100 is max
+    int music_volume = 50;
+    QMediaPlayer *sound_effects;
+    QMediaPlayer *bg_music;
     //QGraphicsScene* scene_;
     std::vector<Platform*> platforms_; // Maybe update this into struct mapinfo, if more than platforms are needed
     QStackedWidget* stack_ ; // Juho 19/11 : access to stack created in main()
     std::vector<QGraphicsPixmapItem*> hearts_; //to update the player hearts position
     qreal rollspeed;
+    QString msource;
 };
 
 #endif // GAME_H

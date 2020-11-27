@@ -63,8 +63,11 @@ void MainMenu::StartGame(int game_nbr){
     QString filename = files_[game_nbr];
     QFile file(filename);
     file.open(QIODevice::ReadOnly);
-    QString line;
 
+
+    QString music_source = file.readLine();
+
+    QString line;
     while(!file.atEnd()){
         line = file.readLine();
         QStringList list = line.split(',');
@@ -109,7 +112,7 @@ void MainMenu::StartGame(int game_nbr){
           speed = 0;}
 
     // add a view
-    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts, speed);
+    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts, speed, music_source);
     game->setTransformationAnchor(QGraphicsView::NoAnchor);
     game->setAlignment(Qt::AlignRight);
     game->setDragMode(QGraphicsView::ScrollHandDrag);
