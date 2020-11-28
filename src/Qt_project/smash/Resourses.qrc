@@ -8,6 +8,10 @@
         <file>tupsu_shove1.png</file>
         <file>tupsu_shove2.png</file>
         <file>tupsu_shove3.png</file>
+        <file>candyland.png</file>
+        <file>ukko_a.PNG</file>
+        <file>ukko_b.PNG</file>
+        <file>nekku.PNG</file>
     </qresource>
     <qresource prefix="/textfiles">
         <file>game_1</file>

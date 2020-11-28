@@ -104,8 +104,8 @@ void MainMenu::StartGame(int game_nbr){
     QString backround_name;
     qreal speed;
     if (game_nbr == 1){
-        backround_name = ":/images/test_landscape";
-        scene->setSceneRect(0, 0, 2560, 720);
+        backround_name = ":/images/candyland";
+        scene->setSceneRect(0, 0, 6560, 720);
         speed = 2;}
     else {backround_name = ":/images/amfi.PNG";
           scene->setSceneRect(0, 0, 1300, 720);

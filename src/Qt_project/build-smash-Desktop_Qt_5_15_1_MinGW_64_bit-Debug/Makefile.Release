@@ -127,6 +127,9 @@ compiler_rcc_clean:
 release/qrc_Resourses.cpp: ../smash/Resourses.qrc \
 		C:/Qt/5.15.1/mingw81_64/bin/rcc.exe \
 		../smash/tupsu_shove3.png \
+		../smash/ukko_a.PNG \
+		../smash/nekku.PNG \
+		../smash/candyland.png \
 		../smash/tupsuleft.png \
 		../smash/tupsu_shove2.png \
 		../smash/tupsu.png \
@@ -134,6 +137,7 @@ release/qrc_Resourses.cpp: ../smash/Resourses.qrc \
 		../smash/amfi.PNG \
 		../smash/test_landscape.png \
 		../smash/bitheart.PNG \
+		../smash/ukko_b.PNG \
 		../smash/game_1 \
 		../smash/game_2
 	C:\Qt\5.15.1\mingw81_64\bin\rcc.exe -name Resourses ..\smash\Resourses.qrc -o release\qrc_Resourses.cpp
