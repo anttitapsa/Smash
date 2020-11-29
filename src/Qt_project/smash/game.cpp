@@ -4,6 +4,8 @@
 #include <QPoint>
 #include <cmath>
 #include <iostream>
+#include <QMediaPlaylist>
+
 
 Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms,
            QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, qreal rollspeed_, QString music_source)
@@ -30,12 +32,16 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
     sound_effects->setVolume(sfx_volume);
 
     bg_music = new QMediaPlayer();
-    bg_music->setVolume(music_volume);
-    //bg_music->setMedia(QUrl(music_source));  <- For some reason this is not working
+    QMediaPlaylist *loop = new QMediaPlaylist();
+    loop->addMedia(QUrl("qrc:/sounds/teekkariremixlonger.mp3"));
+    loop->setPlaybackMode(QMediaPlaylist::Loop);
 
+
+    //bg_music->setMedia(QUrl(music_source));  <- For some reason this is not working
     //std::cout << music_source.toStdString().c_str() << std::endl;
 
-    bg_music->setMedia(QUrl("qrc:/sounds/After_Math.mp3")); // for now, we can only play this track
+    bg_music->setVolume(music_volume);
+    bg_music->setPlaylist(loop);
     bg_music->play();
 
 };

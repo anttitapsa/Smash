@@ -10,6 +10,7 @@
 #include <QGraphicsProxyWidget>
 #include <QGraphicsPixmapItem>
 #include <QMediaPlayer>
+#include <QSoundEffect>
 #include "player.h"
 
 class Game: public QGraphicsView {
