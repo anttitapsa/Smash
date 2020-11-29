@@ -100,6 +100,14 @@ void MainMenu::StartGame(int game_nbr){
         }
         else{hearts[i]->setPos(1330-i*40,30);}
     }
+    // if candyland add spikes
+    std::vector<QGraphicsPixmapItem*> spikes;
+    if(game_nbr ==1){
+        for (int i = 0; i < 30; i++){
+            spikes.push_back(scene->addPixmap(QPixmap(":/images/nekku.PNG")));
+            spikes[i]->setPos(0,i*30);
+        }
+    }
     //scene picture and size
     QString backround_name;
     qreal speed;
@@ -112,7 +120,7 @@ void MainMenu::StartGame(int game_nbr){
           speed = 0;}
 
     // add a view
-    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts, speed);
+    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts, spikes, speed);
     game->setTransformationAnchor(QGraphicsView::NoAnchor);
     game->setAlignment(Qt::AlignRight);
     game->setDragMode(QGraphicsView::ScrollHandDrag);

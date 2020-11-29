@@ -5,8 +5,8 @@
 #include <cmath>
 #include <iostream>
 
-Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, qreal rollspeed_)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), rollspeed(rollspeed_) {
+Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_)
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -97,6 +97,8 @@ void Game::keyReleaseEvent(QKeyEvent *event)
 void Game::moveView() {
     translate(-rollspeed,0);
     dead_wall += rollspeed;
+    //spikes update position
+    for(auto i : spikes_){i->setPos(dead_wall-50,i->y());}
 }
 
 void Game::check_dead(){
@@ -166,7 +168,8 @@ void Game::ExitToMenu(){
 }
 
 void Game::gameTick() {
-    if (rollspeed != 0){moveView();}
+    if (rollspeed != 0){moveView();}//candyland move view
+    else{dead_wall = -300;} // Game created expected dead_wall to be candylands +30
     p1_->gravity(platforms_);
     p2_->gravity(platforms_);
     p1_->move();
