@@ -12,6 +12,9 @@
 #include "platform.h"
 #include <QTimer>
 #include <fstream>
+#include <QImage>
+#include <QBrush>
+#include <QString>
 
 class MainMenu: public QObject
 {
@@ -21,10 +24,10 @@ public:
     QGraphicsView* GetView();
 
 public slots:
-    void StartGame(int game_nbr);
-    void Option1();
-    void Option2();
-
+    //void StartGame(int game_nbr);
+   // void Option1();
+   // void Option2();
+    void OpenLevelSelect();
 private:
     QStackedWidget* stack_;
     QGraphicsView* view_ ;

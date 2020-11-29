@@ -12,6 +12,7 @@ SOURCES += \
     background.cpp \
     box.cpp \
     game.cpp \
+    levelselect.cpp \
     main.cpp \
     mainmenu.cpp \
     platform.cpp \
@@ -21,6 +22,7 @@ HEADERS += \
     background.h \
     box.h \
     game.h \
+    levelselect.h \
     mainmenu.h \
     platform.h \
     player.h

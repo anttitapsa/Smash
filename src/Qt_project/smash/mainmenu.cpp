@@ -1,5 +1,6 @@
 #include "mainmenu.h"
 #include "background.h"
+#include "levelselect.h"
 #include <vector>
 #include <list>
 #include <QPixmap>
@@ -7,6 +8,7 @@
 #include <iostream>
 #include <QFile>
 #include <QFont>
+#include <QIcon>
 
 MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     : stack_(stack)
@@ -19,111 +21,29 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     // add items into the scene
     QPushButton* start_btn = new QPushButton();
     start_btn->setGeometry(QRect(300,300,480,100));
-    start_btn->setText("Start Game");
-    QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(Option1()));
+    start_btn->setText("Level Select");
+    QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(OpenLevelSelect()));
     scene->addWidget(start_btn);
 
-    QPushButton* amfi_btn = new QPushButton();
-    amfi_btn->setGeometry(QRect(300,500,480,100));
-    amfi_btn->setText("Start Amfi");
-    QObject::connect(amfi_btn, SIGNAL(clicked()),this, SLOT(Option2()));
-    scene->addWidget(amfi_btn);
 
-    QLabel* label = new QLabel();
-    label->setText("Lives (1-10):");
-    label->setFont(QFont("Calibry Light",12));
-    label->setGeometry(QRect(20,50,150,20));
-    scene->addWidget(label);
 
-    line_ = new QLineEdit();
-    line_->setGeometry(155,50,45,25);
-    line_->setText("3");
-    line_->setFont(QFont("Calibry Light",14));
-    scene->addWidget(line_);
+    //bg to main menu
+    QString bg_name = ":/images/main_menu_bg.png";
+    scene->setBackgroundBrush(QBrush(QImage(bg_name)));
 
 }
 
-void MainMenu::Option1(){
-    StartGame(1);
-}
-void MainMenu::Option2(){
-    StartGame(2);
-}
-void MainMenu::StartGame(int game_nbr){
-    // create a scene
+
+
+void MainMenu::OpenLevelSelect(){
     QGraphicsScene* scene = new QGraphicsScene();
-    // create a global timer
-    timer_ = new QTimer();
-    timer_->start(20);
-
-    //read platforms from file and add to listplatforms
-    int i = 0;
-    std::vector<Platform*> platforms;
-
-    QString filename = files_[game_nbr];
-    QFile file(filename);
-    file.open(QIODevice::ReadOnly);
-    QString line;
-
-    while(!file.atEnd()){
-        line = file.readLine();
-        QStringList list = line.split(',');
-
-        platforms.push_back(new Platform(list[0].toInt(),list[1].toInt(),list[2].toInt()));
-        scene->addItem(platforms[i]);
-        i++;
-    }
-
-    // create an item to put into the scene
-    Player *player1 =  new Player();
-    Player *player2 =  new Player();
-
-    // add the item to the scene
-    scene->addItem(player1);
-    scene->addItem(player2);
-
-    //read number of lives
-    QString text = line_->text();
-    int lives = text.toInt();
-    if (lives <= 0 || lives > 10){
-        lives = 3;
-    }
-    player1->lives_ = lives;
-    player2->lives_ = lives;
-
-    //players hearts to the scene
-    std::vector<QGraphicsPixmapItem*> hearts;
-    for (int i = 0; i < lives*2; i++){
-        hearts.push_back(scene->addPixmap(QPixmap(":/images/bitheart.PNG")));
-        if(i < lives){
-           hearts[i]->setPos(30+i*40,30);
-        }
-        else{hearts[i]->setPos(1330-i*40,30);}
-    }
-    //scene picture and size
-    QString backround_name;
-    qreal speed;
-    if (game_nbr == 1){
-        backround_name = ":/images/test_landscape";
-        scene->setSceneRect(0, 0, 2560, 720);
-        speed = 2;}
-    else {backround_name = ":/images/amfi.PNG";
-          scene->setSceneRect(0, 0, 1300, 720);
-          speed = 0;}
-
-    // add a view
-    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts, speed);
-    game->setTransformationAnchor(QGraphicsView::NoAnchor);
-    game->setAlignment(Qt::AlignRight);
-    game->setDragMode(QGraphicsView::ScrollHandDrag);
-    game->show();
-
-    Background * bg = new Background(scene, backround_name);
-
-    stack_->addWidget(game);
+    LevelSelect* lvl_select = new LevelSelect(scene, stack_);
+    scene->setSceneRect(0,0,1280,720);
+    stack_->addWidget(lvl_select->GetView());
     stack_->setCurrentIndex(1);
-
+    stack_->show();
 }
+
 
 QGraphicsView* MainMenu::GetView(){
     return view_;
