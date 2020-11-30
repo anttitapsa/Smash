@@ -138,12 +138,18 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_Resourses.cpp
 release/qrc_Resourses.cpp: ../smash/Resourses.qrc \
 		C:/Qt/5.15.1/mingw81_64/bin/rcc.exe \
+		../smash/totoro_2.png \
+		../smash/tupsu_shove3_2.png \
 		../smash/bitheart.PNG \
+		../smash/totoro2_2.png \
 		../smash/candyland.png \
 		../smash/tupsu_shove1.png \
 		../smash/tupsu_shove2.png \
+		../smash/totoro_left_2.png \
+		../smash/tupsu_shove2_2.png \
 		../smash/tupsu_shove3.png \
 		../smash/totoro2.png \
+		../smash/tupsu_shove1_2.png \
 		../smash/totoro3.png \
 		../smash/ukko_a.PNG \
 		../smash/totoro4.png \
@@ -152,9 +158,14 @@ release/qrc_Resourses.cpp: ../smash/Resourses.qrc \
 		../smash/totoro.png \
 		../smash/nekku.PNG \
 		../smash/totoro_left.png \
+		../smash/tupsuleft_2.png \
+		../smash/tupsu_2.png \
 		../smash/tupsu.png \
+		../smash/totoro4_2.png \
 		../smash/tupsuleft.png \
 		../smash/amfi.PNG \
+		../smash/totoro3_2.png \
+		../smash/totoro_2.png \
 		../smash/main_menu_bg.png \
 		../smash/woosh2.wav \
 		../smash/woosh1.wav \

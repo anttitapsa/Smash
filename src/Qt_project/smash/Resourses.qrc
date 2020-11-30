@@ -18,6 +18,16 @@
         <file>ukko_a.PNG</file>
         <file>ukko_b.PNG</file>
         <file>nekku.PNG</file>
+        <file>totoro_2.png</file>
+        <file>totoro_left_2.png</file>
+        <file>totoro2_2.png</file>
+        <file>totoro3_2.png</file>
+        <file>totoro4_2.png</file>
+        <file>tupsu_2.png</file>
+        <file>tupsu_shove1_2.png</file>
+        <file>tupsu_shove2_2.png</file>
+        <file>tupsu_shove3_2.png</file>
+        <file>tupsuleft_2.png</file>
     </qresource>
     <qresource prefix="/textfiles">
         <file>game_1</file>
@@ -28,5 +38,8 @@
         <file>woosh2.wav</file>
         <file>After_Math.mp3</file>
         <file>teekkarifinal.mp3</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>totoro_2.png</file>
     </qresource>
 </RCC>
