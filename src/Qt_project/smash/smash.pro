@@ -12,6 +12,7 @@ CONFIG += c++11
 SOURCES += \
     background.cpp \
     box.cpp \
+    characterselect.cpp \
     game.cpp \
     levelselect.cpp \
     main.cpp \
@@ -22,6 +23,7 @@ SOURCES += \
 HEADERS += \
     background.h \
     box.h \
+    characterselect.h \
     game.h \
     levelselect.h \
     mainmenu.h \

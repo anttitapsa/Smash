@@ -10,6 +10,7 @@
 #include "player.h"
 #include "game.h"
 #include "platform.h"
+#include "characterselect.h"
 #include <QTimer>
 #include <fstream>
 #include <QImage>
@@ -27,7 +28,7 @@ public slots:
     //void StartGame(int game_nbr);
    // void Option1();
    // void Option2();
-    void OpenLevelSelect();
+    void OpenCharacterSelect();
 private:
     QStackedWidget* stack_;
     QGraphicsView* view_ ;

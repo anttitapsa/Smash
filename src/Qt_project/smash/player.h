@@ -7,11 +7,13 @@
 #include <bitset>
 #include <vector>
 #include <QTimer>
+#include <QString>
+#include <QVector>
 //#include <QPainterPath>
 #include "platform.h"
 class Player: public QObject, public QGraphicsPixmapItem { // public QObject,
 public:
-    Player();
+    Player(QVector<QString> graphics);
     void jump();
     std::bitset<4> key;
     int lives_ = 3;
@@ -59,14 +61,9 @@ private:
     // related to animation implementation
     bool is_animated = false;
     unsigned int animationtime = 0;
-    std::vector<std::tuple<std::string, int>> *current_animation_;
-    std::vector<std::tuple<std::string, int>> shove_animation_{{":/images/tupsu_shove1.png", 0},
-                                                              {":/images/tupsu_shove2.png",60},
-                                                              {":/images/tupsu_shove3.png",120},
-                                                              {":/images/tupsu_shove3.png",120},
-                                                              {":/images/tupsu_shove2.png",60},
-                                                              {":/images/tupsu_shove1.png",0},
-                                                              {":/images/tupsu",0}};
+    QVector<QString> graphics_;
+    std::vector<std::tuple<QString, int>> *current_animation_;
+    std::vector<std::tuple<QString, int>> shove_animation_;
 
 };
 

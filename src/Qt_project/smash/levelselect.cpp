@@ -9,9 +9,13 @@
 #include <QFont>
 #include <QIcon>
 
-LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack)
+LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<QString> Player1, QVector<QString> Player2)
     : stack_(stack)
-{   view_ = new QGraphicsView(scene);
+{   //Adding playerinfo to selection
+    players_[1] = Player1;
+    players_[2] = Player2;
+
+    view_ = new QGraphicsView(scene);
     view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view_->setFixedSize(1280, 720);
@@ -86,8 +90,8 @@ void LevelSelect::StartGame(int game_nbr){
     }
 
     // create an item to put into the scene
-    Player *player1 =  new Player();
-    Player *player2 =  new Player();
+    Player *player1 =  new Player(players_[1]);
+    Player *player2 =  new Player(players_[2]);
 
     //players starting positions
     if(game_nbr == 1){
@@ -149,7 +153,7 @@ void LevelSelect::StartGame(int game_nbr){
 
     stack_->addWidget(game);
     stack_->removeWidget(view_);
-    stack_->setCurrentIndex(1);
+    stack_->setCurrentIndex(3);
 
 }
 

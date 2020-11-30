@@ -21,8 +21,8 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     // add items into the scene
     QPushButton* start_btn = new QPushButton();
     start_btn->setGeometry(QRect(300,300,480,100));
-    start_btn->setText("Level Select");
-    QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(OpenLevelSelect()));
+    start_btn->setText("Start game");
+    QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(OpenCharacterSelect()));
     scene->addWidget(start_btn);
 
 
@@ -70,13 +70,18 @@ void MainMenu::StartGame(int game_nbr){
     }
 >>>>>>> sound_design*/
 
+<<<<<<< HEAD
 
 
 //<<<<<<< HEAD
 void MainMenu::OpenLevelSelect(){
+=======
+void MainMenu::OpenCharacterSelect(){
+>>>>>>> character_select
     QGraphicsScene* scene = new QGraphicsScene();
-    LevelSelect* lvl_select = new LevelSelect(scene, stack_);
+    CharacterSelect* chr_select = new CharacterSelect(scene, stack_);
     scene->setSceneRect(0,0,1280,720);
+<<<<<<< HEAD
     stack_->addWidget(lvl_select->GetView());
 /*=======
     //read number of lives
@@ -115,6 +120,9 @@ void MainMenu::OpenLevelSelect(){
     Background * bg = new Background(scene, backround_name);
 >>>>>>> sound_design */
 
+=======
+    stack_->addWidget(chr_select->GetView());
+>>>>>>> character_select
     stack_->setCurrentIndex(1);
     stack_->show();
 }
