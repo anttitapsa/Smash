@@ -137,7 +137,7 @@ void LevelSelect::StartGame(int game_nbr){
 
     stack_->addWidget(game);
     stack_->removeWidget(view_);
-    stack_->setCurrentIndex(1);
+    stack_->setCurrentIndex(3);
 
 }
 
