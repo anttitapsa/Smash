@@ -33,7 +33,7 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
 
     bg_music = new QMediaPlayer();
     QMediaPlaylist *loop = new QMediaPlaylist();
-    loop->addMedia(QUrl("qrc:/sounds/teekkariremixlonger.mp3"));
+    loop->addMedia(QUrl("qrc:/sounds/teekkarifinal.mp3"));
     loop->setPlaybackMode(QMediaPlaylist::Loop);
 
 

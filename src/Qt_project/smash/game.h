@@ -34,8 +34,8 @@ private:
     Player *p2_;
     int dead_wall = -300;
     int dead_ground = 620;
-    int sfx_volume = 50; //  0 is silence, 100 is max
-    int music_volume = 50;
+    int sfx_volume = 100; //  0 is silence, 100 is max
+    int music_volume = 40;
     QMediaPlayer *sound_effects;
     QMediaPlayer *bg_music;
     //QGraphicsScene* scene_;
