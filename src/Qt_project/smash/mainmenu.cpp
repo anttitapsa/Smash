@@ -78,6 +78,14 @@ void MainMenu::StartGame(int game_nbr){
     Player *player1 =  new Player();
     Player *player2 =  new Player();
 
+    //players starting positions
+    if(game_nbr == 1){
+        player1->SetPosition(500,0);
+        player2->SetPosition(500,0);}
+    else{
+        player1->SetPosition(60,0);
+        player2->SetPosition(1160,0);}
+
     // add the item to the scene
     scene->addItem(player1);
     scene->addItem(player2);
@@ -102,10 +110,10 @@ void MainMenu::StartGame(int game_nbr){
     }
     // if candyland add spikes
     std::vector<QGraphicsPixmapItem*> spikes;
-    if(game_nbr ==1){
-        for (int i = 0; i < 30; i++){
+    if(game_nbr == 1){
+        for (int i = 0; i < 50; i++){
             spikes.push_back(scene->addPixmap(QPixmap(":/images/nekku.PNG")));
-            spikes[i]->setPos(0,i*30);
+            spikes[i]->setPos(0,(i-1)*15);
         }
     }
     //scene picture and size

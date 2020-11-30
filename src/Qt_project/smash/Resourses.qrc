@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/images">
-        <file>test_landscape.png</file>
         <file>bitheart.PNG</file>
         <file>amfi.PNG</file>
         <file>tupsu.png</file>

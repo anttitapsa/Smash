@@ -29,7 +29,7 @@ public slots:
 private:
     Player *p1_;
     Player *p2_;
-    int dead_wall = 30;
+    int dead_wall = 50;
     int dead_ground = 720;
     //QGraphicsScene* scene_;
     std::vector<Platform*> platforms_; // Maybe update this into struct mapinfo, if more than platforms are needed
