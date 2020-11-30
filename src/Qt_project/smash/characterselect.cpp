@@ -8,6 +8,12 @@ CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
     view_->setFixedSize(1280, 720);
     view_->setFocus();
 
+    if (Player1_.isEmpty() != 1){
+        Player1_.clear();
+    }
+    if (Player2_.isEmpty() != 1){
+        Player2_.clear();
+    }
     // add items into the scene
     QPushButton* totoro_p1_btn = new QPushButton();
     totoro_p1_btn->setGeometry(QRect(150,400,300,100));
@@ -82,6 +88,7 @@ void CharacterSelect::OpenLevelSelect(){
         stack_->addWidget(lvl_select->GetView());
         stack_->setCurrentIndex(2);
         stack_->show();
+        stack_->removeWidget(view_);
     }
 }
 
