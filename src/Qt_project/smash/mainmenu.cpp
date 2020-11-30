@@ -21,8 +21,8 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     // add items into the scene
     QPushButton* start_btn = new QPushButton();
     start_btn->setGeometry(QRect(300,300,480,100));
-    start_btn->setText("Level Select");
-    QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(OpenLevelSelect()));
+    start_btn->setText("Start game");
+    QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(OpenCharacterSelect()));
     scene->addWidget(start_btn);
 
 
@@ -35,11 +35,11 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
 
 
 
-void MainMenu::OpenLevelSelect(){
+void MainMenu::OpenCharacterSelect(){
     QGraphicsScene* scene = new QGraphicsScene();
-    LevelSelect* lvl_select = new LevelSelect(scene, stack_);
+    CharacterSelect* chr_select = new CharacterSelect(scene, stack_);
     scene->setSceneRect(0,0,1280,720);
-    stack_->addWidget(lvl_select->GetView());
+    stack_->addWidget(chr_select->GetView());
     stack_->setCurrentIndex(1);
     stack_->show();
 }

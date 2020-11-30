@@ -5,12 +5,20 @@
 #include <QBrush>
 #include <iostream>
 
-Player::Player() {
+Player::Player(QVector<QString> graphics)
+            :graphics_(graphics), shove_animation_({{graphics_[1], 0},
+                                                    {graphics_[2],20},
+                                                    {graphics_[3],120},
+                                                    {graphics_[3],120},
+                                                    {graphics_[2],20},
+                                                    {graphics_[1],0},
+                                                    {graphics_[0],0}}){
 
     // Set player to be a pixitem
-    setPixmap(QPixmap(":/images/tupsu.png").scaledToHeight(player_height));
+    setPixmap(QPixmap(graphics[0]).scaledToHeight(player_height));
 
-}
+    //Set shove_animation_
+};
 
 void Player::gravity(const std::vector<Platform*> &platforms) {
     //isfalling = true;
@@ -53,7 +61,7 @@ void Player::move() {
         if (is_on_platform) {
             fallingcheck();
         }
-        setPixmap(QPixmap(":/images/tupsuleft.png").scaledToHeight(player_height));
+        setPixmap(QPixmap(graphics_[4]).scaledToHeight(player_height));
         facing_right = false;
 
     }
@@ -65,7 +73,7 @@ void Player::move() {
         if (is_on_platform) {
             fallingcheck();
         }
-        setPixmap(QPixmap(":/images/tupsu.png").scaledToHeight(player_height));
+        setPixmap(QPixmap(graphics_[0]).scaledToHeight(player_height));
         facing_right = true;
     }
     if (was_shoved) {
@@ -155,7 +163,7 @@ void Player::animate()
             can_shove = true;  // for now this is ok, since there are no other animations
             is_animated = false;
         } else {
-            const char *newpiclocation = std::get<0>((*current_animation_)[animationtime]).c_str();
+            const char *newpiclocation = std::get<0>((*current_animation_)[animationtime]).toStdString().c_str();
             if (facing_right) {
                 setPixmap(QPixmap(newpiclocation).scaledToHeight(player_height));
             } else {

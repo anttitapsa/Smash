@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainMenu_t {
     QByteArrayData data[3];
-    char stringdata0[26];
+    char stringdata0[30];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,11 +33,11 @@ struct qt_meta_stringdata_MainMenu_t {
 static const qt_meta_stringdata_MainMenu_t qt_meta_stringdata_MainMenu = {
     {
 QT_MOC_LITERAL(0, 0, 8), // "MainMenu"
-QT_MOC_LITERAL(1, 9, 15), // "OpenLevelSelect"
-QT_MOC_LITERAL(2, 25, 0) // ""
+QT_MOC_LITERAL(1, 9, 19), // "OpenCharacterSelect"
+QT_MOC_LITERAL(2, 29, 0) // ""
 
     },
-    "MainMenu\0OpenLevelSelect\0"
+    "MainMenu\0OpenCharacterSelect\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -69,7 +69,7 @@ void MainMenu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         auto *_t = static_cast<MainMenu *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->OpenLevelSelect(); break;
+        case 0: _t->OpenCharacterSelect(); break;
         default: ;
         }
     }
