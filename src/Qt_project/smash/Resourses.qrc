@@ -23,4 +23,10 @@
         <file>game_1</file>
         <file>game_2</file>
     </qresource>
+    <qresource prefix="/sounds">
+        <file>woosh1.wav</file>
+        <file>woosh2.wav</file>
+        <file>After_Math.mp3</file>
+        <file>teekkarifinal.mp3</file>
+    </qresource>
 </RCC>
