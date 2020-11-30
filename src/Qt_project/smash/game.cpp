@@ -5,8 +5,8 @@
 #include <cmath>
 #include <iostream>
 
-Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, qreal rollspeed_)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), rollspeed(rollspeed_) {
+Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_)
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -96,7 +96,9 @@ void Game::keyReleaseEvent(QKeyEvent *event)
 
 void Game::moveView() {
     translate(-rollspeed,0);
-    dead_wall += rollspeed;
+    if(dead_wall <5320){ dead_wall += rollspeed;}
+    //spikes update position
+    for(auto i : spikes_){i->setPos(dead_wall-55,i->y());}
 }
 
 void Game::check_dead(){
@@ -113,9 +115,16 @@ void Game::check_dead(){
 
     //updating player hearts position
     for(auto i : hearts_){i->setPos(0,dead_ground+50);}
-    for(int l = 0; l < p1_->lives_; l++){hearts_[l]->setPos(dead_wall+330+l*40,30);}
-    for(int j = 0; j < p2_->lives_; j++){hearts_[j+p1_->lives_]->setPos(dead_wall+1510-j*40,30);}
-
+    for(int l = 0; l < p1_->lives_; l++){
+        if(rollspeed == 0){
+            hearts_[l]->setPos(dead_wall+330+l*40,30);}
+        else{hearts_[l]->setPos(dead_wall+20+l*40,30);}
+    }
+    for(int j = 0; j < p2_->lives_; j++){
+        if(rollspeed == 0){
+            hearts_[j+p1_->lives_]->setPos(dead_wall+1510-j*40,30);}
+        else {hearts_[j+p1_->lives_]->setPos(dead_wall+1170-j*40,30);}
+    }
     //if game ends
     if(p1_->lives_ == 0 || p2_->lives_ == 0){
         timer_->stop();
@@ -130,34 +139,39 @@ void Game::check_dead(){
     }
 }
 void Game::player_to_above_platform(Player* p){
-    int x = dead_wall + 1000+p->player_width;
-    bool above_platform = false;
-    int distance = 1000; //1000, because big number needed
-    int dis;
-    for(auto plat : platforms_){
-        //if x already on platform
-        if(plat->Get_start_x() < x && x < plat->Get_end_x()){
-            p->SetPosition(x,0);
-            p->initialize();
-            above_platform = true;
-            break;}
-        // distance between x and platform
-        else{
-            //platform after x
-            if(x < plat->Get_start_x()){
-                dis = plat->Get_start_x() - x + 2*p->player_width;} //2*p->player_widght_ so not at the edge
-            //platform before x
+    if(rollspeed== 0){
+        p->SetPosition(638,0);
+        p->initialize();
+    }
+    else{
+        int x = dead_wall + 1000+p->player_width;
+        bool above_platform = false;
+        int distance = 1000; //1000, because big number needed
+        int dis;
+        for(auto plat : platforms_){
+            //if x already on platform
+            if(plat->Get_start_x() < x && x < plat->Get_end_x()){
+                p->SetPosition(x,0);
+                p->initialize();
+                above_platform = true;
+                break;}
+            // distance between x and platform
             else{
-                dis = plat->Get_end_x() - x - 2*p->player_width;}
-            //is smallest distance
-            if(abs(distance) > abs(dis)){
-                distance = dis;}
+                //platform after x
+                if(x < plat->Get_start_x()){
+                    dis = plat->Get_start_x() - x + p->player_width;} //p->player_widght_ so not at the edge
+                //platform before x
+                else{
+                    dis = plat->Get_end_x() - x - p->player_width;}
+                //is smallest distance
+                if(abs(distance) > abs(dis)){
+                    distance = dis;}
+            }
+        }
+        if (!above_platform){
+            p->SetPosition(x+distance,0);}
         }
     }
-    if (!above_platform){
-        p->SetPosition(x+distance,0);}
-}
-
 void Game::ExitToMenu(){
     // clear & delete the Game and return to menu
     //scene()->clear();
@@ -166,7 +180,8 @@ void Game::ExitToMenu(){
 }
 
 void Game::gameTick() {
-    if (rollspeed != 0){moveView();}
+    if (rollspeed != 0){moveView();}//candyland move view
+    else{dead_wall = -300;} // Game created expected dead_wall to be candylands +30
     p1_->gravity(platforms_);
     p2_->gravity(platforms_);
     p1_->move();

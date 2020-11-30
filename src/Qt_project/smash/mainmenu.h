@@ -32,7 +32,7 @@ private:
     QStackedWidget* stack_;
     QGraphicsView* view_ ;
     QTimer* timer_;
-    std::map<int,QString> files_ = { {1, ":/textfiles/game_1"}, {2,":/textfiles/game_1"} };
+    std::map<int,QString> files_ = { {1, ":/textfiles/game_1"}, {2,":/textfiles/game_2"} };
     QLineEdit* line_;
 };
 

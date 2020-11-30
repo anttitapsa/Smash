@@ -35,11 +35,13 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
 
 
 
+
 void MainMenu::OpenLevelSelect(){
     QGraphicsScene* scene = new QGraphicsScene();
     LevelSelect* lvl_select = new LevelSelect(scene, stack_);
     scene->setSceneRect(0,0,1280,720);
     stack_->addWidget(lvl_select->GetView());
+
     stack_->setCurrentIndex(1);
     stack_->show();
 }

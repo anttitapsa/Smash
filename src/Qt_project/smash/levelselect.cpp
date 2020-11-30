@@ -89,6 +89,14 @@ void LevelSelect::StartGame(int game_nbr){
     Player *player1 =  new Player();
     Player *player2 =  new Player();
 
+    //players starting positions
+    if(game_nbr == 1){
+        player1->SetPosition(500,0);
+        player2->SetPosition(500,0);}
+    else{
+        player1->SetPosition(60,0);
+        player2->SetPosition(1160,0);}
+
     // add the item to the scene
     scene->addItem(player1);
     scene->addItem(player2);
@@ -111,19 +119,27 @@ void LevelSelect::StartGame(int game_nbr){
         }
         else{hearts[i]->setPos(1330-i*40,30);}
     }
+    // if candyland add spikes
+    std::vector<QGraphicsPixmapItem*> spikes;
+    if(game_nbr == 1){
+        for (int i = 0; i < 50; i++){
+            spikes.push_back(scene->addPixmap(QPixmap(":/images/nekku.PNG")));
+            spikes[i]->setPos(0,(i-1)*15);
+        }
+    }
     //scene picture and size
     QString backround_name;
     qreal speed;
     if (game_nbr == 1){
-        backround_name = ":/images/test_landscape";
-        scene->setSceneRect(0, 0, 2560, 720);
+        backround_name = ":/images/candyland";
+        scene->setSceneRect(0, 0, 6560, 720);
         speed = 2;}
     else {backround_name = ":/images/amfi.PNG";
           scene->setSceneRect(0, 0, 1300, 720);
           speed = 0;}
 
     // add a view
-    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts, speed);
+    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts,spikes, speed);
     game->setTransformationAnchor(QGraphicsView::NoAnchor);
     game->setAlignment(Qt::AlignRight);
     game->setDragMode(QGraphicsView::ScrollHandDrag);
