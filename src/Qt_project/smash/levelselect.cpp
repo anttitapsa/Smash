@@ -93,6 +93,7 @@ void LevelSelect::StartGame(int game_nbr){
     Player *player1 =  new Player(players_[1]);
     Player *player2 =  new Player(players_[2]);
 
+
     //players starting positions
     if(game_nbr == 1){
         player1->SetPosition(500,0);
@@ -100,6 +101,7 @@ void LevelSelect::StartGame(int game_nbr){
     else{
         player1->SetPosition(60,0);
         player2->SetPosition(1160,0);}
+
 
     // add the item to the scene
     scene->addItem(player1);

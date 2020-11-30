@@ -169,7 +169,6 @@ void Player::animate()
             can_shove = true;  // for now this is ok, since there are no other animations
             is_animated = false;
         } else {
-
             if (animationtime == 2) {
                 shove_hit();
             }
