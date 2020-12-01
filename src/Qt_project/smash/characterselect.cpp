@@ -54,8 +54,16 @@ CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
     scene->addWidget(tupsu_p2_btn);
 
     QPushButton* level_btn = new QPushButton();
-    level_btn->setGeometry(QRect(450,100,350,100));
-    level_btn->setText("Level select");
+    //set select button image by using CSS
+    level_btn->setAttribute(Qt::WA_TranslucentBackground);
+    level_btn->setStyleSheet("background:url(:/images/level_select_btn.png) no-repeat;"
+                             "background-position: 50% 50%;"
+                             "border: 2 px solid black;"
+                             "height: 100 px;"
+                             "width: 300 px;"
+                             "border-radius: 10px;");
+    level_btn->move(450,100);
+
     QObject::connect(level_btn, SIGNAL(clicked()),this, SLOT(OpenLevelSelect()));
     scene->addWidget(level_btn);
 
