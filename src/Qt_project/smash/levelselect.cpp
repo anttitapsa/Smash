@@ -42,13 +42,16 @@ LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<Q
     QLabel* label = new QLabel();
     label->setText("Lives (1-10):");
     label->setFont(QFont("Calibry Light",12));
+    label->setStyleSheet("color : white");
     label->setGeometry(QRect(20,50,150,20));
+    label->setAttribute(Qt::WA_TranslucentBackground);
     scene->addWidget(label);
 
     line_ = new QLineEdit();
     line_->setGeometry(155,50,45,25);
     line_->setText("3");
     line_->setFont(QFont("Calibry Light",14));
+    line_->setAttribute(Qt::WA_TranslucentBackground);
     scene->addWidget(line_);
 
 

@@ -169,34 +169,17 @@ void Game::player_to_above_platform(Player* p){
         p->initialize();
     }
     else{
-        int x = dead_wall + 1000+p->player_width;
-        bool above_platform = false;
-        int distance = 1000; //1000, because big number needed
-        int dis;
-        for(auto plat : platforms_){
-            //if x already on platform
-            if(plat->Get_start_x() < x && x < plat->Get_end_x()){
-                p->SetPosition(x,0);
-                p->initialize();
-                above_platform = true;
-                break;}
-            // distance between x and platform
-            else{
-                //platform after x
-                if(x < plat->Get_start_x()){
-                    dis = plat->Get_start_x() - x + p->player_width;} //p->player_widght_ so not at the edge
-                //platform before x
-                else{
-                    dis = plat->Get_end_x() - x - p->player_width;}
-                //is smallest distance
-                if(abs(distance) > abs(dis)){
-                    distance = dis;}
-            }
+        int x = dead_wall + 1000-2*p->player_width;//left_x
+        if(p->dead_platform){
+            delete p->dead_platform;
         }
-        if (!above_platform){
-            p->SetPosition(x+distance,0);}
-        }
+        p->dead_platform = new Platform(x,450,200,100);
+        scene()->addItem(p->dead_platform);
+        p->SetPosition(x,450-p->player_height);
+        p->initialize();
+        p->standing_on = p->dead_platform;
     }
+}
 void Game::ExitToMenu(){
     // clear & delete the Game and return to menu
     //scene()->clear();

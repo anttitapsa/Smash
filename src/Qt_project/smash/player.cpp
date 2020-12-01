@@ -21,7 +21,19 @@ Player::Player(QVector<QString> graphics)
 };
 
 void Player::gravity(const std::vector<Platform*> &platforms) {
-    //isfalling = true;
+
+    if(dead_platform != NULL){
+        dead_platform->time_ -=1;
+        if(dead_platform->time_ == 0 || !is_on_platform){
+            if(standing_on == dead_platform){
+                is_falling = true;
+                is_on_platform = false;
+            }
+            delete dead_platform;
+            dead_platform = NULL;
+        }
+    }
+
     if (is_falling){
         int drop;
         if (hasJumped) {
@@ -34,6 +46,19 @@ void Player::gravity(const std::vector<Platform*> &platforms) {
                     if(y()+player_height+drop >= p->Get_y() && p->Get_y() >= y()+player_height){
                         setPos(x(),p->Get_y()-player_height);
                         standing_on = p;
+                        is_on_platform = true;
+                        is_falling = false;
+                        hasJumped = false;
+                        falltime = 0;
+                        return;
+                    }
+                }
+            }
+            if(dead_platform != NULL){
+                if (dead_platform->Get_start_x() <= x()+ player_width / 2 && x()+ player_width / 2 <= dead_platform->Get_end_x()){
+                    if(y()+player_height+drop >= dead_platform->Get_y() && dead_platform->Get_y() >= y()+player_height){
+                        setPos(x(),dead_platform->Get_y()-player_height);
+                        standing_on = dead_platform;
                         is_on_platform = true;
                         is_falling = false;
                         hasJumped = false;
@@ -98,6 +123,9 @@ void Player::jump() {
         is_falling = true;
         hasJumped = true;
         is_on_platform = false;
+        if(standing_on == dead_platform){
+            dead_platform->time_ = 2;
+        }
     }
 }
 void Player::SetPosition(int x, int y){
@@ -148,6 +176,10 @@ void Player::isShoved(bool toward_right) {
 
 void Player::initialize(){
     falltime = 0;
+    fallSpeed = 0;
+    is_falling = false;
+    is_on_platform = true;
+    hasJumped = false;
 }
 
 QPainterPath Player::shape() const
