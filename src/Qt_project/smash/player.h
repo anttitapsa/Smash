@@ -29,7 +29,9 @@ public:
 
     const int player_width = 60;
     const int player_height = 100;
-
+    Platform* dead_platform = NULL;
+    bool hasJumped = false;//related to jumping
+    Platform* standing_on;
 private:
     // related to moving
     int speed = 5;
@@ -38,15 +40,13 @@ private:
     bool facing_right = true;
 
     // related to jumping...
-    const int jumpSpeed = 50;
-    bool hasJumped = false;
+    const int jumpSpeed = 50;  
     // ...and falling
     int falltime = 0;
     const float gravity_strength = 0.7;
     bool is_falling = true;
     int fallSpeed = 0;
     bool is_on_platform = false;
-    Platform* standing_on;
 
     // related to shoving
     Player *rival_;

@@ -32,7 +32,7 @@ public slots:
 private:
     QStackedWidget* stack_;
     QGraphicsView* view_ ;
-    std::map<int,QString> files_ = { {1, ":/textfiles/game_1"}, {2,":/textfiles/game_1"} };
+    std::map<int,QString> files_ = { {1, ":/textfiles/game_1"}, {2,":/textfiles/game_2"} };
     QLineEdit* line_;
     QTimer* timer_;
 };
