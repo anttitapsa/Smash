@@ -156,8 +156,17 @@ void Game::check_dead(){
 
         // add buttons to post-game screen
         QPushButton* exit_btn = new QPushButton();
-        exit_btn->setGeometry(QRect(400,400,300,70));
-        exit_btn->setText("Exit to main menu");
+        //exit_btn->setGeometry(QRect(400,400,300,70));
+        //exit_btn->setText("Exit to main menu");
+        exit_btn->setAttribute(Qt::WA_TranslucentBackground);
+        exit_btn->setStyleSheet("QPushButton {background:url(:/images/main_return_btn.png) no-repeat;"
+                                     "background-position: 50% 50%;"
+                                     "border: 2 px solid black;"
+                                     "height: 70 px;"
+                                     "width: 300 px;"
+                                     "border-radius: 10px;}"
+                                 "QPushButton:open {border: 2px solid red}");
+        exit_btn->move(400, 400);
         QObject::connect(exit_btn, SIGNAL(clicked()),this, SLOT(ExitToMenu()));
         QGraphicsProxyWidget* proxy = scene()->addWidget(exit_btn);
         proxy->setPos(dead_wall+700,400);

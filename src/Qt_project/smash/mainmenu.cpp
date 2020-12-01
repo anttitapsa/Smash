@@ -20,9 +20,16 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
 
     // add items into the scene
     QPushButton* start_btn = new QPushButton();
-    start_btn->setGeometry(QRect(300,300,480,100));
-    start_btn->setText("Start game");
-    QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(OpenCharacterSelect()));
+    start_btn->setAttribute(Qt::WA_TranslucentBackground);
+    start_btn->setStyleSheet("QPushButton {background:url(:/images/start_game_btn.png) no-repeat;"
+                                 "background-position: 50% 50%;"
+                                 "border: 2 px solid black;"
+                                 "height: 100 px;"
+                                 "width: 300 px;"
+                                 "border-radius: 10px;}"
+                             "QPushButton:open {border: 2px solid red}");
+    start_btn->move(450,400);
+   QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(OpenCharacterSelect()));
     scene->addWidget(start_btn);
 
 

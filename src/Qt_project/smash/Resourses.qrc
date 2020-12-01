@@ -29,6 +29,10 @@
         <file>tupsu_shove3_2.png</file>
         <file>tupsuleft_2.png</file>
         <file>totoro_button.png</file>
+        <file>end_return_btn.png</file>
+        <file>main_return_btn.png</file>
+        <file>options_btn.png</file>
+        <file>start_game_btn.png</file>
     </qresource>
     <qresource prefix="/textfiles">
         <file>game_1</file>
