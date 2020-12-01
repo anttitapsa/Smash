@@ -1,5 +1,3 @@
-release/background.o
-release/box.o
 release/characterselect.o
 release/game.o
 release/levelselect.o

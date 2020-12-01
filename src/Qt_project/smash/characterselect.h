@@ -1,24 +1,6 @@
 #ifndef CHARACTERSELECT_H
 #define CHARACTERSELECT_H
-
-#include <QGraphicsView>
-#include <QObject>
-#include <QStackedWidget>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QLabel>
-#include <QGraphicsProxyWidget>
-#include "player.h"
-#include "game.h"
-#include "platform.h"
 #include "levelselect.h"
-#include <QTimer>
-#include <fstream>
-#include <QImage>
-#include <QBrush>
-#include <QString>
-
-#include <QVector>
 
 class CharacterSelect : public QObject{
 Q_OBJECT
@@ -41,8 +23,6 @@ private:
                                                    {4, {":/images/totoro_2.png", ":/images/totoro2_2.png", ":/images/totoro3_2.png", ":/images/totoro4_2.png", ":/images/totoro_left_2.png"}}};
     QVector<QString> Player1_;
     QVector<QString> Player2_;
-    QTimer* timer_;
-
 };
 
 #endif // CHARACTERSELECT_H

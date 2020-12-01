@@ -1,15 +1,11 @@
 #ifndef GAME_H
 #define GAME_H
 #include <QGraphicsView>
-#include <QObject>
-#include <QTimer>
-#include <vector>
-#include <QTransform>
 #include <QStackedWidget>
 #include <QPushButton>
 #include <QGraphicsProxyWidget>
-#include <QGraphicsPixmapItem>
 #include <QMediaPlayer>
+#include <QMediaPlaylist>
 #include <QSoundEffect>
 #include "player.h"
 

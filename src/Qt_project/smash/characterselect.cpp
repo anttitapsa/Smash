@@ -113,6 +113,3 @@ void CharacterSelect::OpenLevelSelect(){
         stack_->removeWidget(view_);
     }
 }
-
-
-

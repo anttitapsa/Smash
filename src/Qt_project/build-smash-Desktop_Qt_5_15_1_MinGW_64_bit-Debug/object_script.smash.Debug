@@ -1,5 +1,3 @@
-debug/background.o
-debug/box.o
 debug/characterselect.o
 debug/game.o
 debug/levelselect.o

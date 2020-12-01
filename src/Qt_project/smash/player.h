@@ -2,14 +2,9 @@
 #define PLAYER_H
 
 #include <QGraphicsPixmapItem>
-#include <QObject>
 #include <QKeyEvent>
 #include <bitset>
-#include <vector>
 #include <QTimer>
-#include <QString>
-#include <QVector>
-//#include <QPainterPath>
 #include "platform.h"
 class Player: public QObject, public QGraphicsPixmapItem { // public QObject,
 public:

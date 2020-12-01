@@ -1,14 +1,4 @@
 #include "mainmenu.h"
-#include "background.h"
-#include "levelselect.h"
-#include <vector>
-#include <list>
-#include <QPixmap>
-#include <QGraphicsPixmapItem>
-#include <iostream>
-#include <QFile>
-#include <QFont>
-#include <QIcon>
 
 MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     : stack_(stack)
@@ -24,8 +14,6 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     start_btn->setText("Start game");
     QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(OpenCharacterSelect()));
     scene->addWidget(start_btn);
-
-
 
     //bg to main menu
     QString bg_name = ":/images/main_menu_bg.png";
