@@ -1,5 +1,7 @@
 #include "characterselect.h"
-
+#include <QPushButton>
+#include <QGroupBox>
+#include <QVBoxLayout>
 CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
     : stack_(stack){
     view_ = new QGraphicsView(scene);
@@ -16,52 +18,68 @@ CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
     }
     // add items into the scene
     QPushButton* totoro_p1_btn = new QPushButton();
-
-    //icon for button
-    QIcon Icon1(characters_[2][0]);
-    totoro_p1_btn->setIcon(Icon1);
-    totoro_p1_btn->setIconSize(QSize(100,100));
-    totoro_p1_btn->move(150,400);
-    totoro_p1_btn->setMinimumSize(300,100);
+    totoro_p1_btn->setAttribute(Qt::WA_TranslucentBackground);
+    totoro_p1_btn->setStyleSheet("QPushButton {image:url(:/images/totoro.png) no-repeat;"
+                                              "background:transparent;"
+                                              "border: 2 px solid black;"
+                                              "height: 200px;"
+                                              "width: 130px;"
+                                              "border-radius: 10px;}"
+                                "QPushButton:pressed {border: 2px solid red}");
+    totoro_p1_btn->move(150,300);
     QObject::connect(totoro_p1_btn, SIGNAL(clicked()),this, SLOT(TotoroP1()));
     scene->addWidget(totoro_p1_btn);
 
-    QPushButton* totoro_p2_btn = new QPushButton();
-    QIcon Icon2(characters_[4][0]);
-    totoro_p2_btn->setIcon(Icon2);
-    totoro_p2_btn->setIconSize(QSize(100,100));
-    totoro_p2_btn->move(800,400);
-    totoro_p2_btn->setMinimumSize(300,100);
-    QObject::connect(totoro_p2_btn, SIGNAL(clicked()),this, SLOT(TotoroP2()));
-    scene->addWidget(totoro_p2_btn);
-
     QPushButton* tupsu_p1_btn = new QPushButton();
-    QIcon Icon3(characters_[1][0]);
-    tupsu_p1_btn->setIcon(Icon3);
-    tupsu_p1_btn->setIconSize(QSize(100,100));
-    tupsu_p1_btn->move(150,300);
-    tupsu_p1_btn->setMinimumSize(300,100);
+    tupsu_p1_btn->setAttribute(Qt::WA_TranslucentBackground);
+    tupsu_p1_btn->setStyleSheet("QPushButton {image:url(:/images/tupsu.png) no-repeat;"
+                                             "background:transparent;"
+                                             "border: 2 px solid black;"
+                                             "height: 200px;"
+                                             "width: 130px;"
+                                             "border-radius: 10px;}"
+                                "QPushButton:open {border: 2px solid red}");
+    tupsu_p1_btn->move(280,300);
     QObject::connect(tupsu_p1_btn, SIGNAL(clicked()),this, SLOT(TupsuP1()));
     scene->addWidget(tupsu_p1_btn);
 
+    QPushButton* totoro_p2_btn = new QPushButton();
+    totoro_p2_btn->setAttribute(Qt::WA_TranslucentBackground);
+    totoro_p2_btn->setStyleSheet("QPushButton {image:url(:/images/totoro_2.png) no-repeat;"
+                                              "background:transparent;"
+                                              "border: 2 px solid black;"
+                                              "height: 200px;"
+                                              "width: 130px;"
+                                              "border-radius: 10px;}"
+                                 "QPushButton:open {border: 2px solid red}");
+    totoro_p2_btn->move(800,300);
+    QObject::connect(totoro_p2_btn, SIGNAL(clicked()),this, SLOT(TotoroP2()));
+    scene->addWidget(totoro_p2_btn);
+
     QPushButton* tupsu_p2_btn = new QPushButton();
-    QIcon Icon4(characters_[3][0]);
-    tupsu_p2_btn->setIcon(Icon4);
-    tupsu_p2_btn->setIconSize(QSize(100,100));
-    tupsu_p2_btn->move(800,300);
-    tupsu_p2_btn->setMinimumSize(300,100);
+    tupsu_p2_btn->setAttribute(Qt::WA_TranslucentBackground);
+    tupsu_p2_btn->setStyleSheet("QPushButton {image:url(:/images/tupsu_2.png) no-repeat;"
+                                             "background:transparent;"
+                                             "border: 2 px solid black;"
+                                             "height: 200px;"
+                                             "width: 130px;"
+                                             "border-radius: 10px;}"
+                                "QPushButton:open {border: 2px solid red}");
+    tupsu_p2_btn->move(930,300);
     QObject::connect(tupsu_p2_btn, SIGNAL(clicked()),this, SLOT(TupsuP2()));
     scene->addWidget(tupsu_p2_btn);
+
 
     QPushButton* level_btn = new QPushButton();
     //set select button image by using CSS
     level_btn->setAttribute(Qt::WA_TranslucentBackground);
-    level_btn->setStyleSheet("background:url(:/images/level_select_btn.png) no-repeat;"
-                             "background-position: 50% 50%;"
-                             "border: 2 px solid black;"
-                             "height: 100 px;"
-                             "width: 300 px;"
-                             "border-radius: 10px;");
+    level_btn->setStyleSheet("QPushButton {background:url(:/images/level_select_btn.png) no-repeat;"
+                                 "background-position: 50% 50%;"
+                                 "border: 2 px solid black;"
+                                 "height: 100 px;"
+                                 "width: 300 px;"
+                                 "border-radius: 10px;}"
+                             "QPushButton:open {border: 2px solid red}");
     level_btn->move(450,100);
 
     QObject::connect(level_btn, SIGNAL(clicked()),this, SLOT(OpenLevelSelect()));

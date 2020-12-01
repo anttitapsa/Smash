@@ -28,6 +28,7 @@
         <file>tupsu_shove2_2.png</file>
         <file>tupsu_shove3_2.png</file>
         <file>tupsuleft_2.png</file>
+        <file>totoro_button.png</file>
     </qresource>
     <qresource prefix="/textfiles">
         <file>game_1</file>
@@ -41,5 +42,6 @@
     </qresource>
     <qresource prefix="/">
         <file>totoro_2.png</file>
+        <file>totoro_button.png</file>
     </qresource>
 </RCC>
