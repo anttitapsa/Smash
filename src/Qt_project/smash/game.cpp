@@ -124,12 +124,12 @@ void Game::check_dead(){
     if(p1_->x() < dead_wall || p1_->y() > dead_ground){
         p1_->lives_ -= 1;
         if(p1_->lives_ != 0){
-            player_to_above_platform(p1_);}
+            dead_platform(p1_);}
     }
     if(p2_->x() < dead_wall || p2_->y() > dead_ground){
         p2_->lives_ -= 1;
         if(p2_->lives_ != 0){
-            player_to_above_platform(p2_);}
+            dead_platform(p2_);}
     }
 
     //updating player hearts position
@@ -157,7 +157,7 @@ void Game::check_dead(){
         proxy->setPos(dead_wall+700,400);
     }
 }
-void Game::player_to_above_platform(Player* p){
+void Game::dead_platform(Player* p){
     if(rollspeed== 0){
         p->SetPosition(638,0);
         p->initialize();

@@ -19,28 +19,27 @@ public:
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     std::vector<int> keybinds;
-    QTimer *timer_;
     void moveView();
     void check_dead();
-    void player_to_above_platform(Player* p);
+    void dead_platform(Player* p);
+    QTimer *timer_;
 public slots:
     void gameTick();
     void ExitToMenu();
 private:
-    Player *p1_;
-    Player *p2_;
-    int dead_wall = 50;
-    int dead_ground = 720;
     int sfx_volume = 100; //  0 is silence, 100 is max
     int music_volume = 40;
     QMediaPlayer *sound_effects;
     QMediaPlayer *bg_music;
-    //QGraphicsScene* scene_;
-    std::vector<Platform*> platforms_; // Maybe update this into struct mapinfo, if more than platforms are needed
-    QStackedWidget* stack_ ; // Juho 19/11 : access to stack created in main()
+    Player *p1_;
+    Player *p2_;
+    int dead_wall = 50;//start of candyland, changed to -300 in amfi
+    int dead_ground = 720; 
+    std::vector<Platform*> platforms_;
+    QStackedWidget* stack_ ; //access to stack created in main()
     std::vector<QGraphicsPixmapItem*> hearts_; //to update the player hearts position
     std::vector<QGraphicsPixmapItem*> spikes_;//candyland spikes, work as the hearts
-    qreal rollspeed;
+    qreal rollspeed;//how wast vies moves candyland = 2, amfi = 0
     QString msource;
 };
 
