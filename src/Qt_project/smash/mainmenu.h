@@ -11,6 +11,8 @@ public:
 
 public slots:
     void OpenCharacterSelect();
+    void OpenOptions();
+
 
 private:
     QStackedWidget* stack_;
