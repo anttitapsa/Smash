@@ -8,6 +8,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QGraphicsProxyWidget>
+#include <QSlider>
 
 class Options: public QObject
 {
