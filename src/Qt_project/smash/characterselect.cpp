@@ -1,7 +1,5 @@
 #include "characterselect.h"
-#include <QPushButton>
-#include <QGroupBox>
-#include <QVBoxLayout>
+
 CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
     : stack_(stack){
     view_ = new QGraphicsView(scene);
@@ -137,6 +135,3 @@ void CharacterSelect::OpenLevelSelect(){
         stack_->removeWidget(view_);
     }
 }
-
-
-

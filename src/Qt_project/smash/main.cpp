@@ -1,8 +1,4 @@
 #include <QApplication>
-#include <QGraphicsScene>
-#include "player.h"
-#include "game.h"
-#include <QGraphicsView>
 #include "mainmenu.h"
 
 int main(int argc, char *argv[])

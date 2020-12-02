@@ -1,10 +1,4 @@
 #include "game.h"
-#include <QTimer>
-#include <QTransform>
-#include <QPoint>
-#include <cmath>
-#include <iostream>
-#include <QMediaPlaylist>
 
 Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_, QString music_url)
     : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_), msource(music_url) {
@@ -132,12 +126,12 @@ void Game::check_dead(){
     if(p1_->x() < dead_wall || p1_->y() > dead_ground){
         p1_->lives_ -= 1;
         if(p1_->lives_ != 0){
-            player_to_above_platform(p1_);}
+            dead_platform(p1_);}
     }
     if(p2_->x() < dead_wall || p2_->y() > dead_ground){
         p2_->lives_ -= 1;
         if(p2_->lives_ != 0){
-            player_to_above_platform(p2_);}
+            dead_platform(p2_);}
     }
 
     //updating player hearts position
@@ -174,7 +168,7 @@ void Game::check_dead(){
         proxy->setPos(dead_wall+700,400);
     }
 }
-void Game::player_to_above_platform(Player* p){
+void Game::dead_platform(Player* p){
     if(rollspeed== 0){
         p->SetPosition(638,0);
         p->initialize();

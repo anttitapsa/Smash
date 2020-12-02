@@ -1,13 +1,4 @@
 #include "levelselect.h"
-#include "background.h"
-#include <vector>
-#include <list>
-#include <QPixmap>
-#include <QGraphicsPixmapItem>
-#include <iostream>
-#include <QFile>
-#include <QFont>
-#include <QIcon>
 
 LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<QString> Player1, QVector<QString> Player2)
     : stack_(stack)
@@ -163,9 +154,9 @@ void LevelSelect::StartGame(int game_nbr){
     game->setAlignment(Qt::AlignRight);
     game->setDragMode(QGraphicsView::ScrollHandDrag);
     game->show();
-
-    //Background * bg = new
-    Background(scene, backround_name);
+    QImage bg = QImage(backround_name);
+    bg = bg.scaled(QSize(scene->width(), scene->height()));//, Qt::KeepAspectRatioByExpanding);
+    scene->setBackgroundBrush(QBrush(bg));
 
     stack_->addWidget(game);
     stack_->removeWidget(view_);
