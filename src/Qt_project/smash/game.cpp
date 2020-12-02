@@ -6,8 +6,8 @@
 #include <iostream>
 #include <QMediaPlaylist>
 
-Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_) {
+Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_, QString music_url)
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_), msource(music_url) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -31,7 +31,9 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
 
     bg_music = new QMediaPlayer();
     QMediaPlaylist *loop = new QMediaPlaylist();
-    loop->addMedia(QUrl("qrc:/sounds/teekkarifinal.mp3"));
+    //loop->addMedia(QUrl("qrc:/sounds/teekkarifinal.mp3"));
+    //QString url = "qrc:/sounds/teekkarifinal.mp3";
+    loop->addMedia(QUrl(music_url));
     loop->setPlaybackMode(QMediaPlaylist::Loop);
 
 

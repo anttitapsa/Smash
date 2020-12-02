@@ -145,23 +145,27 @@ void LevelSelect::StartGame(int game_nbr){
     }
     //scene picture and size
     QString backround_name;
+    QString music_name;
     qreal speed;
     if (game_nbr == 1){
         backround_name = ":/images/candyland";
+        music_name = "qrc:/sounds/Aim_Nobly.mp3";
         scene->setSceneRect(0, 0, 6560, 720);
         speed = 2;}
     else {backround_name = ":/images/amfi.PNG";
+          music_name = "qrc:/sounds/teekkarifinal.mp3";
           scene->setSceneRect(0, 0, 1300, 720);
           speed = 0;}
 
     // add a view
-    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts,spikes, speed);
+    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts,spikes, speed, music_name);
     game->setTransformationAnchor(QGraphicsView::NoAnchor);
     game->setAlignment(Qt::AlignRight);
     game->setDragMode(QGraphicsView::ScrollHandDrag);
     game->show();
 
-    Background * bg = new Background(scene, backround_name);
+    //Background * bg = new
+    Background(scene, backround_name);
 
     stack_->addWidget(game);
     stack_->removeWidget(view_);
