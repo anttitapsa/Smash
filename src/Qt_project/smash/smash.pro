@@ -16,6 +16,7 @@ SOURCES += \
     levelselect.cpp \
     main.cpp \
     mainmenu.cpp \
+    options.cpp \
     platform.cpp \
     player.cpp
 
@@ -25,6 +26,7 @@ HEADERS += \
     gingerbread.h \
     levelselect.h \
     mainmenu.h \
+    options.h \
     platform.h \
     player.h
 
