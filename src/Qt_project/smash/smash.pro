@@ -12,6 +12,7 @@ CONFIG += c++11
 SOURCES += \
     characterselect.cpp \
     game.cpp \
+    gingerbread.cpp \
     levelselect.cpp \
     main.cpp \
     mainmenu.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     characterselect.h \
     game.h \
+    gingerbread.h \
     levelselect.h \
     mainmenu.h \
     platform.h \

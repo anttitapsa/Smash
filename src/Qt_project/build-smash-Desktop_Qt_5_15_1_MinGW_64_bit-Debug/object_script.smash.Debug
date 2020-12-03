@@ -1,5 +1,6 @@
 debug/characterselect.o
 debug/game.o
+debug/gingerbread.o
 debug/levelselect.o
 debug/main.o
 debug/mainmenu.o

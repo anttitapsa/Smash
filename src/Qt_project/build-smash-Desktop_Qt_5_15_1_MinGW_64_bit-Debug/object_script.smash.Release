@@ -1,5 +1,6 @@
 release/characterselect.o
 release/game.o
+release/gingerbread.o
 release/levelselect.o
 release/main.o
 release/mainmenu.o

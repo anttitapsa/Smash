@@ -1,5 +1,5 @@
 #include "levelselect.h"
-
+#include "gingerbread.h"
 LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<QString> Player1, QVector<QString> Player2)
     : stack_(stack)
 {   //Adding playerinfo to selection
@@ -72,6 +72,23 @@ void LevelSelect::StartGame(int game_nbr){
     timer_ = new QTimer();
     timer_->start(20);
 
+    // if candyland add spikes
+    std::vector<QGraphicsPixmapItem*> spikes;
+    std::vector<Gingerbread*> ginger;
+    if(game_nbr == 1){
+        for (int i = 0; i < 50; i++){
+            spikes.push_back(scene->addPixmap(QPixmap(":/images/nekku.PNG")));
+            spikes[i]->setPos(0,(i-1)*15);
+
+            ginger.push_back(new Gingerbread(i*100));
+            scene->addItem(ginger[i]);
+            if( i % 2 ==0 ){
+                ginger[i]->Cheer();
+            }
+
+        }
+    }
+
     //read platforms from file and add to listplatforms
     int i = 0;
     std::vector<Platform*> platforms;
@@ -126,14 +143,7 @@ void LevelSelect::StartGame(int game_nbr){
         }
         else{hearts[i]->setPos(1330-i*40,30);}
     }
-    // if candyland add spikes
-    std::vector<QGraphicsPixmapItem*> spikes;
-    if(game_nbr == 1){
-        for (int i = 0; i < 50; i++){
-            spikes.push_back(scene->addPixmap(QPixmap(":/images/nekku.PNG")));
-            spikes[i]->setPos(0,(i-1)*15);
-        }
-    }
+
     //scene picture and size
     QString backround_name;
     QString music_name;
