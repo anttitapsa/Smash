@@ -8,13 +8,12 @@
 #include <QMediaPlaylist>
 #include <QSoundEffect>
 #include "player.h"
-
-class Game: public QGraphicsView {
-    Q_OBJECT
+#include "gingerbread.h"
+class Game: public QGraphicsView { Q_OBJECT
 
 public:
     Game(QGraphicsScene* scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms,
-         QStackedWidget* stack, std::vector<QGraphicsPixmapItem*>hearts, std::vector<QGraphicsPixmapItem*>spikes, qreal rollspeed_, QString music_url);
+         QStackedWidget* stack, std::vector<QGraphicsPixmapItem*>hearts, std::vector<QGraphicsPixmapItem*>spikes, qreal rollspeed_, QString music_url,std::vector<Gingerbread*> ginger);
 
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
@@ -23,6 +22,8 @@ public:
     void check_dead();
     void dead_platform(Player* p);
     QTimer *timer_;
+    template <typename T>
+    void jump (T creature);
 public slots:
     void gameTick();
     void ExitToMenu();
@@ -41,6 +42,8 @@ private:
     std::vector<QGraphicsPixmapItem*> spikes_;//candyland spikes, work as the hearts
     qreal rollspeed;//how wast vies moves candyland = 2, amfi = 0
     QString msource;
+
+    std::vector<Gingerbread*> ginger;
 };
 
 #endif // GAME_H

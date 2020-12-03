@@ -28,7 +28,11 @@ public:
     const int player_height = 100;
     Platform* dead_platform = NULL;
     Platform* standing_on;
-
+    bool is_falling = true;
+    int fallSpeed = 0;
+    int falltime = 0;
+    bool hasJumped = false;
+    bool is_on_platform = false;
 private:
     // related to moving
     int speed = 5;
@@ -37,14 +41,13 @@ private:
     bool facing_right = true;
 
     // related to jumping...
-    bool hasJumped = false;
+
     const int jumpSpeed = 50;  
     // related to falling
-    int falltime = 0;
+
     const float gravity_strength = 0.7;
-    bool is_falling = true;
-    int fallSpeed = 0;
-    bool is_on_platform = false;
+
+
     // related to shoving
     Player *rival_;
     std::vector<int> shove_dispositions_{100,80,60,40,20};

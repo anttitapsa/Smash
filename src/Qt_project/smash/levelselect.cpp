@@ -82,10 +82,6 @@ void LevelSelect::StartGame(int game_nbr){
 
             ginger.push_back(new Gingerbread(i*100));
             scene->addItem(ginger[i]);
-            if( i % 2 ==0 ){
-                ginger[i]->Cheer();
-            }
-
         }
     }
 
@@ -159,7 +155,7 @@ void LevelSelect::StartGame(int game_nbr){
           speed = 0;}
 
     // add a view
-    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts,spikes, speed, music_name);
+    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts,spikes, speed, music_name, ginger);
     game->setTransformationAnchor(QGraphicsView::NoAnchor);
     game->setAlignment(Qt::AlignRight);
     game->setDragMode(QGraphicsView::ScrollHandDrag);

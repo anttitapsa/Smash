@@ -1,6 +1,8 @@
 #include "game.h"
-Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_, QString music_url)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_), msource(music_url) {
+#include <iostream>
+
+Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_, QString music_url, std::vector<Gingerbread*> ginger_)
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_), msource(music_url), ginger(ginger_) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -45,7 +47,7 @@ int k = event->key();
 
     if (k == keybinds[0]) {
         if (!event->isAutoRepeat()) {
-            p1_->jump();
+            jump(p1_);
         }
         p1_->key[0] = 1;
     } else if (k == keybinds[1]){
@@ -65,7 +67,7 @@ int k = event->key();
         p1_->reset_speed();
     } else if (k == keybinds[4]) {
         if (!event->isAutoRepeat()) {
-            p2_->jump();
+            jump(p2_);
         }
         p2_->key[0] = 1;
     } else if (k == keybinds[5]){
@@ -202,4 +204,29 @@ void Game::gameTick() {
     p1_->animate();
     p2_->animate();
     check_dead();
+    for(auto i : ginger){
+        i->gravity();
+        int num = std::rand()%100;
+        if(num == 4 && !(i->hasJumped)){
+            i->Cheer();
+            jump(i);
+            if(i->hasJumped){std::cout << "it worked!!!!" << std::endl;}
+        }
+    }
+}
+
+template <typename T>
+void Game::jump(T creature){
+    std::cout << "jumped called" << std::endl;
+    if (!creature->is_falling || creature->falltime < 1) {
+        creature->is_falling = true;
+        creature->hasJumped = true;
+        std::cout << "hasJumped is true" << std::endl;
+        if(creature->is_on_platform){
+            creature->is_on_platform = false;
+
+            if(creature->standing_on == creature->dead_platform){
+                creature->dead_platform->time_ = 2;}
+        }
+    }
 }
