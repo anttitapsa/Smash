@@ -1,4 +1,6 @@
 #include "options.h"
+#include <QDebug>
+#include <QFileInfo>
 
 Options::Options(QGraphicsScene* scene, QStackedWidget *stack)
     : stack_(stack)
@@ -16,14 +18,33 @@ Options::Options(QGraphicsScene* scene, QStackedWidget *stack)
     QObject::connect(return_btn, SIGNAL(clicked()),this, SLOT(ReturnToMain()));
     scene->addWidget(return_btn);
 
-    QSlider* volume_slider = new QSlider();
-    volume_slider->setOrientation(Qt::Horizontal);
-    volume_slider->setMaximum(100);
-    volume_slider->setMinimum(0);
-    volume_slider->setTickInterval(1);
-    volume_slider->setGeometry(QRect(300,200,300,50));
-    volume_slider->setStyleSheet("background-color: transparent");
-    scene->addWidget(volume_slider);
+    QPushButton* save_btn = new QPushButton();
+    save_btn->setGeometry(QRect(600,600,200,60));
+    save_btn->setText("Save options");
+    QObject::connect(save_btn, SIGNAL(clicked()),this, SLOT(SaveOptions()));
+    scene->addWidget(save_btn);
+
+    volume_slider_ = new QSlider();
+    volume_slider_->setOrientation(Qt::Horizontal);
+    volume_slider_->setMaximum(100);
+    volume_slider_->setMinimum(0);
+    volume_slider_->setTickInterval(1);
+
+    // could move reading the file into its own method
+
+    //could also make a separate default options.txt file from which the options are
+    //loaded if no options.txt exists
+
+    QFile file("options.txt");
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QTextStream in(&file);
+    int value = in.readLine().toInt();
+    volume_slider_->setValue(value);
+
+    volume_slider_->setGeometry(QRect(300,200,300,50));
+    volume_slider_->setStyleSheet("background-color: transparent");
+
+    scene->addWidget(volume_slider_);
 
     // background
     QString bg_name = ":/images/main_menu_bg.png";
@@ -37,4 +58,16 @@ QGraphicsView* Options::GetView(){
 void Options::ReturnToMain(){
     stack_->setCurrentIndex(0);
     stack_->removeWidget(view_);
+}
+
+void Options::SaveOptions(){
+    //this creates the file in the makefile/build directory... not optimal?
+
+    QFile file("options.txt");
+    file.open(QIODevice::WriteOnly | QIODevice::Text);
+
+
+    QTextStream out(&file);
+    out << volume_slider_->value() << "\n";
+
 }
