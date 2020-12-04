@@ -31,7 +31,7 @@ public slots:
     void ExitToMenu();
 private://MUISTA MUUTTAAAA!!!!!!!!!!!!!!!!!!!!!!!!!
     int sfx_volume = 100; //  0 is silence, 100 is max
-    int music_volume = 0;//oli 40
+    int music_volume = 40;//oli 40
     QMediaPlayer *sound_effects;
     QMediaPlayer *bg_music;
     Player *p1_;

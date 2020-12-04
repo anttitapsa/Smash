@@ -27,12 +27,9 @@ private:
     QVector<QString> Player1_;
     QGraphicsTextItem * Player1_text_ = scene_->addText(QString("Player 1"));
     QVector<QString> Player2_;
-<<<<<<< HEAD
     QGraphicsTextItem * Player2_text_ = scene_->addText(QString("Player 2"));
     QTimer* timer_;
 
-=======
->>>>>>> f28333101bd41773f1ee56796bfddb22c90e55d4
 };
 
 #endif // CHARACTERSELECT_H

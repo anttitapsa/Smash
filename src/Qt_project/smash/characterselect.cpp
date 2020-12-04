@@ -1,12 +1,5 @@
 #include "characterselect.h"
-<<<<<<< HEAD
-#include <QPushButton>
-#include <QGroupBox>
-#include <QVBoxLayout>
-#include <QString>
-=======
 
->>>>>>> f28333101bd41773f1ee56796bfddb22c90e55d4
 CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
     : scene_(scene), stack_(stack){
     view_ = new QGraphicsView(scene_);

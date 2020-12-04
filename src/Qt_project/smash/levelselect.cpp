@@ -1,19 +1,6 @@
 #include "levelselect.h"
-<<<<<<< HEAD
-#include "background.h"
-#include <vector>
-#include <list>
-#include <QPixmap>
-#include <QGraphicsPixmapItem>
-#include <iostream>
-#include <QFile>
-#include <QFont>
-#include <QIcon>
-#include <QString>
-
-=======
 #include "gingerbread.h"
->>>>>>> f28333101bd41773f1ee56796bfddb22c90e55d4
+
 LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<QString> Player1, QVector<QString> Player2)
     : stack_(stack)
 {   //Adding playerinfo to selection
