@@ -72,16 +72,18 @@ void LevelSelect::StartGame(int game_nbr){
     timer_ = new QTimer();
     timer_->start(20);
 
-    // if candyland add spikes
+    // if candyland add spikes and gingerbreads
     std::vector<QGraphicsPixmapItem*> spikes;
-    std::vector<Gingerbread*> ginger;
+    std::vector<Gingerbread*>ginger;
     if(game_nbr == 1){
+        ginger = MakeCroud();
+        for_each(ginger.begin(), ginger.end(),
+                [scene](Gingerbread* s) {
+                    scene->addItem(s);;
+                });
         for (int i = 0; i < 50; i++){
             spikes.push_back(scene->addPixmap(QPixmap(":/images/nekku.PNG")));
             spikes[i]->setPos(0,(i-1)*15);
-
-            ginger.push_back(new Gingerbread(i*100));
-            scene->addItem(ginger[i]);
         }
     }
 
@@ -177,4 +179,21 @@ void LevelSelect::ReturnToMain(){
 
 QGraphicsView* LevelSelect::GetView(){
     return view_;
+}
+std::vector<Gingerbread*> LevelSelect::MakeCroud(){
+    std::vector<Gingerbread*> ginger;
+    for (int i = 0; i < 175; i++){//joki 4750
+        int y, x;
+        //village
+        if(i < 100){ x = 1600 + rand() % 2700;
+                     y = 700 + rand()% 30;}
+        //forest after village
+        else if(i < 120) { x = 4300 + rand() % 480;
+                           y = 660 + rand()% 70;}
+        //forest after river
+        else{ x = 5195 + rand() % (6545-5195);//6550 end of scene
+               y = 660 + rand()% 70;}
+        ginger.push_back(new Gingerbread(x,y));
+    }
+    return ginger;
 }

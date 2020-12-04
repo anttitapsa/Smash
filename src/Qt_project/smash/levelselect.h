@@ -16,6 +16,7 @@ class LevelSelect : public QObject
 public:
     LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<QString> Player1, QVector<QString> Player2);
     QGraphicsView* GetView();
+    std::vector<Gingerbread*> MakeCroud();
 public slots:
     void ReturnToMain();
     void StartGame(int game_nbr);

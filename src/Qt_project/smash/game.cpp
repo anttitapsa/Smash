@@ -1,5 +1,4 @@
 #include "game.h"
-#include <iostream>
 
 Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_, QString music_url, std::vector<Gingerbread*> ginger_)
     : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_), msource(music_url), ginger(ginger_) {
@@ -120,7 +119,10 @@ void Game::moveView() {
     translate(-rollspeed,0);
     if(dead_wall <5320){ dead_wall += rollspeed;}
     //spikes update position
-    for(auto i : spikes_){i->setPos(dead_wall-55,i->y());}
+    for_each(spikes_.begin(), spikes_.end(),
+            [this](QGraphicsPixmapItem* i) {
+                i->setPos(dead_wall-55,i->y());
+            });
 }
 
 void Game::check_dead(){
@@ -136,7 +138,9 @@ void Game::check_dead(){
     }
 
     //updating player hearts position
-    for(auto i : hearts_){i->setPos(0,dead_ground+50);}
+    for_each(hearts_.begin(), hearts_.end(),
+             [this](QGraphicsPixmapItem* i){
+            i->setPos(0,dead_ground+50);});
     for(int l = 0; l < p1_->lives_; l++){
         if(rollspeed == 0){
             hearts_[l]->setPos(dead_wall+330+l*40,30);}
@@ -204,24 +208,31 @@ void Game::gameTick() {
     p1_->animate();
     p2_->animate();
     check_dead();
-    for(auto i : ginger){
+    Croud();
+}
+
+
+void Game::Croud(){
+    for_each(ginger.begin(), ginger.end(),
+        [this](Gingerbread* i) {
         i->gravity();
         int num = std::rand()%100;
-        if(num == 4 && !(i->hasJumped)){
+        if(num == 45 && !(i->hasJumped)){
             i->Cheer();
-            jump(i);
-            if(i->hasJumped){std::cout << "it worked!!!!" << std::endl;}
-        }
-    }
+            jump(i);}
+        if( num < 10 && !(i->hasJumped)){
+            i->Cheer();}
+        if( num > 90 && !(i->hasJumped) ){
+            i->StopCheer();}
+    });
 }
+
 
 template <typename T>
 void Game::jump(T creature){
-    std::cout << "jumped called" << std::endl;
     if (!creature->is_falling || creature->falltime < 1) {
         creature->is_falling = true;
         creature->hasJumped = true;
-        std::cout << "hasJumped is true" << std::endl;
         if(creature->is_on_platform){
             creature->is_on_platform = false;
 

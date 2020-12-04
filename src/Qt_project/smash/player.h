@@ -10,7 +10,6 @@ class Player: public QObject, public QGraphicsPixmapItem {
 public:
     Player(QVector<QString> graphics);
     std::bitset<4> key;
-    void jump();
     void move();
     void gravity(const std::vector<Platform*> &platforms);
     void fallingcheck();

@@ -24,12 +24,14 @@ public:
     QTimer *timer_;
     template <typename T>
     void jump (T creature);
+    void Croud();
+
 public slots:
     void gameTick();
     void ExitToMenu();
-private:
+private://MUISTA MUUTTAAAA!!!!!!!!!!!!!!!!!!!!!!!!!
     int sfx_volume = 100; //  0 is silence, 100 is max
-    int music_volume = 40;
+    int music_volume = 0;//oli 40
     QMediaPlayer *sound_effects;
     QMediaPlayer *bg_music;
     Player *p1_;
@@ -40,9 +42,8 @@ private:
     QStackedWidget* stack_ ; //access to stack created in main()
     std::vector<QGraphicsPixmapItem*> hearts_; //to update the player hearts position
     std::vector<QGraphicsPixmapItem*> spikes_;//candyland spikes, work as the hearts
-    qreal rollspeed;//how wast vies moves candyland = 2, amfi = 0
+    qreal rollspeed;//how fast view moves candyland = 2, amfi = 0
     QString msource;
-
     std::vector<Gingerbread*> ginger;
 };
 
