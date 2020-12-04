@@ -33,6 +33,10 @@
         <file>main_return_btn.png</file>
         <file>options_btn.png</file>
         <file>start_game_btn.png</file>
+        <file>tupsu_2_button.png</file>
+        <file>tupsu_button.png</file>
+        <file>Amfi_button.png</file>
+        <file>Candyland_button.png</file>
     </qresource>
     <qresource prefix="/textfiles">
         <file>game_1</file>

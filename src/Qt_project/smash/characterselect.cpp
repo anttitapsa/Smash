@@ -2,9 +2,10 @@
 #include <QPushButton>
 #include <QGroupBox>
 #include <QVBoxLayout>
+#include <QString>
 CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
-    : stack_(stack){
-    view_ = new QGraphicsView(scene);
+    : scene_(scene), stack_(stack){
+    view_ = new QGraphicsView(scene_);
     view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view_->setFixedSize(1280, 720);
@@ -16,6 +17,13 @@ CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
     if (Player2_.isEmpty() != 1){
         Player2_.clear();
     }
+
+    Player1_text_->setPos(150, 500);
+    Player1_text_->setFont(QFont("Arial", 18, QFont::Bold));
+    Player1_text_->setDefaultTextColor(QColor(Qt::blue));
+    Player2_text_->setPos(800, 500);
+    Player2_text_->setFont(QFont("Arial", 18, QFont::Bold));
+    Player2_text_->setDefaultTextColor(QColor(Qt::red));
     // add items into the scene
     QPushButton* totoro_p1_btn = new QPushButton();
     totoro_p1_btn->setAttribute(Qt::WA_TranslucentBackground);
@@ -25,23 +33,23 @@ CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
                                               "height: 200px;"
                                               "width: 130px;"
                                               "border-radius: 10px;}"
-                                "QPushButton:pressed {border: 2px solid red}");
+                                "QPushButton:pressed {border: 2px solid blue}");
     totoro_p1_btn->move(150,300);
     QObject::connect(totoro_p1_btn, SIGNAL(clicked()),this, SLOT(TotoroP1()));
-    scene->addWidget(totoro_p1_btn);
+    scene_->addWidget(totoro_p1_btn);
 
     QPushButton* tupsu_p1_btn = new QPushButton();
     tupsu_p1_btn->setAttribute(Qt::WA_TranslucentBackground);
-    tupsu_p1_btn->setStyleSheet("QPushButton {image:url(:/images/tupsu.png) no-repeat;"
+    tupsu_p1_btn->setStyleSheet("QPushButton {image:url(:/images/tupsu_button.png) no-repeat;"
                                              "background:transparent;"
                                              "border: 2 px solid black;"
                                              "height: 200px;"
                                              "width: 130px;"
                                              "border-radius: 10px;}"
-                                "QPushButton:open {border: 2px solid red}");
+                                "QPushButton:open {border: 2px solid blue}");
     tupsu_p1_btn->move(280,300);
     QObject::connect(tupsu_p1_btn, SIGNAL(clicked()),this, SLOT(TupsuP1()));
-    scene->addWidget(tupsu_p1_btn);
+    scene_->addWidget(tupsu_p1_btn);
 
     QPushButton* totoro_p2_btn = new QPushButton();
     totoro_p2_btn->setAttribute(Qt::WA_TranslucentBackground);
@@ -54,11 +62,11 @@ CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
                                  "QPushButton:open {border: 2px solid red}");
     totoro_p2_btn->move(800,300);
     QObject::connect(totoro_p2_btn, SIGNAL(clicked()),this, SLOT(TotoroP2()));
-    scene->addWidget(totoro_p2_btn);
+    scene_->addWidget(totoro_p2_btn);
 
     QPushButton* tupsu_p2_btn = new QPushButton();
     tupsu_p2_btn->setAttribute(Qt::WA_TranslucentBackground);
-    tupsu_p2_btn->setStyleSheet("QPushButton {image:url(:/images/tupsu_2.png) no-repeat;"
+    tupsu_p2_btn->setStyleSheet("QPushButton {image:url(:/images/tupsu_2_button.png) no-repeat;"
                                              "background:transparent;"
                                              "border: 2 px solid black;"
                                              "height: 200px;"
@@ -67,7 +75,7 @@ CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
                                 "QPushButton:open {border: 2px solid red}");
     tupsu_p2_btn->move(930,300);
     QObject::connect(tupsu_p2_btn, SIGNAL(clicked()),this, SLOT(TupsuP2()));
-    scene->addWidget(tupsu_p2_btn);
+    scene_->addWidget(tupsu_p2_btn);
 
 
     QPushButton* level_btn = new QPushButton();
@@ -82,7 +90,7 @@ CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
                              "QPushButton:open {border: 2px solid red}");
     level_btn->move(450,100);
     QObject::connect(level_btn, SIGNAL(clicked()),this, SLOT(OpenLevelSelect()));
-    scene->addWidget(level_btn);
+    scene_->addWidget(level_btn);
 
     QPushButton* return_btn = new QPushButton();
     return_btn->setAttribute(Qt::WA_TranslucentBackground);
@@ -95,11 +103,11 @@ CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
                              "QPushButton:open {border: 2px solid red}");
     return_btn->move(1000, 600);
     QObject::connect(return_btn, SIGNAL(clicked()),this, SLOT(ReturnToMain()));
-    scene->addWidget(return_btn);
+    scene_->addWidget(return_btn);
 
     //bg to main menu
     QString bg_name = ":/images/main_menu_bg.png";
-    scene->setBackgroundBrush(QBrush(QImage(bg_name)));
+    scene_->setBackgroundBrush(QBrush(QImage(bg_name)));
     }
 
 QGraphicsView* CharacterSelect::GetView(){
@@ -107,18 +115,38 @@ QGraphicsView* CharacterSelect::GetView(){
 }
 void CharacterSelect::TotoroP1(){
     Player1_ = characters_[2];
+    scene_->removeItem(Player1_text_);
+    Player1_text_ = scene_->addText(QString("Player 1: Totoro"));
+    Player1_text_->setFont(QFont("Arial", 18, QFont::Bold));
+    Player1_text_->setDefaultTextColor(QColor(Qt::blue));
+    Player1_text_->setPos(150, 500);
 }
 
 void CharacterSelect::TotoroP2(){
     Player2_ = characters_[4];
+    scene_->removeItem(Player2_text_);
+    Player2_text_ = scene_->addText(QString("Player 2: Totoro"));
+    Player2_text_->setFont(QFont("Arial", 18, QFont::Bold));
+    Player2_text_->setDefaultTextColor(QColor(Qt::red));
+    Player2_text_->setPos(800, 500);
 }
 
 void CharacterSelect::TupsuP1(){
     Player1_ = characters_[1];
+    scene_->removeItem(Player1_text_);
+    Player1_text_ = scene_->addText(QString("Player 1: Tupsu"));
+    Player1_text_->setFont(QFont("Arial", 18, QFont::Bold));
+    Player1_text_->setDefaultTextColor(QColor(Qt::blue));
+    Player1_text_->setPos(150, 500);
 }
 
 void CharacterSelect::TupsuP2(){
     Player2_ = characters_[3];
+    scene_->removeItem(Player2_text_);
+    Player2_text_ = scene_->addText(QString("Player 2: Tupsu"));
+    Player2_text_->setFont(QFont("Arial", 18, QFont::Bold));
+    Player2_text_->setDefaultTextColor(QColor(Qt::red));
+    Player2_text_->setPos(800, 500);
 }
 
 void CharacterSelect::ReturnToMain(){

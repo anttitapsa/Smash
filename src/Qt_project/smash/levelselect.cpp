@@ -8,6 +8,7 @@
 #include <QFile>
 #include <QFont>
 #include <QIcon>
+#include <QString>
 
 LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<QString> Player1, QVector<QString> Player2)
     : stack_(stack)
@@ -21,15 +22,29 @@ LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<Q
     view_->setFixedSize(1280, 720);
     view_->setFocus();
     // add items into the scene
-    QPushButton* start_btn = new QPushButton();
-    start_btn->setGeometry(QRect(150,400,300,100));
-    start_btn->setText("Template map");
-    QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(Option1()));
-    scene->addWidget(start_btn);
+    QPushButton* candy_btn = new QPushButton();
+    candy_btn->setAttribute(Qt::WA_TranslucentBackground);
+    candy_btn->setStyleSheet("QPushButton {background:url(:/images/Candyland_button.png) no-repeat;"
+                                 "background-position: 50% 50%;"
+                                 "border: 2 px solid black;"
+                                 "height: 200 px;"
+                                 "width: 300 px;"
+                                 "border-radius: 10px;}"
+                             "QPushButton:open {border: 2px solid red}");
+    candy_btn->move(150, 300);
+    QObject::connect(candy_btn, SIGNAL(clicked()),this, SLOT(Option1()));
+    scene->addWidget(candy_btn);
 
     QPushButton* amfi_btn = new QPushButton();
-    amfi_btn->setGeometry(QRect(800,400,300,100));
-    amfi_btn->setText("Amfi");
+    amfi_btn->setAttribute(Qt::WA_TranslucentBackground);
+    amfi_btn->setStyleSheet("QPushButton {background:url(:/images/Amfi_button.png) no-repeat;"
+                                 "background-position: 50% 50%;"
+                                 "border: 2 px solid black;"
+                                 "height: 200 px;"
+                                 "width: 300 px;"
+                                 "border-radius: 10px;}"
+                             "QPushButton:open {border: 2px solid red}");
+    amfi_btn->move(800, 300);
     QObject::connect(amfi_btn, SIGNAL(clicked()),this, SLOT(Option2()));
     scene->addWidget(amfi_btn);
 
@@ -48,7 +63,7 @@ LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<Q
 
     QLabel* label = new QLabel();
     label->setText("Lives (1-10):");
-    label->setFont(QFont("Calibry Light",12));
+    label->setFont(QFont("Arial",12));
     label->setStyleSheet("color : white");
     label->setGeometry(QRect(20,50,150,20));
     label->setAttribute(Qt::WA_TranslucentBackground);
@@ -57,7 +72,7 @@ LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<Q
     line_ = new QLineEdit();
     line_->setGeometry(155,50,45,25);
     line_->setText("3");
-    line_->setFont(QFont("Calibry Light",14));
+    line_->setFont(QFont("Arial",14));
     line_->setAttribute(Qt::WA_TranslucentBackground);
     scene->addWidget(line_);
 
