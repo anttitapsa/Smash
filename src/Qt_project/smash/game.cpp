@@ -1,13 +1,7 @@
 #include "game.h"
-#include <QTimer>
-#include <QTransform>
-#include <QPoint>
-#include <cmath>
-#include <iostream>
-#include <QMediaPlaylist>
 
-Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_, QString music_url)
-    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_), msource(music_url) {
+Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_, QString music_url, std::vector<Gingerbread*> ginger_)
+    : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_), msource(music_url), ginger(ginger_) {
 
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
@@ -52,7 +46,7 @@ int k = event->key();
 
     if (k == keybinds[0]) {
         if (!event->isAutoRepeat()) {
-            p1_->jump();
+            jump(p1_);
         }
         p1_->key[0] = 1;
     } else if (k == keybinds[1]){
@@ -72,7 +66,7 @@ int k = event->key();
         p1_->reset_speed();
     } else if (k == keybinds[4]) {
         if (!event->isAutoRepeat()) {
-            p2_->jump();
+            jump(p2_);
         }
         p2_->key[0] = 1;
     } else if (k == keybinds[5]){
@@ -125,23 +119,28 @@ void Game::moveView() {
     translate(-rollspeed,0);
     if(dead_wall <5320){ dead_wall += rollspeed;}
     //spikes update position
-    for(auto i : spikes_){i->setPos(dead_wall-55,i->y());}
+    for_each(spikes_.begin(), spikes_.end(),
+            [this](QGraphicsPixmapItem* i) {
+                i->setPos(dead_wall-55,i->y());
+            });
 }
 
 void Game::check_dead(){
     if(p1_->x() < dead_wall || p1_->y() > dead_ground){
         p1_->lives_ -= 1;
         if(p1_->lives_ != 0){
-            player_to_above_platform(p1_);}
+            dead_platform(p1_);}
     }
     if(p2_->x() < dead_wall || p2_->y() > dead_ground){
         p2_->lives_ -= 1;
         if(p2_->lives_ != 0){
-            player_to_above_platform(p2_);}
+            dead_platform(p2_);}
     }
 
     //updating player hearts position
-    for(auto i : hearts_){i->setPos(0,dead_ground+50);}
+    for_each(hearts_.begin(), hearts_.end(),
+             [this](QGraphicsPixmapItem* i){
+            i->setPos(0,dead_ground+50);});
     for(int l = 0; l < p1_->lives_; l++){
         if(rollspeed == 0){
             hearts_[l]->setPos(dead_wall+330+l*40,30);}
@@ -174,7 +173,7 @@ void Game::check_dead(){
         proxy->setPos(dead_wall+700,400);
     }
 }
-void Game::player_to_above_platform(Player* p){
+void Game::dead_platform(Player* p){
     if(rollspeed== 0){
         p->SetPosition(638,0);
         p->initialize();
@@ -209,4 +208,36 @@ void Game::gameTick() {
     p1_->animate();
     p2_->animate();
     check_dead();
+    Croud();
+}
+
+
+void Game::Croud(){
+    for_each(ginger.begin(), ginger.end(),
+        [this](Gingerbread* i) {
+        i->gravity();
+        int num = std::rand()%100;
+        if(num == 45 && !(i->hasJumped)){
+            i->Cheer();
+            jump(i);}
+        if( num < 10 && !(i->hasJumped)){
+            i->Cheer();}
+        if( num > 90 && !(i->hasJumped) ){
+            i->StopCheer();}
+    });
+}
+
+
+template <typename T>
+void Game::jump(T creature){
+    if (!creature->is_falling || creature->falltime < 1) {
+        creature->is_falling = true;
+        creature->hasJumped = true;
+        if(creature->is_on_platform){
+            creature->is_on_platform = false;
+
+            if(creature->standing_on == creature->dead_platform){
+                creature->dead_platform->time_ = 2;}
+        }
+    }
 }

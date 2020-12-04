@@ -118,16 +118,6 @@ void Player::move() {
     }
 }
 
-void Player::jump() {
-    if (!is_falling || falltime < 1) {
-        is_falling = true;
-        hasJumped = true;
-        is_on_platform = false;
-        if(standing_on == dead_platform){
-            dead_platform->time_ = 2;
-        }
-    }
-}
 void Player::SetPosition(int x, int y){
     setPos(x,y);
 }

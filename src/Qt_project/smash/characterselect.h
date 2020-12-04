@@ -1,24 +1,8 @@
 #ifndef CHARACTERSELECT_H
 #define CHARACTERSELECT_H
-
-#include <QGraphicsView>
-#include <QObject>
-#include <QStackedWidget>
-#include <QPushButton>
-#include <QLineEdit>
-#include <QLabel>
-#include <QGraphicsProxyWidget>
-#include "player.h"
-#include "game.h"
-#include "platform.h"
+#include <QGroupBox>
+#include <QVBoxLayout>
 #include "levelselect.h"
-#include <QTimer>
-#include <fstream>
-#include <QImage>
-#include <QBrush>
-#include <QString>
-
-#include <QVector>
 
 class CharacterSelect : public QObject{
 Q_OBJECT
@@ -43,9 +27,12 @@ private:
     QVector<QString> Player1_;
     QGraphicsTextItem * Player1_text_ = scene_->addText(QString("Player 1"));
     QVector<QString> Player2_;
+<<<<<<< HEAD
     QGraphicsTextItem * Player2_text_ = scene_->addText(QString("Player 2"));
     QTimer* timer_;
 
+=======
+>>>>>>> f28333101bd41773f1ee56796bfddb22c90e55d4
 };
 
 #endif // CHARACTERSELECT_H

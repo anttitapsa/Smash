@@ -1,21 +1,14 @@
 #ifndef LEVELSELECT_H
 #define LEVELSELECT_H
-
-#include <QGraphicsView>
-#include <QObject>
-#include <QStackedWidget>
-#include <QPushButton>
 #include <QLineEdit>
 #include <QLabel>
-#include <QGraphicsProxyWidget>
-#include "player.h"
-#include "game.h"
-#include "platform.h"
-#include <QTimer>
 #include <fstream>
 #include <QImage>
 #include <QBrush>
-#include <QString>
+#include <QFile>
+#include <QFont>
+#include <QIcon>
+#include "game.h"
 
 class LevelSelect : public QObject
 {
@@ -23,6 +16,7 @@ class LevelSelect : public QObject
 public:
     LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<QString> Player1, QVector<QString> Player2);
     QGraphicsView* GetView();
+    std::vector<Gingerbread*> MakeCroud();
 public slots:
     void ReturnToMain();
     void StartGame(int game_nbr);

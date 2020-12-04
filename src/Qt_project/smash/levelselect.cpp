@@ -1,4 +1,5 @@
 #include "levelselect.h"
+<<<<<<< HEAD
 #include "background.h"
 #include <vector>
 #include <list>
@@ -10,6 +11,9 @@
 #include <QIcon>
 #include <QString>
 
+=======
+#include "gingerbread.h"
+>>>>>>> f28333101bd41773f1ee56796bfddb22c90e55d4
 LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<QString> Player1, QVector<QString> Player2)
     : stack_(stack)
 {   //Adding playerinfo to selection
@@ -96,6 +100,21 @@ void LevelSelect::StartGame(int game_nbr){
     timer_ = new QTimer();
     timer_->start(20);
 
+    // if candyland add spikes and gingerbreads
+    std::vector<QGraphicsPixmapItem*> spikes;
+    std::vector<Gingerbread*>ginger;
+    if(game_nbr == 1){
+        ginger = MakeCroud();
+        for_each(ginger.begin(), ginger.end(),
+                [scene](Gingerbread* s) {
+                    scene->addItem(s);;
+                });
+        for (int i = 0; i < 50; i++){
+            spikes.push_back(scene->addPixmap(QPixmap(":/images/nekku.PNG")));
+            spikes[i]->setPos(0,(i-1)*15);
+        }
+    }
+
     //read platforms from file and add to listplatforms
     int i = 0;
     std::vector<Platform*> platforms;
@@ -150,14 +169,7 @@ void LevelSelect::StartGame(int game_nbr){
         }
         else{hearts[i]->setPos(1330-i*40,30);}
     }
-    // if candyland add spikes
-    std::vector<QGraphicsPixmapItem*> spikes;
-    if(game_nbr == 1){
-        for (int i = 0; i < 50; i++){
-            spikes.push_back(scene->addPixmap(QPixmap(":/images/nekku.PNG")));
-            spikes[i]->setPos(0,(i-1)*15);
-        }
-    }
+
     //scene picture and size
     QString backround_name;
     QString music_name;
@@ -173,14 +185,14 @@ void LevelSelect::StartGame(int game_nbr){
           speed = 0;}
 
     // add a view
-    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts,spikes, speed, music_name);
+    Game * game = new Game(scene, timer_, player1, player2, platforms, stack_, hearts,spikes, speed, music_name, ginger);
     game->setTransformationAnchor(QGraphicsView::NoAnchor);
     game->setAlignment(Qt::AlignRight);
     game->setDragMode(QGraphicsView::ScrollHandDrag);
     game->show();
-
-    //Background * bg = new
-    Background(scene, backround_name);
+    QImage bg = QImage(backround_name);
+    bg = bg.scaled(QSize(scene->width(), scene->height()));//, Qt::KeepAspectRatioByExpanding);
+    scene->setBackgroundBrush(QBrush(bg));
 
     stack_->addWidget(game);
     stack_->removeWidget(view_);
@@ -195,4 +207,21 @@ void LevelSelect::ReturnToMain(){
 
 QGraphicsView* LevelSelect::GetView(){
     return view_;
+}
+std::vector<Gingerbread*> LevelSelect::MakeCroud(){
+    std::vector<Gingerbread*> ginger;
+    for (int i = 0; i < 175; i++){//joki 4750
+        int y, x;
+        //village
+        if(i < 100){ x = 1600 + rand() % 2700;
+                     y = 700 + rand()% 30;}
+        //forest after village
+        else if(i < 120) { x = 4300 + rand() % 480;
+                           y = 660 + rand()% 70;}
+        //forest after river
+        else{ x = 5195 + rand() % (6545-5195);//6550 end of scene
+               y = 660 + rand()% 70;}
+        ginger.push_back(new Gingerbread(x,y));
+    }
+    return ginger;
 }
