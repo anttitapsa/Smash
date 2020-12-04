@@ -1,51 +1,50 @@
 #ifndef GAME_H
 #define GAME_H
 #include <QGraphicsView>
-#include <QObject>
-#include <QTimer>
-#include <vector>
-#include <QTransform>
 #include <QStackedWidget>
 #include <QPushButton>
 #include <QGraphicsProxyWidget>
-#include <QGraphicsPixmapItem>
 #include <QMediaPlayer>
+#include <QMediaPlaylist>
 #include <QSoundEffect>
 #include "player.h"
-
-class Game: public QGraphicsView {
-    Q_OBJECT
+#include "gingerbread.h"
+class Game: public QGraphicsView { Q_OBJECT
 
 public:
     Game(QGraphicsScene* scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms,
-         QStackedWidget* stack, std::vector<QGraphicsPixmapItem*>hearts, std::vector<QGraphicsPixmapItem*>spikes, qreal rollspeed_, QString music_url);
+         QStackedWidget* stack, std::vector<QGraphicsPixmapItem*>hearts, std::vector<QGraphicsPixmapItem*>spikes, qreal rollspeed_, QString music_url,std::vector<Gingerbread*> ginger);
 
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     std::vector<int> keybinds;
-    QTimer *timer_;
     void moveView();
     void check_dead();
-    void player_to_above_platform(Player* p);
+    void dead_platform(Player* p);
+    QTimer *timer_;
+    template <typename T>
+    void jump (T creature);
+    void Croud();
+
 public slots:
     void gameTick();
     void ExitToMenu();
-private:
-    Player *p1_;
-    Player *p2_;
-    int dead_wall = 50;
-    int dead_ground = 720;
+private://MUISTA MUUTTAAAA!!!!!!!!!!!!!!!!!!!!!!!!!
     int sfx_volume = 100; //  0 is silence, 100 is max
-    int music_volume = 40;
+    int music_volume = 0;//oli 40
     QMediaPlayer *sound_effects;
     QMediaPlayer *bg_music;
-    //QGraphicsScene* scene_;
-    std::vector<Platform*> platforms_; // Maybe update this into struct mapinfo, if more than platforms are needed
-    QStackedWidget* stack_ ; // Juho 19/11 : access to stack created in main()
+    Player *p1_;
+    Player *p2_;
+    int dead_wall = 50;//start of candyland, changed to -300 in amfi
+    int dead_ground = 720; 
+    std::vector<Platform*> platforms_;
+    QStackedWidget* stack_ ; //access to stack created in main()
     std::vector<QGraphicsPixmapItem*> hearts_; //to update the player hearts position
     std::vector<QGraphicsPixmapItem*> spikes_;//candyland spikes, work as the hearts
-    qreal rollspeed;
+    qreal rollspeed;//how fast view moves candyland = 2, amfi = 0
     QString msource;
+    std::vector<Gingerbread*> ginger;
 };
 
 #endif // GAME_H

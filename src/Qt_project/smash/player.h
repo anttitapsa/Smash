@@ -2,38 +2,36 @@
 #define PLAYER_H
 
 #include <QGraphicsPixmapItem>
-#include <QObject>
 #include <QKeyEvent>
 #include <bitset>
-#include <vector>
 #include <QTimer>
-#include <QString>
-#include <QVector>
-//#include <QPainterPath>
 #include "platform.h"
-class Player: public QObject, public QGraphicsPixmapItem { // public QObject,
+class Player: public QObject, public QGraphicsPixmapItem {
 public:
     Player(QVector<QString> graphics);
-    void jump();
     std::bitset<4> key;
-    int lives_ = 3;
-    void gravity(const std::vector<Platform*> &platforms);
     void move();
-    void SetPosition(int x, int y);
+    void gravity(const std::vector<Platform*> &platforms);
+    void fallingcheck();
+    void SetPosition(int x, int y);//needed at the start of the game and allways after dead
     bool shove(Player *rival); // bool determines if a sound is made
     void shove_hit();
     void isShoved(bool toward_right);
     void initialize();
-    QPainterPath shape() const;
     void reset_speed();
+    QPainterPath shape() const;
     void animate();
-    void fallingcheck();
 
+    int lives_;
     const int player_width = 60;
     const int player_height = 100;
     Platform* dead_platform = NULL;
-    bool hasJumped = false;//related to jumping
     Platform* standing_on;
+    bool is_falling = true;
+    int fallSpeed = 0;
+    int falltime = 0;
+    bool hasJumped = false;
+    bool is_on_platform = false;
 private:
     // related to moving
     int speed = 5;
@@ -42,13 +40,12 @@ private:
     bool facing_right = true;
 
     // related to jumping...
+
     const int jumpSpeed = 50;  
-    // ...and falling
-    int falltime = 0;
+    // related to falling
+
     const float gravity_strength = 0.7;
-    bool is_falling = true;
-    int fallSpeed = 0;
-    bool is_on_platform = false;
+
 
     // related to shoving
     Player *rival_;
@@ -57,7 +54,6 @@ private:
     unsigned int shovetime = 0;
     bool shove_dir;
     bool can_shove = true;
-
     // related to animation implementation
     bool is_animated = false;
     unsigned int animationtime = 0;

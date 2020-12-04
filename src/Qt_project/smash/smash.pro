@@ -10,10 +10,9 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    background.cpp \
-    box.cpp \
     characterselect.cpp \
     game.cpp \
+    gingerbread.cpp \
     levelselect.cpp \
     main.cpp \
     mainmenu.cpp \
@@ -21,10 +20,9 @@ SOURCES += \
     player.cpp
 
 HEADERS += \
-    background.h \
-    box.h \
     characterselect.h \
     game.h \
+    gingerbread.h \
     levelselect.h \
     mainmenu.h \
     platform.h \
