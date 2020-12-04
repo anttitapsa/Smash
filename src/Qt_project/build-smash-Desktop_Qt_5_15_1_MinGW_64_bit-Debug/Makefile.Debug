@@ -365,6 +365,7 @@ debug/moc_characterselect.cpp: ../smash/characterselect.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPolygonF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		../smash/gingerbread.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/eevir/c++/other-2020-1/src/Qt_project/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/eevir/c++/other-2020-1/src/Qt_project/smash -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\smash\characterselect.h -o debug\moc_characterselect.cpp
@@ -528,6 +529,7 @@ debug/moc_game.cpp: ../smash/game.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPolygonF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		../smash/gingerbread.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/eevir/c++/other-2020-1/src/Qt_project/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/eevir/c++/other-2020-1/src/Qt_project/smash -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\smash\game.h -o debug\moc_game.cpp
@@ -703,6 +705,7 @@ debug/moc_levelselect.cpp: ../smash/levelselect.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPolygonF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		../smash/gingerbread.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/eevir/c++/other-2020-1/src/Qt_project/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/eevir/c++/other-2020-1/src/Qt_project/smash -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\smash\levelselect.h -o debug\moc_levelselect.cpp
@@ -887,6 +890,7 @@ debug/moc_mainmenu.cpp: ../smash/mainmenu.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPolygonF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		../smash/gingerbread.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/eevir/c++/other-2020-1/src/Qt_project/build-smash-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/eevir/c++/other-2020-1/src/Qt_project/smash -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\smash\mainmenu.h -o debug\moc_mainmenu.cpp
@@ -1087,7 +1091,8 @@ debug/characterselect.o: ../smash/characterselect.cpp ../smash/characterselect.h
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPolygonItem \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPolygonF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		../smash/gingerbread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\characterselect.o ..\smash\characterselect.cpp
 
 debug/game.o: ../smash/game.cpp ../smash/game.h \
@@ -1248,7 +1253,8 @@ debug/game.o: ../smash/game.cpp ../smash/game.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPolygonItem \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPolygonF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		../smash/gingerbread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\game.o ..\smash\game.cpp
 
 debug/gingerbread.o: ../smash/gingerbread.cpp ../smash/gingerbread.h \
@@ -1341,18 +1347,11 @@ debug/gingerbread.o: ../smash/gingerbread.cpp ../smash/gingerbread.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qrgba64.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qimage.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpixelformat.h \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/QKeyEvent \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/qevent.h \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/qkeysequence.h \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/qurl.h \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/qurlquery.h \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/qfile.h \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/qfiledevice.h \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/qvector2d.h \
-		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtouchdevice.h \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/QTimer \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/qtimer.h \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/qbasictimer.h
+		../smash/platform.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPolygonItem \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPolygonF \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\gingerbread.o ..\smash\gingerbread.cpp
 
 debug/levelselect.o: ../smash/levelselect.cpp ../smash/levelselect.h \
@@ -1715,7 +1714,8 @@ debug/main.o: ../smash/main.cpp C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QAppli
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPolygonItem \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPolygonF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		../smash/gingerbread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\smash\main.cpp
 
 debug/mainmenu.o: ../smash/mainmenu.cpp ../smash/mainmenu.h \
@@ -1897,7 +1897,8 @@ debug/mainmenu.o: ../smash/mainmenu.cpp ../smash/mainmenu.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsPolygonItem \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPolygonF \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QPointF \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QObject \
+		../smash/gingerbread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainmenu.o ..\smash\mainmenu.cpp
 
 debug/platform.o: ../smash/platform.cpp ../smash/platform.h \
