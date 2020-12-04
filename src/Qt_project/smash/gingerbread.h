@@ -1,9 +1,6 @@
 #ifndef GINGERBREAD_H
 #define GINGERBREAD_H
 #include <QGraphicsPixmapItem>
-#include <QKeyEvent>
-#include <bitset>
-#include <QTimer>
 #include "platform.h"
 class Gingerbread: public QObject, public QGraphicsPixmapItem {
 public:

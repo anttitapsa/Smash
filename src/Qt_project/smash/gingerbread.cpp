@@ -1,5 +1,4 @@
 #include "gingerbread.h"
-#include <iostream>
 Gingerbread::Gingerbread(int x,int y)
     : x_(x),ground_(y){
     setPixmap(QPixmap(":/images/ukko_a.PNG").scaledToHeight(player_height));
