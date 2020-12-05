@@ -8,8 +8,8 @@
 #include "platform.h"
 class Player: public QObject, public QGraphicsPixmapItem {
 public:
-    Player(QVector<QString> graphics);
-    std::bitset<4> key;
+    Player(int index);//index for telling what starting picture to use because
+    std::bitset<4> key;      //graphics_ at the start has only all of the starting pictures
     void move();
     void gravity(const std::vector<Platform*> &platforms);
     void fallingcheck();
@@ -32,20 +32,16 @@ public:
     int falltime = 0;
     bool hasJumped = false;
     bool is_on_platform = false;
-private:
+protected:
     // related to moving
     int speed = 5;
-    const int maxspeed = 20;
+    int maxspeed;//determined at lakki.h and totoro.h
     const int acceleration = 5;
     bool facing_right = true;
 
     // related to jumping...
-
     const int jumpSpeed = 50;  
-    // related to falling
-
-    const float gravity_strength = 0.7;
-
+    float gravity_strength;// related to falling, determined at lakki.h and totoro.h
 
     // related to shoving
     Player *rival_;
@@ -57,7 +53,8 @@ private:
     // related to animation implementation
     bool is_animated = false;
     unsigned int animationtime = 0;
-    QVector<QString> graphics_;
+    //at the start starting pictures of players; re-determined at lakki.h and totoro.h
+    QVector<QString> graphics_ = {":/images/tupsu.png",":/images/tupsu_2.png",":/images/totoro.png",":/images/totoro_2.png"};
     std::vector<std::tuple<QString, int>> *current_animation_;
     std::vector<std::tuple<QString, int>> shove_animation_;
 

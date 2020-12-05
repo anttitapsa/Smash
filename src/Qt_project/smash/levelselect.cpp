@@ -1,11 +1,10 @@
 #include "levelselect.h"
-#include "gingerbread.h"
 
-LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<QString> Player1, QVector<QString> Player2)
+LevelSelect::LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, int Player1, int Player2)
     : stack_(stack)
 {   //Adding playerinfo to selection
-    players_[1] = Player1;
-    players_[2] = Player2;
+    players_.push_back(Player1);
+    players_.push_back(Player2);
 
     view_ = new QGraphicsView(scene);
     view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -121,9 +120,12 @@ void LevelSelect::StartGame(int game_nbr){
     }
 
     // create an item to put into the scene
-    Player *player1 =  new Player(players_[1]);
-    Player *player2 =  new Player(players_[2]);
-
+    Player *player1;
+    Player *player2;
+    if(players_[0] < 2 ) { player1 =  new Lakki(players_[0]);}
+    else  {player1 =  new Totoro(players_[0]);}
+    if(players_[1] < 2) { player2 =  new Lakki(players_[1]);}
+    else  {player2 =  new Totoro(players_[1]);}
 
     //players starting positions
     if(game_nbr == 1){
@@ -206,7 +208,7 @@ std::vector<Gingerbread*> LevelSelect::MakeCroud(){
         else if(i < 120) { x = 4300 + rand() % 480;
                            y = 660 + rand()% 70;}
         //forest after river
-        else{ x = 5195 + rand() % (6545-5195);//6550 end of scene
+        else{ x = 5195 + rand() % (6530-5195);//6550 end of scene, so 6530 that gingerbreads can still be seen
                y = 660 + rand()% 70;}
         ginger.push_back(new Gingerbread(x,y));
     }

@@ -3,21 +3,10 @@
 #include <QTimer>
 #include <QColor>
 #include <QBrush>
-#include <iostream>
 
-Player::Player(QVector<QString> graphics)
-            :graphics_(graphics), shove_animation_({{graphics_[1], 0},
-                                                    {graphics_[2],20},
-                                                    {graphics_[3],120},
-                                                    {graphics_[3],120},
-                                                    {graphics_[2],20},
-                                                    {graphics_[1],0},
-                                                    {graphics_[0],0}}){
-
+Player::Player(int index){
     // Set player to be a pixitem
-    setPixmap(QPixmap(graphics[0]).scaledToHeight(player_height));
-
-    //Set shove_animation_
+    setPixmap(QPixmap(graphics_[index]).scaledToHeight(player_height));
 };
 
 void Player::gravity(const std::vector<Platform*> &platforms) {

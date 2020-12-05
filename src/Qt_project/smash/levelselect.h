@@ -14,7 +14,7 @@ class LevelSelect : public QObject
 {
     Q_OBJECT
 public:
-    LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, QVector<QString> Player1, QVector<QString> Player2);
+    LevelSelect(QGraphicsScene* scene, QStackedWidget *stack, int Player1, int Player2);
     QGraphicsView* GetView();
     std::vector<Gingerbread*> MakeCroud();
 public slots:
@@ -26,7 +26,7 @@ public slots:
 private:
     QStackedWidget* stack_;
     QGraphicsView* view_ ;
-    std::map<int,QVector<QString>> players_;
+    QVector<int> players_;
     std::map<int,QString> files_ = { {1, ":/textfiles/game_1"}, {2,":/textfiles/game_2"} };
     QLineEdit* line_;
     QTimer* timer_;

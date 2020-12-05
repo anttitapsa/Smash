@@ -23,10 +23,12 @@ HEADERS += \
     characterselect.h \
     game.h \
     gingerbread.h \
+    lakki.h \
     levelselect.h \
     mainmenu.h \
     platform.h \
-    player.h
+    player.h \
+    totoro.h
 
 FORMS +=
 

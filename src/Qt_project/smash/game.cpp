@@ -216,13 +216,13 @@ void Game::Croud(){
     for_each(ginger.begin(), ginger.end(),
         [this](Gingerbread* i) {
         i->gravity();
-        int num = std::rand()%100;
+        int num = std::rand()%90;
         if(num == 45 && !(i->hasJumped)){
             i->Cheer();
             jump(i);}
         if( num < 10 && !(i->hasJumped)){
             i->Cheer();}
-        if( num > 90 && !(i->hasJumped) ){
+        if( num > 85 && !(i->hasJumped) ){
             i->StopCheer();}
     });
 }

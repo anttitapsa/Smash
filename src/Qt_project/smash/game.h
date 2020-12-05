@@ -7,7 +7,8 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <QSoundEffect>
-#include "player.h"
+#include "lakki.h"
+#include "totoro.h"
 #include "gingerbread.h"
 class Game: public QGraphicsView { Q_OBJECT
 

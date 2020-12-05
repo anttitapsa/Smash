@@ -7,14 +7,12 @@ CharacterSelect::CharacterSelect(QGraphicsScene* scene, QStackedWidget *stack)
     view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view_->setFixedSize(1280, 720);
     view_->setFocus();
-
-    if (Player1_.isEmpty() != 1){
-        Player1_.clear();
+    if (Player1_ != -1){
+        Player1_ = -1;
     }
-    if (Player2_.isEmpty() != 1){
-        Player2_.clear();
+    if (Player2_ != -1){
+        Player2_ = -1;
     }
-
     Player1_text_->setPos(150, 500);
     Player1_text_->setFont(QFont("Arial", 18, QFont::Bold));
     Player1_text_->setDefaultTextColor(QColor(Qt::blue));
@@ -111,7 +109,7 @@ QGraphicsView* CharacterSelect::GetView(){
     return view_;
 }
 void CharacterSelect::TotoroP1(){
-    Player1_ = characters_[2];
+    Player1_ = 2;
     scene_->removeItem(Player1_text_);
     Player1_text_ = scene_->addText(QString("Player 1: Totoro"));
     Player1_text_->setFont(QFont("Arial", 18, QFont::Bold));
@@ -120,7 +118,7 @@ void CharacterSelect::TotoroP1(){
 }
 
 void CharacterSelect::TotoroP2(){
-    Player2_ = characters_[4];
+    Player2_ = 3;
     scene_->removeItem(Player2_text_);
     Player2_text_ = scene_->addText(QString("Player 2: Totoro"));
     Player2_text_->setFont(QFont("Arial", 18, QFont::Bold));
@@ -129,7 +127,7 @@ void CharacterSelect::TotoroP2(){
 }
 
 void CharacterSelect::TupsuP1(){
-    Player1_ = characters_[1];
+    Player1_ = 0;
     scene_->removeItem(Player1_text_);
     Player1_text_ = scene_->addText(QString("Player 1: Tupsu"));
     Player1_text_->setFont(QFont("Arial", 18, QFont::Bold));
@@ -138,7 +136,7 @@ void CharacterSelect::TupsuP1(){
 }
 
 void CharacterSelect::TupsuP2(){
-    Player2_ = characters_[3];
+    Player2_ = 1;
     scene_->removeItem(Player2_text_);
     Player2_text_ = scene_->addText(QString("Player 2: Tupsu"));
     Player2_text_->setFont(QFont("Arial", 18, QFont::Bold));
@@ -152,7 +150,7 @@ void CharacterSelect::ReturnToMain(){
 }
 
 void CharacterSelect::OpenLevelSelect(){
-    if (Player1_.isEmpty() != 1 && Player2_.isEmpty() != 1){
+    if (Player1_!= -1 && Player2_ != -1){
         QGraphicsScene* scene = new QGraphicsScene();
         LevelSelect* lvl_select = new LevelSelect(scene, stack_, Player1_, Player2_);
         scene->setSceneRect(0,0,1280,720);

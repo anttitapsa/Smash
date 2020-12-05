@@ -20,13 +20,10 @@ private:
     QGraphicsScene* scene_;
     QStackedWidget* stack_;
     QGraphicsView* view_;
-    std::map<int, QVector<QString>> characters_ = {{1, {":/images/tupsu.png", ":/images/tupsu_shove1.png", ":/images/tupsu_shove2.png", ":/images/tupsu_shove3.png", ":/images/tupsuleft.png"}},
-                                                   {2, {":/images/totoro.png", ":/images/totoro2.png", ":/images/totoro3.png", ":/images/totoro4.png", ":/images/totoro_left.png"}},
-                                                   {3, {":/images/tupsu_2.png", ":/images/tupsu_shove1_2.png", ":/images/tupsu_shove2_2.png", ":/images/tupsu_shove3_2.png", ":/images/tupsuleft_2.png"}},
-                                                   {4, {":/images/totoro_2.png", ":/images/totoro2_2.png", ":/images/totoro3_2.png", ":/images/totoro4_2.png", ":/images/totoro_left_2.png"}}};
-    QVector<QString> Player1_;
+    //Players will be created later 0 = white_hat 1 = yellow hat 2 = totoro 3 = purple totoro
+    int Player1_ = -1; //-1 meaning not choosed, values 0 or 2
+    int Player2_ = -1;// after choosing value 1 or 3
     QGraphicsTextItem * Player1_text_ = scene_->addText(QString("Player 1"));
-    QVector<QString> Player2_;
     QGraphicsTextItem * Player2_text_ = scene_->addText(QString("Player 2"));
     QTimer* timer_;
 
