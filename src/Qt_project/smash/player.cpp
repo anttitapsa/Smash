@@ -7,10 +7,10 @@
 
 Player::Player(QVector<QString> graphics)
             :graphics_(graphics), shove_animation_({{graphics_[1], 0},
-                                                    {graphics_[2],20},
+                                                    {graphics_[2],60},
                                                     {graphics_[3],120},
                                                     {graphics_[3],120},
-                                                    {graphics_[2],20},
+                                                    {graphics_[2],60},
                                                     {graphics_[1],0},
                                                     {graphics_[0],0}}){
 

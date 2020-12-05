@@ -3,15 +3,16 @@
 Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_, QString music_url, std::vector<Gingerbread*> ginger_)
     : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_), msource(music_url), ginger(ginger_) {
 
+    /*
     keybinds.push_back(Qt::Key_W);
     keybinds.push_back(Qt::Key_A);
     keybinds.push_back(Qt::Key_S);
     keybinds.push_back(Qt::Key_D);
-
     keybinds.push_back(Qt::Key_Up);
     keybinds.push_back(Qt::Key_Left);
     keybinds.push_back(Qt::Key_Down);
     keybinds.push_back(Qt::Key_Right);
+    */
 
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -31,6 +32,7 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
 
     //testing reading options from a file
 
+    /*
     QFile file("options.txt");
     if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
         QTextStream in(&file);
@@ -38,12 +40,16 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
         bg_music->setVolume(volume);
     }
     //read from default if no modifications have been made
-    else{
+    else*/{
         QFile file(":/textfiles/default_options.txt");
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         QTextStream in(&file);
         int volume = in.readLine().toInt();
         bg_music->setVolume(volume);
+        QString bind;
+        while (in.readLineInto(&bind)) {
+            keybinds.push_back(bind.toInt());
+        }
     }
 
     //bg_music->setVolume(music_volume);
