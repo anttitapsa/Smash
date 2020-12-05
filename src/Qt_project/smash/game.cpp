@@ -25,16 +25,28 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
 
     bg_music = new QMediaPlayer();
     QMediaPlaylist *loop = new QMediaPlaylist();
-    //loop->addMedia(QUrl("qrc:/sounds/teekkarifinal.mp3"));
-    //QString url = "qrc:/sounds/teekkarifinal.mp3";
+
     loop->addMedia(QUrl(music_url));
     loop->setPlaybackMode(QMediaPlaylist::Loop);
 
+    //testing reading options from a file
 
-    //bg_music->setMedia(QUrl(music_source));  <- For some reason this is not working
-    //std::cout << music_source.toStdString().c_str() << std::endl;
+    QFile file("options.txt");
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QTextStream in(&file);
+        int volume = in.readLine().toInt();
+        bg_music->setVolume(volume);
+    }
+    //read from default if no modifications have been made
+    else{
+        QFile file(":/textfiles/default_options.txt");
+        file.open(QIODevice::ReadOnly | QIODevice::Text);
+        QTextStream in(&file);
+        int volume = in.readLine().toInt();
+        bg_music->setVolume(volume);
+    }
 
-    bg_music->setVolume(music_volume);
+    //bg_music->setVolume(music_volume);
     bg_music->setPlaylist(loop);
     bg_music->play();
 

@@ -41,6 +41,7 @@
     <qresource prefix="/textfiles">
         <file>game_1</file>
         <file>game_2</file>
+        <file>default_options.txt</file>
     </qresource>
     <qresource prefix="/sounds">
         <file>woosh1.wav</file>

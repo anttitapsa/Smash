@@ -36,10 +36,19 @@ Options::Options(QGraphicsScene* scene, QStackedWidget *stack)
     //loaded if no options.txt exists
 
     QFile file("options.txt");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-    QTextStream in(&file);
-    int value = in.readLine().toInt();
-    volume_slider_->setValue(value);
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QTextStream in(&file);
+        int value = in.readLine().toInt();
+        volume_slider_->setValue(value);
+    }
+    // read from default_options.txt if no modifications have been made
+    else{
+        QFile file(":/textfiles/default_options.txt");
+        file.open(QIODevice::ReadOnly | QIODevice::Text);
+        QTextStream in(&file);
+        int value = in.readLine().toInt();
+        volume_slider_->setValue(value);
+    }
 
     volume_slider_->setGeometry(QRect(300,200,300,50));
     volume_slider_->setStyleSheet("background-color: transparent");
