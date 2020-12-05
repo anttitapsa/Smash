@@ -1,9 +1,10 @@
 #include "options.h"
 #include <QDebug>
 #include <QFileInfo>
+#include <iostream>
 
 Options::Options(QGraphicsScene* scene, QStackedWidget *stack)
-    : stack_(stack)
+    : stack_(stack), scene_(scene)
 {   view_ = new QGraphicsView(scene);
     view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -23,6 +24,12 @@ Options::Options(QGraphicsScene* scene, QStackedWidget *stack)
     save_btn->setText("Save options");
     QObject::connect(save_btn, SIGNAL(clicked()),this, SLOT(SaveOptions()));
     scene->addWidget(save_btn);
+
+    QPushButton* keybinds_btn = new QPushButton();
+    keybinds_btn->setGeometry(QRect(200,600,200,60));
+    keybinds_btn->setText("Set keybinds");
+    QObject::connect(keybinds_btn, SIGNAL(clicked()),this, SLOT(SetKeybinds()));
+    scene->addWidget(keybinds_btn);
 
     volume_slider_ = new QSlider();
     volume_slider_->setOrientation(Qt::Horizontal);
@@ -64,6 +71,16 @@ QGraphicsView* Options::GetView(){
     return view_;
 }
 
+void Options::keyPressEvent(QKeyEvent *event)
+{
+    if (setting_keybinds) {
+        keybinds_.push_back(event->key());
+        ++at_key;
+        SetKeybinds();
+    }
+    std::cout << event->key() << std::endl;
+}
+
 void Options::ReturnToMain(){
     stack_->setCurrentIndex(0);
     stack_->removeWidget(view_);
@@ -79,4 +96,21 @@ void Options::SaveOptions(){
     QTextStream out(&file);
     out << volume_slider_->value() << "\n";
 
+    for (int key : keybinds_) {
+        out << key << "\n";
+    }
+
+}
+
+void Options::SetKeybinds() {
+    if (at_key < descriptors_.size()) {
+        setting_keybinds = true;
+        QGraphicsTextItem *desc = scene_->addText(descriptors_[at_key]);
+        desc->setFont(QFont("Arial", 18, QFont::Bold));
+        desc->setDefaultTextColor(QColor(Qt::red));
+        desc->setPos(100 + 300 * at_key / 4, 300 + 30 * at_key % 80);
+        keybind_texts.push_back(desc);
+    } else {
+        setting_keybinds = false;
+    }
 }
