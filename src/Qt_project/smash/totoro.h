@@ -5,15 +5,15 @@
 class Totoro : public Player{
 public:
     Totoro(int player_index)
-        : Player(player_index){ gravity_strength = 0.5;
+        : Player(player_index){ gravity_strength = 0.44;
                                 maxspeed = 20;
                                 graphics_.clear();
                                 graphics_ = pictures_[player_index-2]; // -2 because player_index either 2 or 3
                                 shove_animation_ = {{graphics_[1], 0}, //in pictutes indexs are 0 and 1
-                                                    {graphics_[2],20},
-                                                    {graphics_[3],120},
-                                                    {graphics_[3],120},
-                                                    {graphics_[2],20},
+                                                    {graphics_[2],0},
+                                                    {graphics_[3],0},
+                                                    {graphics_[3],0},
+                                                    {graphics_[2],0},
                                                     {graphics_[1],0},
                                                     {graphics_[0],0}};
                              };
