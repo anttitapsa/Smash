@@ -16,6 +16,8 @@ SOURCES += \
     levelselect.cpp \
     main.cpp \
     mainmenu.cpp \
+    options.cpp \
+    options_view.cpp \
     platform.cpp \
     player.cpp
 
@@ -26,6 +28,8 @@ HEADERS += \
     lakki.h \
     levelselect.h \
     mainmenu.h \
+    options.h \
+    options_view.h \
     platform.h \
     player.h \
     totoro.h

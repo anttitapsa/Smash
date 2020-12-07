@@ -4,6 +4,9 @@
 #include <QColor>
 #include <QBrush>
 
+#include <iostream>
+
+
 Player::Player(int index){
     // Set player to be a pixitem
     setPixmap(QPixmap(graphics_[index]).scaledToHeight(player_height));

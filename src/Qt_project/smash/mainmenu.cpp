@@ -1,4 +1,14 @@
 #include "mainmenu.h"
+#include "levelselect.h"
+#include "options.h"
+#include <vector>
+#include <list>
+#include <QPixmap>
+#include <QGraphicsPixmapItem>
+#include <iostream>
+#include <QFile>
+#include <QFont>
+#include <QIcon>
 
 MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     : stack_(stack)
@@ -18,9 +28,22 @@ MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
                                  "width: 300 px;"
                                  "border-radius: 10px;}"
                              "QPushButton:open {border: 2px solid red}");
-    start_btn->move(450,400);
-   QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(OpenCharacterSelect()));
+    start_btn->move(250,300);
+    QObject::connect(start_btn, SIGNAL(clicked()),this, SLOT(OpenCharacterSelect()));
     scene->addWidget(start_btn);
+
+    QPushButton* options_btn = new QPushButton();
+    options_btn->setAttribute(Qt::WA_TranslucentBackground);
+    options_btn->setStyleSheet("QPushButton {background:url(:/images/options_btn.png) no-repeat;"
+                                 "background-position: 50% 50%;"
+                                 "border: 2 px solid black;"
+                                 "height: 100 px;"
+                                 "width: 300 px;"
+                                 "border-radius: 10px;}"
+                             "QPushButton:open {border: 2px solid red}");
+    options_btn->move(700,300);
+    QObject::connect(options_btn, SIGNAL(clicked()),this, SLOT(OpenOptions()));
+    scene->addWidget(options_btn);
 
     //bg to main menu
     QString bg_name = ":/images/main_menu_bg.png";
@@ -33,6 +56,17 @@ void MainMenu::OpenCharacterSelect(){
     CharacterSelect* chr_select = new CharacterSelect(scene, stack_);
     scene->setSceneRect(0,0,1280,720);
     stack_->addWidget(chr_select->GetView());
+    stack_->setCurrentIndex(1);
+    stack_->show();
+}
+
+// Method to create and show options
+
+void MainMenu::OpenOptions(){
+    QGraphicsScene* scene = new QGraphicsScene();
+    Options* options = new Options(scene, stack_);
+    scene->setSceneRect(0,0,1280,720);
+    stack_->addWidget(options->GetView());
     stack_->setCurrentIndex(1);
     stack_->show();
 }

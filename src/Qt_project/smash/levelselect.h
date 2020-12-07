@@ -30,6 +30,7 @@ private:
     std::map<int,QString> files_ = { {1, ":/textfiles/game_1"}, {2,":/textfiles/game_2"} };
     QLineEdit* line_;
     QTimer* timer_;
+
 };
 
 #endif // LEVELSELECT_H
