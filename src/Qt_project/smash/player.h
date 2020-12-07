@@ -54,9 +54,9 @@ protected:
     bool is_animated = false;
     unsigned int animationtime = 0;
     //at the start starting pictures of players; re-determined at lakki.h and totoro.h
-    QVector<QString> graphics_ = {":/images/tupsu.png",":/images/tupsu_2.png",":/images/totoro.png",":/images/totoro_2.png"};
-    std::vector<std::tuple<QString, int>> *current_animation_;
-    std::vector<std::tuple<QString, int>> shove_animation_;
+    QVector<const char*> graphics_ = {":/images/tupsu.png",":/images/tupsu_2.png",":/images/totoro.png",":/images/totoro_2.png"};
+    std::vector<std::tuple<const char*, int>> *current_animation_;
+    std::vector<std::tuple<const char*, int>> shove_animation_;
 
 };
 

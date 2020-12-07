@@ -187,7 +187,7 @@ void Player::animate()
                 shove_hit();
             }
 
-            const char *newpiclocation = std::get<0>((*current_animation_)[animationtime]).toStdString().c_str();
+            const char *newpiclocation = std::get<0>((*current_animation_)[animationtime]);
 
             if (facing_right) {
                 setPixmap(QPixmap(newpiclocation).scaledToHeight(player_height));
