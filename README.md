@@ -14,9 +14,15 @@ You can also run the code using QT Creator.
 ## Authors
 
 Anssi Lehtonen
+
 Antti Huttunen
+
 Eevi Rimmi 
+
 Juho Tuomaala
+
+
+
 
 
 
