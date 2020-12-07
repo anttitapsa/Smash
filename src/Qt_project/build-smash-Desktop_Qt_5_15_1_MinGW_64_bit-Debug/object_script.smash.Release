@@ -1,0 +1,17 @@
+release/characterselect.o
+release/game.o
+release/gingerbread.o
+release/levelselect.o
+release/main.o
+release/mainmenu.o
+release/options.o
+release/options_view.o
+release/platform.o
+release/player.o
+release/qrc_Resourses.o
+release/moc_characterselect.o
+release/moc_game.o
+release/moc_levelselect.o
+release/moc_mainmenu.o
+release/moc_options.o
+release/moc_options_view.o

@@ -66,10 +66,6 @@ void Player::gravity(const std::vector<Platform*> &platforms) {
 }
 
 void Player::move() {
-    // scheme: key[0-3] = W,A,S,D
-    //if (key[0]) {
-    //    jump();
-    //}
     if (key[1]) {
         if (speed <= maxspeed + acceleration) {
             speed += acceleration;
@@ -180,14 +176,14 @@ void Player::animate()
 {
     if (is_animated) {
         if(animationtime == current_animation_->size()) {
-            can_shove = true;  // for now this is ok, since there are no other animations
+            can_shove = true;
             is_animated = false;
         } else {
             if (animationtime == 2) {
                 shove_hit();
             }
 
-            const char *newpiclocation = std::get<0>((*current_animation_)[animationtime]).toStdString().c_str();
+            const char *newpiclocation = std::get<0>((*current_animation_)[animationtime]);
 
             if (facing_right) {
                 setPixmap(QPixmap(newpiclocation).scaledToHeight(player_height));

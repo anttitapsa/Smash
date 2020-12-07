@@ -14,8 +14,15 @@ Options::Options(QGraphicsScene* scene, QStackedWidget *stack)
     // add items into the scene
 
     QPushButton* return_btn = new QPushButton();
-    return_btn->setGeometry(QRect(1000,600,200,50));
-    return_btn->setText("Return to main menu");
+    return_btn->setAttribute(Qt::WA_TranslucentBackground);
+    return_btn->setStyleSheet("QPushButton {background:url(:/images/main_return_btn.png) no-repeat;"
+                                 "background-position: 50% 50%;"
+                                 "border: 2 px solid black;"
+                                 "height: 50 px;"
+                                 "width: 200 px;"
+                                 "border-radius: 10px;}"
+                             "QPushButton:open {border: 2px solid red}");
+    return_btn->move(1000, 600);
     QObject::connect(return_btn, SIGNAL(clicked()),this, SLOT(ReturnToMain()));
     scene->addWidget(return_btn);
 
@@ -125,20 +132,7 @@ void Options::SaveOptions(){
 
 }
 
-/*
-void Options::SetKeybinds() {
-    if (at_key < descriptors_.size()) {
-        setting_keybinds = true;
-        QGraphicsTextItem *desc = scene_->addText(descriptors_[at_key]);
-        desc->setFont(QFont("Arial", 18, QFont::Bold));
-        desc->setDefaultTextColor(QColor(Qt::red));
-        desc->setPos(100 + 300 * at_key / 4, 300 + 30 * at_key % 80);
-        keybind_texts.push_back(desc);
-    } else {
-        setting_keybinds = false;
-    }
-}
-*/
+
 // new approach
 void Options::SetKeybinds(){
     QTimer timer;

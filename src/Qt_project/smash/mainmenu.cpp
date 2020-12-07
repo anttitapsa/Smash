@@ -8,7 +8,7 @@
 #include <iostream>
 #include <QFile>
 #include <QFont>
-#include <QIcon>
+
 
 MainMenu::MainMenu(QGraphicsScene* scene, QStackedWidget *stack)
     : stack_(stack)
