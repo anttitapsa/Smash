@@ -1,21 +1,27 @@
-# Sample README file for C++ programming project
+# Super Smash C++ programming project by Other-1
 
-This is an initial git repository for your programming project.
-It contains an initial directory structure that we wish you could
-use as follows:
+Two player fighting game. The game is a local multiplayer, in which the keyboard is shared by two players. 
+Players can determine keyboards from options, the expected layout is ASDW and arrow keys. Where S and down arrow are attact. 
+Players can choose their character from two options. There are also two different levels. One level is stationary and the other
+is moving. The players try to push each other off from platforms of the level. 
+Player looses a life if the character hits the bottom, or at the latter game the left wall.
 
-  * `plan/` -- Your project plan should be put here. You may use different sources,
-    but we hope to get the plan **also as a pdf file**.
+## Installation
 
-  * `doc/` -- The documentation sources related to your project should be put here.
-    You may use different tools for documentation (e.g. latex),
-    but we hope to get the final version of the document
-    **also as pdf file**.
+There is a installer to game in exe-file, name of the installer is "Smash", and it locates in installer-file.
+You can also run the code using QT Creator.
 
-  * `src/` -- Here are the C++ source files. You can have subfolders as needed.
+## Authors
 
-  * `README.md` -- This file. You should modify it to represent
-    your project. **in progress -Juho**
+Anssi Lehtonen
+Antti Huttunen
+Eevi Rimmi 
+Juho Tuomaala
 
-You may also add other new directories as needed, for example
-for testing tools.
+
+
+  * `plan/` Includes project plan (pdf file) and final documentation (pdf file)
+
+  * `exe/` Includes installer
+
+  * `src/` C++ source files
