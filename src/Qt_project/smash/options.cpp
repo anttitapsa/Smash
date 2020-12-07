@@ -27,8 +27,15 @@ Options::Options(QGraphicsScene* scene, QStackedWidget *stack)
     scene->addWidget(return_btn);
 
     QPushButton* save_btn = new QPushButton();
-    save_btn->setGeometry(QRect(600,600,200,60));
-    save_btn->setText("Save options");
+    save_btn->setAttribute(Qt::WA_TranslucentBackground);
+    save_btn->setStyleSheet("QPushButton {background:url(:/images/save_settings_btn.png) no-repeat;"
+                                 "background-position: 50% 50%;"
+                                 "border: 2 px solid black;"
+                                 "height: 60 px;"
+                                 "width: 200 px;"
+                                 "border-radius: 10px;}"
+                             "QPushButton:open {border: 2px solid red}");
+    save_btn->move(600, 600);
     QObject::connect(save_btn, SIGNAL(clicked()),this, SLOT(SaveOptions()));
     scene->addWidget(save_btn);
 

@@ -150,43 +150,44 @@ debug/qrc_Resourses.cpp: ../smash/Resourses.qrc \
 		C:/Qt/5.15.1/mingw81_64/bin/rcc.exe \
 		../smash/totoro_2.png \
 		../smash/totoro_button.png \
-		../smash/tupsu_shove3_2.png \
-		../smash/bitheart.PNG \
-		../smash/totoro2_2.png \
-		../smash/candyland.png \
-		../smash/options_btn.png \
-		../smash/tupsu_shove1.png \
-		../smash/tupsu_shove2.png \
-		../smash/totoro_left_2.png \
-		../smash/tupsu_shove2_2.png \
-		../smash/tupsu_shove3.png \
-		../smash/totoro2.png \
-		../smash/tupsu_shove1_2.png \
-		../smash/totoro3.png \
-		../smash/ukko_a.PNG \
-		../smash/totoro4.png \
-		../smash/ukko_b.PNG \
-		../smash/level_select_btn.png \
-		../smash/start_game_btn.png \
-		../smash/Amfi_button.png \
 		../smash/Candyland_button.png \
-		../smash/tupsu_2_button.png \
-		../smash/end_return_btn.png \
-		../smash/totoro.png \
-		../smash/nekku.PNG \
-		../smash/totoro_left.png \
-		../smash/tupsuleft_2.png \
-		../smash/tupsu_button.png \
-		../smash/tupsu_2.png \
-		../smash/tupsu.png \
 		../smash/totoro4_2.png \
-		../smash/tupsuleft.png \
-		../smash/amfi.PNG \
-		../smash/totoro3_2.png \
-		../smash/totoro_2.png \
-		../smash/main_return_btn.png \
-		../smash/main_menu_bg.png \
+		../smash/ukko_a.PNG \
 		../smash/totoro_button.png \
+		../smash/candyland.png \
+		../smash/tupsu_2.png \
+		../smash/tupsu_button.png \
+		../smash/tupsu_shove1_2.png \
+		../smash/main_menu_bg.png \
+		../smash/totoro_left.png \
+		../smash/totoro4.png \
+		../smash/totoro2_2.png \
+		../smash/options_btn.png \
+		../smash/totoro3.png \
+		../smash/end_return_btn.png \
+		../smash/totoro3_2.png \
+		../smash/nekku.PNG \
+		../smash/tupsu.png \
+		../smash/totoro2.png \
+		../smash/tupsuleft_2.png \
+		../smash/totoro.png \
+		../smash/save_settings_btn.png \
+		../smash/Amfi_button.png \
+		../smash/totoro_left_2.png \
+		../smash/level_select_btn.png \
+		../smash/tupsu_2_button.png \
+		../smash/tupsu_shove3.png \
+		../smash/tupsu_shove2_2.png \
+		../smash/start_game_btn.png \
+		../smash/tupsuleft.png \
+		../smash/tupsu_shove2.png \
+		../smash/tupsu_shove3_2.png \
+		../smash/amfi.PNG \
+		../smash/main_return_btn.png \
+		../smash/ukko_b.PNG \
+		../smash/totoro_2.png \
+		../smash/bitheart.PNG \
+		../smash/tupsu_shove1.png \
 		../smash/woosh2.wav \
 		../smash/woosh1.wav \
 		../smash/teekkarifinal.mp3 \

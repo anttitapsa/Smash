@@ -37,6 +37,7 @@
         <file>tupsu_button.png</file>
         <file>Amfi_button.png</file>
         <file>Candyland_button.png</file>
+        <file>save_settings_btn.png</file>
     </qresource>
     <qresource prefix="/textfiles">
         <file>game_1</file>
