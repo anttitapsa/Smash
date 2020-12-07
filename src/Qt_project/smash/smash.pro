@@ -17,6 +17,7 @@ SOURCES += \
     main.cpp \
     mainmenu.cpp \
     options.cpp \
+    options_view.cpp \
     platform.cpp \
     player.cpp
 
@@ -27,6 +28,7 @@ HEADERS += \
     levelselect.h \
     mainmenu.h \
     options.h \
+    options_view.h \
     platform.h \
     player.h
 

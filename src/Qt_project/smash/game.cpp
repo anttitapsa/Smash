@@ -22,7 +22,6 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
 
     // Mediaplayers
     sound_effects = new QMediaPlayer();
-    sound_effects->setVolume(sfx_volume);
 
     bg_music = new QMediaPlayer();
     QMediaPlaylist *loop = new QMediaPlaylist();
@@ -30,22 +29,27 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
     loop->addMedia(QUrl(music_url));
     loop->setPlaybackMode(QMediaPlaylist::Loop);
 
-    //testing reading options from a file
-
-    /*
-    QFile file("options.txt");
-    if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
+     QFile file("options.txt");
+     if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
         QTextStream in(&file);
         int volume = in.readLine().toInt();
         bg_music->setVolume(volume);
-    }
+        volume = in.readLine().toInt();
+        sound_effects->setVolume(volume);
+        QString bind;
+        while (in.readLineInto(&bind)) {
+            keybinds.push_back(bind.toInt());
+        }
+      }
     //read from default if no modifications have been made
-    else*/{
+    else{
         QFile file(":/textfiles/default_options.txt");
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         QTextStream in(&file);
         int volume = in.readLine().toInt();
         bg_music->setVolume(volume);
+        volume = in.readLine().toInt();
+        sound_effects->setVolume(volume);
         QString bind;
         while (in.readLineInto(&bind)) {
             keybinds.push_back(bind.toInt());

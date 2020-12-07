@@ -1,0 +1,17 @@
+debug/characterselect.o
+debug/game.o
+debug/gingerbread.o
+debug/levelselect.o
+debug/main.o
+debug/mainmenu.o
+debug/options.o
+debug/options_view.o
+debug/platform.o
+debug/player.o
+debug/qrc_Resourses.o
+debug/moc_characterselect.o
+debug/moc_game.o
+debug/moc_levelselect.o
+debug/moc_mainmenu.o
+debug/moc_options.o
+debug/moc_options_view.o
