@@ -1,0 +1,10 @@
+^C:\USERS\ANTTI\DOCUMENTS\AALTO\CPP\PROJECT\OTHER-2020-1\SRC\QT_PROJECT\SMASH\STEP1_BUILD\CMAKEFILES\924BDFF2A20B56B7B73E0E74D4587642\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash -BC:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/Step1_build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/Step1_build/Smash.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

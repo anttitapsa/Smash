@@ -1,0 +1,3 @@
+C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/Step1_build/CMakeFiles/Smash.dir
+C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/Step1_build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/Step1_build/CMakeFiles/ZERO_CHECK.dir
