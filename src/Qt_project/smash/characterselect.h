@@ -1,7 +1,5 @@
 #ifndef CHARACTERSELECT_H
 #define CHARACTERSELECT_H
-#include <QGroupBox>
-#include <QVBoxLayout>
 #include "levelselect.h"
 
 class CharacterSelect : public QObject{

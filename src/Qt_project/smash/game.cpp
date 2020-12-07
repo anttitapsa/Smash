@@ -3,16 +3,6 @@
 Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_, QString music_url, std::vector<Gingerbread*> ginger_)
     : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_), msource(music_url), ginger(ginger_) {
 
-    /*
-    keybinds.push_back(Qt::Key_W);
-    keybinds.push_back(Qt::Key_A);
-    keybinds.push_back(Qt::Key_S);
-    keybinds.push_back(Qt::Key_D);
-    keybinds.push_back(Qt::Key_Up);
-    keybinds.push_back(Qt::Key_Left);
-    keybinds.push_back(Qt::Key_Down);
-    keybinds.push_back(Qt::Key_Right);
-    */
 
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -56,7 +46,6 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
         }
     }
 
-    //bg_music->setVolume(music_volume);
     bg_music->setPlaylist(loop);
     bg_music->play();
 
@@ -76,12 +65,10 @@ int k = event->key();
         p1_->reset_speed();
     } else if (k == keybinds[2]) {
         if (!event->isAutoRepeat()) {
-            //QGraphicsRectItem* hitbox =
             if (p1_->shove(p2_)) {
                 sound_effects->setMedia(QUrl("qrc:/sounds/woosh1.wav"));
                 sound_effects->play();
             }
-            //scene_->addItem(hitbox);
         }
     } else if (k == keybinds[3]) {
         p1_->key[3] = 1;
@@ -96,12 +83,11 @@ int k = event->key();
         p2_->reset_speed();
     } else if (k == keybinds[6]) {
         if (!event->isAutoRepeat()) {
-            //QGraphicsRectItem* hitbox =
             if (p2_->shove(p1_)) {
                 sound_effects->setMedia(QUrl("qrc:/sounds/woosh2.wav"));
                 sound_effects->play();
             }
-            //scene_->addItem(hitbox);
+
         }
     } else if (k == keybinds[7]) {
         p2_->key[3] = 1;
