@@ -9,7 +9,7 @@ The output was:
 Microsoft (R) Build Engine version 16.8.2+25e4d540b for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 07/12/2020 22:06:16.
+Build started 09/12/2020 13:27:13.
 Project "C:\Users\Antti\Documents\Aalto\CPP\project\other-2020-1\src\Qt_project\smash\Step1_build\CMakeFiles\3.19.1\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -35,7 +35,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.10
+Time Elapsed 00:00:01.03
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -47,14 +47,14 @@ The CXX compiler identification is MSVC, found in "C:/Users/Antti/Documents/Aalt
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/Step1_build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/MSBuild/Current/Bin/MSBuild.exe cmTC_d8849.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.8.2+25e4d540b for .NET Framework
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/MSBuild/Current/Bin/MSBuild.exe cmTC_3ffef.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.8.2+25e4d540b for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-  Microsoft (R) C/C++ Optimizing Compiler Version 19.28.29334 for x64
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.28.29335 for x64
   Copyright (C) Microsoft Corporation.  All rights reserved.
   CMakeCXXCompilerABI.cpp
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_d8849.dir\Debug\\" /Fd"cmTC_d8849.dir\Debug\vc142.pdb" /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.19\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_d8849.vcxproj -> C:\Users\Antti\Documents\Aalto\CPP\project\other-2020-1\src\Qt_project\smash\Step1_build\CMakeFiles\CMakeTmp\Debug\cmTC_d8849.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_3ffef.dir\Debug\\" /Fd"cmTC_3ffef.dir\Debug\vc142.pdb" /Gd /TP /errorReport:queue "C:\Program Files\CMake\share\cmake-3.19\Modules\CMakeCXXCompilerABI.cpp"
+  cmTC_3ffef.vcxproj -> C:\Users\Antti\Documents\Aalto\CPP\project\other-2020-1\src\Qt_project\smash\Step1_build\CMakeFiles\CMakeTmp\Debug\cmTC_3ffef.exe
 
 
 

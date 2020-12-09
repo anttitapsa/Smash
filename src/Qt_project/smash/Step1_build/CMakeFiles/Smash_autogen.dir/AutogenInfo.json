@@ -152,60 +152,12 @@
 		"C:/Qt/5.15.1/mingw81_64/lib/cmake/Qt5Multimedia/Qt5MultimediaConfigVersion.cmake",
 		"C:/Qt/5.15.1/mingw81_64/lib/cmake/Qt5Multimedia/Qt5MultimediaConfig.cmake",
 		"C:/Qt/5.15.1/mingw81_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
-		"C:/Qt/5.15.1/mingw81_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
-		"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/Resourses.qrc"
+		"C:/Qt/5.15.1/mingw81_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake"
 	],
 	"CMAKE_SOURCE_DIR" : "C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash",
 	"DEP_FILE" : "",
 	"DEP_FILE_RULE_NAME" : "",
-	"HEADERS" : 
-	[
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/characterselect.h",
-			"Mu",
-			"EWIEGA46WW/moc_characterselect.cpp"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/game.h",
-			"Mu",
-			"EWIEGA46WW/moc_game.cpp"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/gingerbread.h",
-			"Mu",
-			"EWIEGA46WW/moc_gingerbread.cpp"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/lakki.h",
-			"Mu",
-			"EWIEGA46WW/moc_lakki.cpp"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/levelselect.h",
-			"Mu",
-			"EWIEGA46WW/moc_levelselect.cpp"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/mainmenu.h",
-			"Mu",
-			"EWIEGA46WW/moc_mainmenu.cpp"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/platform.h",
-			"Mu",
-			"EWIEGA46WW/moc_platform.cpp"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/player.h",
-			"Mu",
-			"EWIEGA46WW/moc_player.cpp"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/totoro.h",
-			"Mu",
-			"EWIEGA46WW/moc_totoro.cpp"
-		]
-	],
+	"HEADERS" : [],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/Step1_build/Smash_autogen/include",
 	"INCLUDE_DIR_Debug" : "C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/Step1_build/Smash_autogen/include_Debug",
@@ -279,35 +231,7 @@
 	"SOURCES" : 
 	[
 		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/characterselect.cpp",
-			"Mu"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/game.cpp",
-			"Mu"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/gingerbread.cpp",
-			"Mu"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/levelselect.cpp",
-			"Mu"
-		],
-		[
 			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/main.cpp",
-			"Mu"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/mainmenu.cpp",
-			"Mu"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/platform.cpp",
-			"Mu"
-		],
-		[
-			"C:/Users/Antti/Documents/Aalto/CPP/project/other-2020-1/src/Qt_project/smash/player.cpp",
 			"Mu"
 		]
 	],
