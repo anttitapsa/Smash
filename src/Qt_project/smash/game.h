@@ -4,9 +4,9 @@
 #include <QStackedWidget>
 #include <QPushButton>
 #include <QGraphicsProxyWidget>
-#include <QMediaPlayer>
-#include <QMediaPlaylist>
-#include <QSoundEffect>
+//#include <QMediaPlayer>
+//#include <QMediaPlaylist>
+//#include <QSoundEffect>
 #include "lakki.h"
 #include "totoro.h"
 #include "gingerbread.h"
@@ -33,8 +33,8 @@ public slots:
 private:
     int sfx_volume = 100; //  0 is silence, 100 is max
     int music_volume = 40;
-    QMediaPlayer *sound_effects;
-    QMediaPlayer *bg_music;
+//    QMediaPlayer *sound_effects;
+//    QMediaPlayer *bg_music;
     Player *p1_;
     Player *p2_;
     int dead_wall = 50;//start of candyland, changed to -300 in amfi

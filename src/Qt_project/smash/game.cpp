@@ -1,4 +1,5 @@
 #include "game.h"
+#include <QTextStream>
 
 Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms, QStackedWidget* stack,std::vector<QGraphicsPixmapItem*> hearts, std::vector<QGraphicsPixmapItem*> spikes,qreal rollspeed_, QString music_url, std::vector<Gingerbread*> ginger_)
     : QGraphicsView(scene), timer_(timer), p1_(p1), p2_(p2), platforms_(platforms), stack_(stack), hearts_(hearts), spikes_(spikes), rollspeed(rollspeed_), msource(music_url), ginger(ginger_) {
@@ -9,7 +10,7 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
     setFixedSize(1280, 720);
     setFocus();
     connect(timer_, SIGNAL(timeout()), this, SLOT(gameTick()));
-
+/*
     // Mediaplayers
     sound_effects = new QMediaPlayer();
 
@@ -18,14 +19,14 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
 
     loop->addMedia(QUrl(music_url));
     loop->setPlaybackMode(QMediaPlaylist::Loop);
-
+*/
      QFile file("options.txt");
      if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
         QTextStream in(&file);
         int volume = in.readLine().toInt();
-        bg_music->setVolume(volume);
+//        bg_music->setVolume(volume);
         volume = in.readLine().toInt();
-        sound_effects->setVolume(volume);
+//        sound_effects->setVolume(volume);
         QString bind;
         while (in.readLineInto(&bind)) {
             keybinds.push_back(bind.toInt());
@@ -37,17 +38,17 @@ Game::Game(QGraphicsScene *scene, QTimer *timer, Player *p1, Player *p2, std::ve
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         QTextStream in(&file);
         int volume = in.readLine().toInt();
-        bg_music->setVolume(volume);
+//        bg_music->setVolume(volume);
         volume = in.readLine().toInt();
-        sound_effects->setVolume(volume);
+//        sound_effects->setVolume(volume);
         QString bind;
         while (in.readLineInto(&bind)) {
             keybinds.push_back(bind.toInt());
         }
     }
 
-    bg_music->setPlaylist(loop);
-    bg_music->play();
+//    bg_music->setPlaylist(loop);
+//    bg_music->play();
 
 };
 
@@ -66,8 +67,8 @@ int k = event->key();
     } else if (k == keybinds[2]) {
         if (!event->isAutoRepeat()) {
             if (p1_->shove(p2_)) {
-                sound_effects->setMedia(QUrl("qrc:/sounds/woosh1.wav"));
-                sound_effects->play();
+//                sound_effects->setMedia(QUrl("qrc:/sounds/woosh1.wav"));
+//                sound_effects->play();
             }
         }
     } else if (k == keybinds[3]) {
@@ -84,8 +85,8 @@ int k = event->key();
     } else if (k == keybinds[6]) {
         if (!event->isAutoRepeat()) {
             if (p2_->shove(p1_)) {
-                sound_effects->setMedia(QUrl("qrc:/sounds/woosh2.wav"));
-                sound_effects->play();
+//                sound_effects->setMedia(QUrl("qrc:/sounds/woosh2.wav"));
+//                sound_effects->play();
             }
 
         }
@@ -165,8 +166,6 @@ void Game::check_dead(){
 
         // add buttons to post-game screen
         QPushButton* exit_btn = new QPushButton();
-        //exit_btn->setGeometry(QRect(400,400,300,70));
-        //exit_btn->setText("Exit to main menu");
         exit_btn->setAttribute(Qt::WA_TranslucentBackground);
         exit_btn->setStyleSheet("QPushButton {background:url(:/images/main_return_btn.png) no-repeat;"
                                      "background-position: 50% 50%;"
@@ -199,9 +198,7 @@ void Game::dead_platform(Player* p){
     }
 }
 void Game::ExitToMenu(){
-    // clear & delete the Game and return to menu
-    //scene()->clear();
-    bg_music->stop();
+//    bg_music->stop();
     stack_->setCurrentIndex(0);
     stack_->removeWidget(this);
 }
