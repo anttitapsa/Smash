@@ -30,14 +30,3 @@ Antti Huttunen
 Eevi Rimmi 
 
 Juho Tuomaala
-
-
-
-
-  * `doc/` Includes documentation (pdf file)
-
-  * `plan/` Includes project plan (pdf file) 
-
-  * `exe/` Includes installer
-
-  * `src/` C++ source files
