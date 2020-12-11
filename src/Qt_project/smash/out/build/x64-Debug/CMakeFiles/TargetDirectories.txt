@@ -1,4 +1,0 @@
-C:/Users/eevir/c++/other-2020-1/src/Qt_project/smash/out/build/x64-Debug/CMakeFiles/Smash.dir
-C:/Users/eevir/c++/other-2020-1/src/Qt_project/smash/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/eevir/c++/other-2020-1/src/Qt_project/smash/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
-C:/Users/eevir/c++/other-2020-1/src/Qt_project/smash/out/build/x64-Debug/CMakeFiles/Smash_autogen.dir
