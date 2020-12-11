@@ -1,7 +1,4 @@
 #include "options.h"
-#include <QDebug>
-#include <QFileInfo>
-#include <iostream>
 
 Options::Options(QGraphicsScene* scene, QStackedWidget *stack)
     : QGraphicsView(scene), stack_(stack), scene_(scene)

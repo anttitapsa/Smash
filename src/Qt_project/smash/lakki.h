@@ -5,7 +5,7 @@
 class Lakki : public Player{
 public:
     Lakki(int player_index) : Player(player_index){ gravity_strength = 0.7;
-                                                    maxspeed = 23;
+                                                    maxspeed = 25;
                                                     graphics_.clear();
                                                     graphics_ = pictures_[player_index];
                                                     shove_animation_ = {{graphics_[1], 0},

@@ -33,7 +33,7 @@ public:
     bool hasJumped = false;
     bool is_on_platform = false;
 protected:
-    // related to moving
+    // related to moving...
     int speed = 5;
     int maxspeed;//determined at lakki.h and totoro.h
     const int acceleration = 5;

@@ -11,7 +11,7 @@ public:
     int Get_start_x() {return x_;}
     int Get_y() {return y_;}
     int Get_end_x() {return x_+lenght_;}
-    int time_;
+    int time_; //if platform is dead_platform, time != -1 and platform is deleted when time is zero
 
 private:
     int x_ ;
