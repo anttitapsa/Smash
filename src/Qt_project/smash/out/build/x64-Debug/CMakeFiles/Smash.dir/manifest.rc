@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Users/eevir/c++/other-2020-1/src/Qt_project/smash/out/build/x64-Debug/CMakeFiles/Smash.dir/embed.manifest"
