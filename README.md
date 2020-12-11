@@ -8,8 +8,8 @@ Player looses a life if the character hits the bottom, or at the latter game the
 
 ## Installation
 
-There is a installer to game in exe-file, name of the installer is "Smash", and it locates in installer-file.
-You can also run the code using QT Creator.
+There is a Windows installer to game in exe-file, name of the installer is "Smash", and it locates in installer-file.
+You can also run the code on Linux and Windows using QT Creator. Go to documentation to see more details.
 
 ## Authors
 
@@ -24,9 +24,9 @@ Juho Tuomaala
 
 
 
+  * `doc/` Includes documentation (pdf file)
 
-
-  * `plan/` Includes project plan (pdf file) and final documentation (pdf file)
+  * `plan/` Includes project plan (pdf file) 
 
   * `exe/` Includes installer
 
