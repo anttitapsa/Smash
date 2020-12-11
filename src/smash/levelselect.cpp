@@ -101,7 +101,7 @@ void LevelSelect::StartGame(int game_nbr){
         }
     }
 
-    //read platforms from file and add to listplatforms
+    //read platforms from file and add to list platforms
     int i = 0;
     std::vector<Platform*> platforms;
 
@@ -119,7 +119,7 @@ void LevelSelect::StartGame(int game_nbr){
         i++;
     }
 
-    // create an item to put into the scene
+    // create players to put into the scene
     Player *player1;
     Player *player2;
     if(players_[0] < 2 ) { player1 =  new Lakki(players_[0]);}

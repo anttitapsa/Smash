@@ -15,18 +15,17 @@ class Game: public QGraphicsView { Q_OBJECT
 public:
     Game(QGraphicsScene* scene, QTimer *timer, Player *p1, Player *p2, std::vector<Platform*> platforms,
          QStackedWidget* stack, std::vector<QGraphicsPixmapItem*>hearts, std::vector<QGraphicsPixmapItem*>spikes, qreal rollspeed_, QString music_url,std::vector<Gingerbread*> ginger);
-
+                                                                                        // if game2 spikes and ginger are empty vectors
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     std::vector<int> keybinds;
-    void moveView();
-    void check_dead();
-    void dead_platform(Player* p);
+    void moveView();//moves view, deadwall and spikes
+    void check_dead(); //checks if players lose a life and if game has ended
+    void dead_platform(Player* p); //creates dead_platform to player if game1
     QTimer *timer_;
     template <typename T>
-    void jump (T creature);
-    void Croud();
-
+    void jump (T creature); // used on players and gingerbreads
+    void Croud(); // calls jump() randomly to gingerbreadcroud
 public slots:
     void gameTick();
     void ExitToMenu();

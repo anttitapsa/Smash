@@ -18,7 +18,7 @@ private:
     QGraphicsScene* scene_;
     QStackedWidget* stack_;
     QGraphicsView* view_;
-    //Players will be created later 0 = white_hat 1 = yellow hat 2 = totoro 3 = purple totoro
+    //Players will be created in levelselect, now 0 = white_hat 1 = yellow hat 2 = totoro 3 = purple totoro
     int Player1_ = -1; //-1 meaning not choosed, values 0 or 2
     int Player2_ = -1;// after choosing value 1 or 3
     QGraphicsTextItem * Player1_text_ = scene_->addText(QString("Player 1"));

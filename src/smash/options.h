@@ -1,8 +1,6 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
-#include <QGraphicsView>
-#include <QObject>
 #include <QStackedWidget>
 #include <QPushButton>
 #include <QLineEdit>
@@ -13,6 +11,8 @@
 #include <QTextStream>
 #include <QTimer>
 #include <QEventLoop>
+#include <QDebug>
+#include <QFileInfo>
 #include "options_view.h"
 
 class Options: public QGraphicsView

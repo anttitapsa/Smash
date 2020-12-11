@@ -207,7 +207,8 @@ void Game::ExitToMenu(){
 }
 
 void Game::gameTick() {
-    if (rollspeed != 0){moveView();}//candyland move view
+    if (rollspeed != 0){moveView();
+                        Croud();}//candyland move view and gingerbreads jump randomly
     else{dead_wall = -300;} // Game created expected dead_wall to be candylands +30
     p1_->gravity(platforms_);
     p2_->gravity(platforms_);
@@ -216,7 +217,6 @@ void Game::gameTick() {
     p1_->animate();
     p2_->animate();
     check_dead();
-    Croud();
 }
 
 
